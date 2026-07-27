@@ -21,7 +21,7 @@ exhaustive language coverage.
 
 ## Current State and Workflow
 
-The current grammar generates a solid AST for features covered in
+The current grammar generates a solid CST for features covered in
 [Software Foundations, Volume 1 (Logical Foundations)](https://softwarefoundations.cis.upenn.edu/lf-current/index.html).
 
 As I work through
