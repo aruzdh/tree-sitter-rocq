@@ -1,0 +1,130 @@
+==================
+Modern Import with Negative Category
+==================
+Import -(coercions) Coq.Lists.List.
+---
+
+(source_file
+  (sentence
+    (import_command
+      (import_categories
+        (neg_selection)
+        category: (ident))
+      (filtered_import
+        module: (qualid)))))
+
+==================
+Modern Import with Multiple Categories
+==================
+Import (hints, tactics) MyLibrary.
+---
+
+(source_file
+  (sentence
+    (import_command
+      (import_categories
+        category: (ident)
+        category: (ident))
+      (filtered_import
+        module: (ident)))))
+
+==================
+Filtered Import without Wildcards
+==================
+Import ModuleA (def_x, def_y).
+---
+
+(source_file
+  (sentence
+    (import_command
+      (filtered_import
+        module: (ident)
+        (filtered_import_item
+          name: (ident))
+        (filtered_import_item
+          name: (ident))))))
+
+==================
+Multiple Filtered Imports Side by Side
+==================
+Import M1 (f, g) M2.M3 (h(..)).
+---
+
+(source_file
+  (sentence
+    (import_command
+      (filtered_import
+        module: (ident)
+        (filtered_import_item
+          name: (ident))
+        (filtered_import_item
+          name: (ident)))
+      (filtered_import
+        module: (qualid)
+        (filtered_import_item
+          name: (ident)
+          (import_wildcard))))))
+
+==================
+Modern Filtered Import Ultimate Combo
+==================
+Import -(coercions, hints) Top.M1 (x, y(..)) M2.
+---
+
+(source_file
+  (sentence
+    (import_command
+      (import_categories
+        (neg_selection)
+        category: (ident)
+        category: (ident))
+      (filtered_import
+        module: (qualid)
+        (filtered_import_item
+          name: (ident))
+        (filtered_import_item
+          name: (ident)
+          (import_wildcard)))
+      (filtered_import
+        module: (ident)))))
+
+==================
+Filtered Imports and Item Specifications
+==================
+Import MyModule (foo, bar(..), baz).
+Import LogicModule (and_spec(..)).
+---
+
+(source_file
+  (sentence
+    (import_command
+      (filtered_import
+        module: (ident)
+        (filtered_import_item
+          name: (ident))
+        (filtered_import_item
+          name: (ident)
+          (import_wildcard))
+        (filtered_import_item
+          name: (ident)))))
+  (sentence
+    (import_command
+      (filtered_import
+        module: (ident)
+        (filtered_import_item
+          name: (ident)
+          (import_wildcard))))))
+
+==================
+Import Category Restrictions and Exclusions
+==================
+Import (notations) ScopedModule.
+---
+
+(source_file
+  (sentence
+    (import_command
+      (import_categories
+        category: (ident))
+      (filtered_import
+        module: (ident)))))

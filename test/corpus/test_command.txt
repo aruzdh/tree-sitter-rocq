@@ -1,0 +1,40 @@
+==================
+Test Command (1)
+==================
+Test Search Blacklist.
+---
+(source_file
+  (sentence
+    (test_command
+      (setting_name
+        (ident)
+        (ident)))))
+
+==================
+Test Command (2)
+==================
+Test Search Blacklist for "Coq.Init".
+---
+(source_file
+  (sentence
+    (test_command
+      (setting_name
+        (ident)
+        (ident))
+      (string))))
+
+==================
+Test Command (3)
+==================
+Test Search Blacklist for MyCustomModule "Top.Submodule.Hidden" Core.
+---
+(source_file
+  (sentence
+    (test_command
+      (setting_name
+        (ident)
+        (ident))
+      (ident)
+      (string)
+      (ident))))
+

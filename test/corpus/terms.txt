@@ -1,0 +1,157 @@
+==================
+Scoped and Arrow Terms
+==================
+Check (A /\ B)%type.
+Check (nat -> bool) -> Prop.
+Check f x y%core.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (scoped_term
+        (parenthesized_term
+          (logical_conjunction
+            (ident)
+            (ident)))
+        (ident))))
+  (sentence
+    (evaluation_command
+      (arrow_term
+        antecedent: (parenthesized_term
+          (arrow_term
+            antecedent: (ident)
+            consequent: (ident)))
+        consequent: (ident))))
+  (sentence
+    (evaluation_command
+      (application
+        (application
+          (ident)
+          (ident))
+        (scoped_term
+          (ident)
+          (ident))))))
+
+==================
+Fix Expressions
+==================
+Check fix f x := x.
+Check fix add (n m : nat) {struct n} : nat := n.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (fix_expression
+        (fix_decl
+          name: (ident)
+          (binder
+            (ident))
+          body: (ident)))))
+  (sentence
+    (evaluation_command
+      (fix_expression
+        (fix_decl
+          name: (ident)
+          (binder
+            (ident)
+            (ident)
+            (type
+              (ident)))
+          (fixannot
+            (ident))
+          (type
+            (ident))
+          body: (ident))))))
+
+==================
+Quantifier Terms (Exists)
+==================
+Check exists x, x = 0.
+Check exists (x y : nat), x + y = 0.
+Check forall x, exists y, x = y.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (quantifier_term
+        (open_binders
+          (binder
+            (ident)))
+        (type
+          (comparison_operation
+            (ident)
+            (number))))))
+  (sentence
+    (evaluation_command
+      (quantifier_term
+        (open_binders
+          (binder
+            (ident)
+            (ident)
+            (type
+              (ident))))
+        (type
+          (comparison_operation
+            (additive_operation
+              (ident)
+              (ident))
+            (number))))))
+  (sentence
+    (evaluation_command
+      (quantifier_term
+        (open_binders
+          (binder
+            (ident)))
+        (type
+          (quantifier_term
+            (open_binders
+              (binder
+                (ident)))
+            (type
+              (comparison_operation
+                (ident)
+                (ident)))))))))
+
+==================
+Atomic Terms (Explicit App and Metavariables)
+==================
+Check @id nat 5.
+Check ?X = ?Y.
+Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..).
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (application
+        (application
+          (ident)
+          (ident))
+        (number))))
+  (sentence
+    (evaluation_command
+      (comparison_operation
+        (metavariable)
+        (metavariable))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (application
+                (application
+                  (ident)
+                  (ident))
+                (double_dot))
+              (parenthesized_term
+                (application
+                  (application
+                    (ident)
+                    (ident))
+                  (ident))))
+            (double_dot)))))))

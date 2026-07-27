@@ -1,0 +1,121 @@
+==================
+Goal Selectors on Tactics
+==================
+Proof.
+  1: reflexivity.
+  all: simpl.
+  par: trivial.
+  !: constructor.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (selector
+      (goal_selector
+        (range_selector
+          (number))))
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector)
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector)
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector)
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (qed_command)))
+
+==================
+Fail Prefix on Commands and Tactics
+==================
+Fail Definition x := 0.
+Fail Theorem wrong : forall P, P.
+Proof.
+  Fail reflexivity.
+Abort.
+---
+
+(source_file
+  (sentence
+    (fail)
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (number)))
+  (sentence
+    (fail)
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (ident))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (fail)
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (abort_command)))
+
+==================
+Ellipsis Sentence Terminator
+==================
+Theorem nested_focus : forall P, P -> P.
+Proof.
+  intros P H...
+  exact H.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (arrow_term
+              antecedent: (ident)
+              consequent: (ident)))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))

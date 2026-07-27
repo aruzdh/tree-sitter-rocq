@@ -1,0 +1,153 @@
+==================
+Tactic Clauses Complex Chaining
+==================
+Proof.
+  destruct x eqn:E.
+  apply H with (x := 42) (y := 0).
+  rewrite H in * by reflexivity.
+  rewrite H in H1, H2 by (simpl; reflexivity).
+  destruct H as [H1 H2] eqn:E.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (eqn_clause
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident)
+            (bindings
+              name: (ident)
+              value: (number)
+              name: (ident)
+              value: (number)))))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident)))
+        (in_clause)
+        (by_clause
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident)))
+        (in_clause
+          (ident)
+          (ident))
+        (by_clause
+          (parenthesized_tactic
+            (tactic_sequence
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))
+          (eqn_clause
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Tactic Or and Sequences
+==================
+Proof.
+  split + trivial.
+  apply H || omega.
+  try (clear H; syntax_error) || reflexivity.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_or
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (tactic_or
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (tactic_or
+      (tactic_invocation
+        (tactical
+          (parenthesized_tactic
+            (tactic_sequence
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)
+                  (generic_tactic_body
+                    (atomic_term_with_bindings
+                      (ident)))))
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (qed_command)))
+
+==================
+Testing ssii
+==================
+rewrite H in * by reflexivity.
+---
+
+(source_file
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident)))
+        (in_clause)
+        (by_clause
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))))))

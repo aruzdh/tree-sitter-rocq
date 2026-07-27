@@ -1,0 +1,57 @@
+==================
+Simple Arguments declaration
+==================
+Arguments EmptyStr {T}.
+Arguments Char {T} _.
+Arguments id {A} x.
+Arguments plus (x y).
+Arguments eq_refl [A] x /.
+Arguments my_tactic & x y.
+Arguments foo [x y] {z}, [a b].
+---
+
+(source_file
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (wildcard)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (ident)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (ident)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (ident)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (ident)))
+  (sentence
+    (arguments_command
+      (reference
+        (ident))
+      (ident)
+      (ident)
+      (ident)
+      (ident)
+      (ident))))

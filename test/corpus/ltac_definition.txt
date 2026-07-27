@@ -1,0 +1,67 @@
+==================
+Simple Ltac Definition
+==================
+Ltac invert H :=
+  inversion H; subst; clear H.
+---
+
+(source_file
+  (sentence
+    (ltac_definition
+      name: (ident)
+      (ident)
+      body: (tactic_sequence
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident)))))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident)))))))))
+
+==================
+Ltac Definition with As Clause and Branch Tactics
+==================
+Ltac all_in_one H :=
+  destruct H as [H | H]; subst H; [ assumption | contradiction ].
+---
+
+(source_file
+  (sentence
+    (ltac_definition
+      name: (ident)
+      (ident)
+      body: (tactic_branch
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident))
+                (as_clause
+                  (intro_pattern
+                    (bracketed_intro_pattern
+                      (ident)
+                      (ident)))))))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident))))))
+        branch: (tactic_invocation
+          (generic_tactic
+            name: (ident)))
+        branch: (tactic_invocation
+          (generic_tactic
+            name: (ident)))))))

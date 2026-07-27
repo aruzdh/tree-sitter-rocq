@@ -1,0 +1,118 @@
+==================
+Fixpoint with Single Where Notation
+==================
+Fixpoint my_add n m := n + m
+where "x +++ y" := (my_add x y).
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident))
+      (binder
+        (ident))
+      body: (additive_operation
+        (ident)
+        (ident))
+      (decl_notations
+        (notation_declaration
+          notation: (string)
+          definition: (parenthesized_term
+            (application
+              (application
+                (ident)
+                (ident))
+              (ident))))))))
+
+==================
+Mutual Inductive with Complex Where And Chains
+==================
+Inductive even : nat -> Prop :=
+  | ev_0 : even 0
+  | ev_SS : forall n, odd n -> even (S n)
+with odd : nat -> Prop :=
+  | od_S : forall n, even n -> odd (S n)
+where "n 'is_even'" := (even n)
+and "n 'is_odd'" := (odd n) : type_scope.
+---
+
+(source_file
+  (sentence
+    (inductive_command
+      (inductive_definition
+        name: (ident)
+        (type
+          (arrow_term
+            antecedent: (ident)
+            consequent: (ident)))
+        (constructor_block
+          (constructor
+            name: (ident)
+            (of_type_inst
+              (type
+                (application
+                  (ident)
+                  (number)))))
+          (constructor
+            name: (ident)
+            (of_type_inst
+              (type
+                (quantifier_term
+                  (open_binders
+                    (binder
+                      (ident)))
+                  (type
+                    (arrow_term
+                      antecedent: (application
+                        (ident)
+                        (ident))
+                      consequent: (application
+                        (ident)
+                        (parenthesized_term
+                          (application
+                            (ident)
+                            (ident))))))))))))
+      (inductive_definition
+        name: (ident)
+        (type
+          (arrow_term
+            antecedent: (ident)
+            consequent: (ident)))
+        (constructor_block
+          (constructor
+            name: (ident)
+            (of_type_inst
+              (type
+                (quantifier_term
+                  (open_binders
+                    (binder
+                      (ident)))
+                  (type
+                    (arrow_term
+                      antecedent: (application
+                        (ident)
+                        (ident))
+                      consequent: (application
+                        (ident)
+                        (parenthesized_term
+                          (application
+                            (ident)
+                            (ident)))))))))))
+        (decl_notations
+          (notation_declaration
+            notation: (string)
+            definition: (parenthesized_term
+              (application
+                (ident)
+                (ident))))
+          (notation_declaration
+            notation: (string)
+            definition: (parenthesized_term
+              (application
+                (ident)
+                (ident)))
+            (notation_scope
+              scope_name: (ident))))))))

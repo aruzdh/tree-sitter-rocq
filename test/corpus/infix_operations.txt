@@ -1,0 +1,101 @@
+==================
+Infix Operations
+==================
+Check ~ P \/ Q /\ R.
+Check 1 :: 2 :: l1 ++ l2.
+Check x * y + z / w.
+Check a = b <-> c <> d.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (logical_disjunction
+        (negation_operation
+          (ident))
+        (logical_conjunction
+          (ident)
+          (ident)))))
+  (sentence
+    (evaluation_command
+      (cons_operation
+        (number)
+        (cons_operation
+          (number)
+          (app_operation
+            (ident)
+            (ident))))))
+  (sentence
+    (evaluation_command
+      (additive_operation
+        (multiplicative_operation
+          (ident)
+          (ident))
+        (multiplicative_operation
+          (ident)
+          (ident)))))
+  (sentence
+    (evaluation_command
+      (logical_equivalence
+        (comparison_operation
+          (ident)
+          (ident))
+        (comparison_operation
+          (ident)
+          (ident))))))
+
+==================
+Custom Infix Operators Without Dots
+==================
+Check x <==> y.
+Check a === b.
+Check alpha #$%& beta.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident)))))
+
+==================
+Custom Infix Operators With Dots
+==================
+Check x .+. y.
+Check a <..> b.
+Check l1 ....................... l2.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (custom_operation
+        (ident)
+        (custom_operator)
+        (ident)))))

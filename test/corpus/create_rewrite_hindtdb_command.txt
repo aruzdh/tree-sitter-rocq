@@ -1,0 +1,9 @@
+==================
+Create Rewrite HintDb Command
+==================
+Create Rewrite HintDb le_db.
+---
+(source_file
+  (sentence
+    (create_rewrite_hintdb_command 
+      name: (ident))))

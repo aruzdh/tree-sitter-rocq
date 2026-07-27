@@ -1,0 +1,248 @@
+==================
+(Fail) Fixpoint Declaration with Annotation
+==================
+Fail Fixpoint infinite_loop {X : Type} (n : nat) {struct n} : X :=
+  infinite_loop n.
+---
+
+(source_file
+  (sentence
+    (fail)
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (fixannot
+        (ident))
+      (type
+        (ident))
+      body: (application
+        (ident)
+        (ident)))))
+
+==================
+Mult Fixpoint Declaration with Match Expression
+==================
+Fixpoint mult (n m : nat) : nat :=
+  match n with
+  | O => O
+  | S n' => plus m (mult n' m)
+  end.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (ident)))
+      (type
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (ident))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (pattern_application
+              constructor: (ident)
+              (ident)))
+          body: (application
+            (application
+              (ident)
+              (ident))
+            (parenthesized_term
+              (application
+                (application
+                  (ident)
+                  (ident))
+                (ident)))))))))
+
+==================
+Mult Fixpoint Declaration with Match Expression and Patterns
+==================
+Fixpoint eqb_list {A : Type} (eqb : A -> A -> bool)
+                  (l1 l2 : list A) : bool :=
+                  match l1, l2 with
+                  | [], [] => true
+                  | _, []  => false
+                  | [], _ => false
+                  | (h1 :: t1), (h2 :: t2) => andb (eqb h1 h2) (eqb_list eqb t1 t2)
+                  end.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (ident)
+        (type
+          (arrow_term
+            antecedent: (ident)
+            consequent: (arrow_term
+              antecedent: (ident)
+              consequent: (ident)))))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (application
+            (ident)
+            (ident))))
+      (type
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern)
+            pattern: (list_pattern))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (wildcard)
+            pattern: (list_pattern))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern)
+            pattern: (wildcard))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (parenthesized_pattern
+              (infix_pattern
+                (ident)
+                (ident)))
+            pattern: (parenthesized_pattern
+              (infix_pattern
+                (ident)
+                (ident))))
+          body: (application
+            (application
+              (ident)
+              (parenthesized_term
+                (application
+                  (application
+                    (ident)
+                    (ident))
+                  (ident))))
+            (parenthesized_term
+              (application
+                (application
+                  (application
+                    (ident)
+                    (ident))
+                  (ident))
+                (ident)))))))))
+
+==================
+Fixpoint Structural Annotation
+==================
+Fixpoint sub (n m : nat) {struct n} : nat := n.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (ident)))
+      (fixannot
+        (ident))
+      (type
+        (ident))
+      body: (ident))))
+
+==================
+Fixpoint Well Founded Relation Annotation
+==================
+Fixpoint f_wf (n : nat) {wf (lt n) n} : nat := n.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (fixannot
+        (parenthesized_term
+          (application
+            (ident)
+            (ident)))
+        (ident))
+      (type
+        (ident))
+      body: (ident))))
+
+==================
+Fixpoint Measure Annotation
+==================
+Fixpoint div (n m : nat) {measure n} : nat := n.
+Fixpoint div_explicit (n m : nat) {measure n m lt} : nat := n.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (ident)))
+      (fixannot
+        (ident))
+      (type
+        (ident))
+      body: (ident)))
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (ident)))
+      (fixannot
+        (ident)
+        (ident)
+        (ident))
+      (type
+        (ident))
+      body: (ident))))

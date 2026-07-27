@@ -1,0 +1,192 @@
+==================
+GE Notation Declaration
+==================
+Notation "m >= n" := (ge m n).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))))))
+
+==================
+Plus Notation Declaration with Attributes and Scope
+==================
+Notation "x + y" := (plus x y)
+                       (at level 50, left associativity)
+                       : nat_scope.
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (associativity_modifier)))
+        (notation_scope
+          scope_name: (ident))))))
+
+==================
+And Notation Declaration with Scope
+==================
+Notation "P /\ Q" := (and P Q) : type_scope.
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (notation_scope
+          scope_name: (ident))))))
+
+==================
+Precedence and Associativity Modifiers
+==================
+Notation "x + y" := (plus x y) (at level 50, left associativity).
+Notation "x :: y" := (cons x y) (at level 60, right associativity, only parsing).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (associativity_modifier))))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (associativity_modifier))
+          (syntax_modifier
+            (parsing_modifier)))))))
+
+==================
+Custom DSL Entry Modifiers
+==================
+Notation "'IF' c1 'THEN' c2 'ELSE' c3 'END'" := (If c1 c2 c3) (in custom com at level 0, c1 at level 99).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (application
+                (ident)
+                (ident))
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (level
+                (number)))))))))
+
+==================
+Format and Variable Modifiers
+==================
+Notation "x '==' y" := (eq x y) (format "x  '=='  y").
+Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (format_modifier
+              (string)))))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (application
+                (application
+                  (ident)
+                  (ident))
+                (double_dot))
+              (parenthesized_term
+                (application
+                  (application
+                    (ident)
+                    (ident))
+                  (ident))))
+            (double_dot)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (plural_variable_modifier
+              (ident)
+              (ident)
+              (at_level
+                (level
+                  (number))))))))))

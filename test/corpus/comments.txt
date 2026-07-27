@@ -1,0 +1,105 @@
+==================
+Basic Comment
+==================
+(* This is a basic comment *)
+---
+(source_file
+  (comment))
+
+==================
+Empty Comment
+==================
+(* *)
+---
+(source_file
+  (comment))
+
+==================
+Multiline Comment
+==================
+(* This comment
+   spans across
+   multiple lines *)
+---
+(source_file
+  (comment))
+
+==================
+Nested Comments
+==================
+(* Outer (* Inner *) Outer *)
+---
+(source_file
+  (comment
+    (comment)))
+
+==================
+Deeply Nested Comments
+==================
+(* Level 1 (* Level 2 (* Level 3 *) L2 *) L1 *)
+---
+(source_file
+  (comment
+    (comment
+      (comment))))
+
+==================
+Comment with Tricky Asterisks
+==================
+(* An asterisk * and multiple *** should work *)
+---
+(source_file
+  (comment))
+
+==================
+Comment with Parentheses
+==================
+(* This has ( open and ) close parenthetical characters *)
+---
+(source_file
+  (comment))
+
+==================
+Multiple Independent Comments
+==================
+(* First *)
+(* Second *)
+---
+(source_file
+  (comment)
+  (comment))
+
+==================
+Math Expressions in Comment
+==================
+(* f (x) = y * z *)
+---
+(source_file
+  (comment))
+
+==================
+Math Expressions in Comment without Spaces
+==================
+(*f(x)=(*(here,yisavariable)*z*)*)
+---
+(source_file
+  (comment
+    (comment)))
+
+==================
+Deeply Nested Comments without Spaces
+==================
+(*(*(**)*)*)
+---
+(source_file
+  (comment
+    (comment
+      (comment))))
+
+==================
+Nested non-spaced Comment with (Maybe) Conflicting Characters
+==================
+(*(*(************''''//********(*'*'*"*)*(")***************)*)*)
+---
+(source_file (comment (comment (comment (comment)))))
+

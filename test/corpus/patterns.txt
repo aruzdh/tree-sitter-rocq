@@ -1,0 +1,119 @@
+==================
+Atomic and List Patterns
+==================
+Definition test_atomic_patterns := match x with
+  | _ => 0
+  | 42 => 1
+  | "hello" => 2
+  | [] => 3
+  | [x; y; z] => 4
+end.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (wildcard))
+          body: (number))
+        (match_case
+          (pattern_option
+            pattern: (number))
+          body: (number))
+        (match_case
+          (pattern_option
+            pattern: (string))
+          body: (number))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern))
+          body: (number))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern
+              (ident)
+              (ident)
+              (ident)))
+          body: (number))))))
+
+==================
+Cons and Or Patterns
+==================
+Definition test_complex_patterns := match l with
+  | x :: xs => x
+  | [] | [_] => 0
+end.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (infix_pattern
+              (ident)
+              (ident)))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern))
+          (pattern_option
+            pattern: (list_pattern
+              (wildcard)))
+          body: (number))))))
+
+==================
+Nested and Deeply Parenthesized Patterns
+==================
+Definition test_nested_patterns := match pair with
+  | (x, y) => x
+  | (snoc (cons x y) z, w) => z
+  | (a, b), c => a
+end.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (parenthesized_pattern
+              (ident)
+              (ident)))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (parenthesized_pattern
+              (pattern_application
+                constructor: (ident)
+                (parenthesized_pattern
+                  (pattern_application
+                    constructor: (ident)
+                    (ident)
+                    (ident)))
+                (ident))
+              (ident)))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (parenthesized_pattern
+              (ident)
+              (ident))
+            pattern: (ident))
+          body: (ident))))))

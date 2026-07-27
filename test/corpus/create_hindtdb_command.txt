@@ -1,0 +1,20 @@
+==================
+Create HintDb Command
+==================
+Create HintDb le_db.
+Hint Resolve le_antisym : le_db.
+Create HintDb le_db_dis discriminated.
+---
+
+(source_file
+  (sentence
+    (create_hintdb_command
+      name: (ident)))
+  (sentence
+    (hint_command
+      name: (ident)
+      database: (ident)))
+  (sentence
+    (create_hintdb_command
+      name: (ident)
+      (discriminated_db))))

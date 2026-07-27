@@ -1,0 +1,95 @@
+==================
+All Parameter Types in Definitions
+==================
+Definition mixed_params (x : nat) {y : bool} [A : Type] {z} w (foo bar : nat) := x.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (implicit_binders
+          (ident)))
+      (binder
+        (ident))
+      (binder
+        (ident)
+        (ident)
+        (type
+          (ident)))
+      body: (ident))))
+
+==================
+Naked Typed Binders in Quantifiers and Lambdas
+==================
+Check fun x y : nat => x + y.
+Check forall x y : nat, x = y.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (lambda_function
+        (open_binders
+          (binder
+            (ident))
+          (binder
+            (ident))
+          (type
+            (ident)))
+        (additive_operation
+          (ident)
+          (ident)))))
+  (sentence
+    (evaluation_command
+      (quantifier_term
+        (open_binders
+          (binder
+            (ident))
+          (binder
+            (ident))
+          (type
+            (ident)))
+        (type
+          (comparison_operation
+            (ident)
+            (ident)))))))
+
+==================
+Implicit Parameters Layout
+==================
+Definition explicit_bracket [x y : nat] (z : bool) := x.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (implicit_binders
+          (ident)
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      body: (ident))))

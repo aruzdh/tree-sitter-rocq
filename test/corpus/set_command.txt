@@ -1,0 +1,36 @@
+==================
+Set Command (1)
+==================
+Set Implicit Arguments.
+---
+(source_file
+  (sentence
+    (set_command
+      (setting_name
+        (ident)
+        (ident)))))
+
+==================
+Set Command (2)
+==================
+Set Printing All.
+---
+(source_file
+  (sentence
+    (set_command
+      (setting_name
+        (ident)
+        (ident)))))
+
+==================
+Set Warnings Command
+==================
+Set Warnings "-notation-overridden".
+---
+(source_file
+  (sentence
+    (set_command
+      (setting_name
+        (ident))
+      (string))))
+

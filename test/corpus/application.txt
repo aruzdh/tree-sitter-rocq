@@ -1,0 +1,16 @@
+==================
+Function Application with three args
+:skip
+==================
+Definition function := f x y z.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl (ident))
+      body: (application
+        (ident)
+        (ident)
+        (ident)
+        (ident)))))

@@ -1,0 +1,33 @@
+==================
+Regex Reserved Notation Declaration
+==================
+Reserved Notation "s =~ re" (at level 80).
+---
+
+(source_file
+  (sentence
+    (reserved_notation_command
+      notation: (string)
+      (syntax_modifier_list
+        (syntax_modifier
+          (level_modifier
+            (at_level_num
+              (number))))))))
+
+==================
+Imp Reserved Notation Declaration
+==================
+Reserved Notation "e '==>' n" (at level 90, left associativity).
+---
+
+(source_file
+  (sentence
+    (reserved_notation_command
+      notation: (string)
+      (syntax_modifier_list
+        (syntax_modifier
+          (level_modifier
+            (at_level_num
+              (number))))
+        (syntax_modifier
+          (associativity_modifier))))))

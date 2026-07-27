@@ -1,0 +1,142 @@
+==================
+Let Expressions with Terms
+==================
+Check let x := 5 in x + x.
+Check let f (x y : nat) : nat := x + y in f 3 4.
+Check let (x, y) := p in x.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (let_expression
+        name: (ident)
+        value: (number)
+        body: (additive_operation
+          (ident)
+          (ident)))))
+  (sentence
+    (evaluation_command
+      (let_expression
+        name: (ident)
+        (binder
+          (ident)
+          (ident)
+          (type
+            (ident)))
+        (type
+          (ident))
+        value: (additive_operation
+          (ident)
+          (ident))
+        body: (application
+          (application
+            (ident)
+            (number))
+          (number)))))
+  (sentence
+    (evaluation_command
+      (let_expression
+        pattern: (let_expression_name_list
+          (ident)
+          (ident))
+        value: (ident)
+        body: (ident)))))
+
+==================
+Let Expression in Definition
+==================
+Definition isWhite (c : ascii) : bool :=
+  let n := nat_of_ascii c in
+  orb (orb (n =? 32)   (* space *)
+           (n =? 9))   (* tab *)
+      (orb (n =? 10)   (* linefeed *)
+           (n =? 13)). (* Carriage return. *)
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (type
+        (ident))
+      body: (let_expression
+        name: (ident)
+        value: (application
+          (ident)
+          (ident))
+        body: (application
+          (application
+            (ident)
+            (parenthesized_term
+              (application
+                (application
+                  (ident)
+                  (parenthesized_term
+                    (comparison_operation
+                      (ident)
+                      (number))))
+                (comment)
+                (parenthesized_term
+                  (comparison_operation
+                    (ident)
+                    (number))))))
+          (comment)
+          (parenthesized_term
+            (application
+              (application
+                (ident)
+                (parenthesized_term
+                  (comparison_operation
+                    (ident)
+                    (number))))
+              (comment)
+              (parenthesized_term
+                (comparison_operation
+                  (ident)
+                  (number)))))))))
+  (comment))
+
+==================
+Destructuring Pattern (Apostrophe)
+==================
+Check let '(x, y) := p in x.
+Check let '[x; y] := l in x.
+Check let 'exist _ x p := t in x.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (let_expression
+        pattern: (destructuring_pattern
+          (parenthesized_pattern
+            (ident)
+            (ident)))
+        value: (ident)
+        body: (ident))))
+  (sentence
+    (evaluation_command
+      (let_expression
+        pattern: (destructuring_pattern
+          (list_pattern
+            (ident)
+            (ident)))
+        value: (ident)
+        body: (ident))))
+  (sentence
+    (evaluation_command
+      (let_expression
+        pattern: (destructuring_pattern
+          (pattern_application
+            constructor: (ident)
+            (wildcard)
+            (ident)
+            (ident)))
+        value: (ident)
+        body: (ident)))))

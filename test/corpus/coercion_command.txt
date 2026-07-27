@@ -1,0 +1,65 @@
+==================
+Simple Baseline Coercion
+==================
+Coercion impl_to_coercion.
+---
+
+(source_file
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident)))))
+
+==================
+Explicit Class Projection Coercions
+==================
+Coercion bool_to_prop : Funclass >-> Sortclass.
+Coercion nat_to_custom : Sortclass >-> MyGraphType.
+Coercion custom_to_fun : MyCustomClass >-> Funclass.
+Coercion AId : string >-> aexp.
+Coercion ANum : nat >-> aexp.
+---
+
+(source_file
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident))
+      (coercion_class)
+      (coercion_class)))
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident))
+      (coercion_class)
+      (coercion_class
+        (reference
+          (ident)))))
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident))
+      (coercion_class
+        (reference
+          (ident)))
+      (coercion_class)))
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident))
+      (coercion_class
+        (reference
+          (ident)))
+      (coercion_class
+        (reference
+          (ident)))))
+  (sentence
+    (coercion_command
+      name: (reference
+        (ident))
+      (coercion_class
+        (reference
+          (ident)))
+      (coercion_class
+        (reference
+          (ident))))))

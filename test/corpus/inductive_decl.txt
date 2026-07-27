@@ -1,0 +1,129 @@
+==================
+Simple Inductive declaration (1)
+==================
+Inductive otherNat : Type :=
+  | stop
+  | tick (foo : otherNat).
+---
+
+(source_file
+  (sentence
+    (inductive_command
+      (inductive_definition
+        name: (ident)
+        (type
+          (ident))
+        (constructor_block
+          (constructor
+            name: (ident))
+          (constructor
+            name: (ident)
+            (binder
+              (ident)
+              (type
+                (ident)))))))))
+
+==================
+Simple Inductive declaration (2)
+==================
+Inductive letter : Type :=
+  | A | B | C | D | F.
+---
+
+(source_file
+  (sentence
+    (inductive_command
+      (inductive_definition
+        name: (ident)
+        (type
+          (ident))
+        (constructor_block
+          (constructor
+            name: (ident))
+          (constructor
+            name: (ident))
+          (constructor
+            name: (ident))
+          (constructor
+            name: (ident))
+          (constructor
+            name: (ident)))))))
+
+==================
+Collatz Inductive declaration
+==================
+Inductive Collatz_holds_for : nat -> Prop :=
+  | Chf_one : Collatz_holds_for 1
+  | Chf_even (n : nat) : even n = true ->
+                         Collatz_holds_for (div2 n) ->
+                         Collatz_holds_for n
+  | Chf_odd (n : nat) :  even n = false ->
+                         Collatz_holds_for ((3 * n) + 1) ->
+                         Collatz_holds_for n.
+---
+
+(source_file
+  (sentence
+    (inductive_command
+      (inductive_definition
+        name: (ident)
+        (type
+          (arrow_term
+            antecedent: (ident)
+            consequent: (ident)))
+        (constructor_block
+          (constructor
+            name: (ident)
+            (of_type_inst 
+              (type (application (ident) (number)))))
+          (constructor
+            name: (ident)
+            (binder
+              (ident)
+              (type
+                (ident)))
+            (of_type_inst
+              (type
+                (arrow_term
+                  antecedent: (comparison_operation
+                    (application
+                      (ident)
+                      (ident))
+                    (ident))
+                  consequent: (arrow_term
+                    antecedent: (application
+                      (ident)
+                      (parenthesized_term
+                        (application
+                          (ident)
+                          (ident))))
+                    consequent: (application
+                      (ident)
+                      (ident)))))))
+          (constructor
+            name: (ident)
+            (binder
+              (ident)
+              (type
+                (ident)))
+              (of_type_inst
+                (type
+                  (arrow_term
+                    antecedent: (comparison_operation
+                      (application
+                        (ident)
+                        (ident))
+                      (ident))
+                    consequent: (arrow_term
+                      antecedent: (application
+                        (ident)
+                        (parenthesized_term
+                          (additive_operation
+                            (parenthesized_term
+                              (multiplicative_operation
+                                (number)
+                                (ident)))
+                            (number))))
+                      consequent: (application
+                        (ident)
+                        (ident))))))))))))

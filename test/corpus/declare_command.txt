@@ -1,0 +1,17 @@
+==================
+Declare Custom Entry Command
+==================
+Declare Custom Entry com.
+---
+(source_file
+  (sentence
+    (declare_command name: (ident))))
+
+==================
+Declare Scope Command
+==================
+Declare Scope com_scope.
+---
+(source_file
+  (sentence
+    (declare_command name: (ident))))

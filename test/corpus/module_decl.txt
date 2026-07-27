@@ -1,0 +1,62 @@
+==================
+Simple Module
+==================
+Module MyModule.
+  Definition x := 10.
+End MyModule.
+---
+
+(source_file
+  (sentence
+    (module_command
+      (ident)))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (number)))
+  (sentence
+    (end_command
+      (ident))))
+
+==================
+Nested Modules
+==================
+Module Outer.
+  Variable A : Type.
+  Module Inner.
+    Definition id (x : A) := x.
+  End Inner.
+End Outer.
+---
+
+(source_file
+  (sentence
+    (module_command
+      (ident)))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))))
+  (sentence
+    (module_command
+      (ident)))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      body: (ident)))
+  (sentence
+    (end_command
+      (ident)))
+  (sentence
+    (end_command
+      (ident))))

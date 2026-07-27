@@ -1,0 +1,89 @@
+==================
+Multi Item Match Expressions
+==================
+Check match x, y with
+  | 0, 0 => true
+  | S _, _ => false
+  | _, S _ => false
+end.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (match_expression
+        (case_item
+          (ident))
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (number)
+            pattern: (number))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (pattern_application
+              constructor: (ident)
+              (wildcard))
+            pattern: (wildcard))
+          body: (ident))
+        (match_case
+          (pattern_option
+            pattern: (wildcard)
+            pattern: (pattern_application
+              constructor: (ident)
+              (wildcard)))
+          body: (ident))))))
+
+==================
+Deeply Nested Multi Match Layout
+==================
+Definition zip_match := match l1, l2, l3 with
+  | [], _, _ => []
+  | x :: xs, y :: ys, z :: zs => (x, y, z) :: tuple_zip
+  | _, _, _ => []
+end.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (case_item
+          (ident))
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (list_pattern)
+            pattern: (wildcard)
+            pattern: (wildcard))
+          body: (list_literal))
+        (match_case
+          (pattern_option
+            pattern: (infix_pattern
+              (ident)
+              (ident))
+            pattern: (infix_pattern
+              (ident)
+              (ident))
+            pattern: (infix_pattern
+              (ident)
+              (ident)))
+          body: (cons_operation
+            (parenthesized_term
+              (ident)
+              (ident)
+              (ident))
+            (ident)))
+        (match_case
+          (pattern_option
+            pattern: (wildcard)
+            pattern: (wildcard)
+            pattern: (wildcard))
+          body: (list_literal))))))

@@ -1,0 +1,1331 @@
+==================
+Complex and Complete Theorem
+==================
+Theorem optimize_0plus_b_sound : forall b,
+  beval (optimize_0plus_b b) = beval b.
+Proof.
+  intro b. 
+  induction b; 
+  try (simpl; reflexivity);
+  try (simpl; 
+      rewrite (optimize_0plus_sound a1);
+      rewrite (optimize_0plus_sound a2);
+      reflexivity);
+  try simpl.
+  - rewrite IHb. reflexivity.
+  - rewrite IHb1, IHb2. reflexivity.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (comparison_operation
+              (application
+                (ident)
+                (parenthesized_term
+                  (application
+                    (ident)
+                    (ident))))
+              (application
+                (ident)
+                (ident))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_sequence
+      (tactic_sequence
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident)))))
+          (tactic_invocation
+            (tactical
+              (parenthesized_tactic
+                (tactic_sequence
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident)))
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident))))))))
+        (tactic_invocation
+          (tactical
+            (parenthesized_tactic
+              (tactic_sequence
+                (tactic_sequence
+                  (tactic_sequence
+                    (tactic_invocation
+                      (generic_tactic
+                        name: (ident)))
+                    (tactic_invocation
+                      (rewrite_tactic
+                        (oriented_rewriter
+                          (atomic_term_with_bindings
+                            (parenthesized_term
+                              (application
+                                (ident)
+                                (ident))))))))
+                  (tactic_invocation
+                    (rewrite_tactic
+                      (oriented_rewriter
+                        (atomic_term_with_bindings
+                          (parenthesized_term
+                            (application
+                              (ident)
+                              (ident))))))))
+                (tactic_invocation
+                  (generic_tactic
+                    name: (ident))))))))
+      (tactic_invocation
+        (tactical
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident)))
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (qed_command)))
+
+==================
+Theorem with Destruct Pattern and Generic Tactics
+==================
+Theorem proj1' : forall P Q,
+  P /\ Q -> P.
+Proof.
+  intros P Q HPQ. destruct HPQ as [HP HQ]. apply HP.
+  Show Proof.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (binder
+              (ident)))
+          (type
+            (arrow_term
+              antecedent: (logical_conjunction
+                (ident)
+                (ident))
+              consequent: (ident)))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (show_proof_command))
+  (sentence
+    (qed_command)))
+
+==================
+Theorem with Anonymous Function
+==================
+Theorem ex_ev_Sn' : ex (fun n => ev (S n)).
+Proof. exists 3. apply (ev_SS 2 (ev_SS 0 ev_0)). Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (application
+          (ident)
+          (parenthesized_term
+            (lambda_function
+              (open_binders
+                (binder
+                  (ident)))
+              (application
+                (ident)
+                (parenthesized_term
+                  (application
+                    (ident)
+                    (ident))))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (number))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (parenthesized_term
+              (application
+                (application
+                  (ident)
+                  (number))
+                (parenthesized_term
+                  (application
+                    (application
+                      (ident)
+                      (number))
+                    (ident))))))))))
+  (sentence
+    (qed_command)))
+
+==================
+Example with Complex Tactics
+==================
+Example lemma_application_ex :
+  forall {n : nat} {ns : list nat},
+    In n (map (fun m => m * 0) ns) ->
+    n = 0.
+Proof.
+  intros n ns H.
+  destruct (proj1 _ _ (In_map_iff _ _ _ _ _) H)
+           as [m [Hm _]].
+  rewrite mul_0_r in Hm. rewrite <- Hm. reflexivity.
+Qed.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (implicit_binders
+                (ident)
+                (type
+                  (ident))))
+            (binder
+              (implicit_binders
+                (ident)
+                (type
+                  (application
+                    (ident)
+                    (ident))))))
+          (type
+            (arrow_term
+              antecedent: (application
+                (application
+                  (ident)
+                  (ident))
+                (parenthesized_term
+                  (application
+                    (application
+                      (ident)
+                      (parenthesized_term
+                        (lambda_function
+                          (open_binders
+                            (binder
+                              (ident)))
+                          (multiplicative_operation
+                            (ident)
+                            (number)))))
+                    (ident))))
+              consequent: (comparison_operation
+                (ident)
+                (number))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (parenthesized_term
+              (application
+                (application
+                  (application
+                    (application
+                      (ident)
+                      (ident))
+                    (ident))
+                  (parenthesized_term
+                    (application
+                      (application
+                        (application
+                          (application
+                            (application
+                              (ident)
+                              (ident))
+                            (ident))
+                          (ident))
+                        (ident))
+                      (ident))))
+                (ident))))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (bracketed_intro_pattern
+                  (ident)
+                  (wildcard)))))))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident)))
+        (in_clause
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (qed_command)))
+
+==================
+Lemma with Parenthesized Term in Apply Tactic
+==================
+Lemma in_not_nil_42_take4 :
+  forall l : list nat, In 42 l -> l <> [].
+Proof.
+  intros l H.
+  apply (in_not_nil nat 42).
+  apply H.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (type
+              (application
+                (ident)
+                (ident))))
+          (type
+            (arrow_term
+              antecedent: (application
+                (application
+                  (ident)
+                  (number))
+                (ident))
+              consequent: (comparison_operation
+                (ident)
+                (list_literal))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (parenthesized_term
+              (application
+                (application
+                  (ident)
+                  (ident))
+                (number))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Lemma with Tactic Binding in Apply Tactic
+==================
+Lemma in_not_nil_42_take4 :
+  forall l : list nat, In 42 l -> l <> [].
+Proof.
+  intros l H.
+  apply in_not_nil with (x := 42).
+  apply H.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (type
+              (application
+                (ident)
+                (ident))))
+          (type
+            (arrow_term
+              antecedent: (application
+                (application
+                  (ident)
+                  (number))
+                (ident))
+              consequent: (comparison_operation
+                (ident)
+                (list_literal))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident)
+            (bindings
+              name: (ident)
+              value: (number)))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Lemma with As Clause in Induction
+==================
+Lemma even_double : forall k, even (double k) = true.
+Proof.
+  intros k. induction k as [|k' IHk'].
+  - reflexivity.
+  - simpl. apply IHk'.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (comparison_operation
+              (application
+                (ident)
+                (parenthesized_term
+                  (application
+                    (ident)
+                    (ident))))
+              (ident)))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Theorem with Lots of Tactics and Rules
+==================
+Theorem eqb_list_true_iff :
+  forall A (eqb : A -> A -> bool),
+    (forall a1 a2, eqb a1 a2 = true <-> a1 = a2) ->
+    forall l1 l2, eqb_list eqb l1 l2 = true <-> l1 = l2.
+Proof.
+  intros A P Heqb. split.
+  - generalize l2. induction l1 as [| x l' IHl'].
+    + intros l H. destruct l as [| x l'].
+      * reflexivity.
+      * discriminate.
+    + intros l H. destruct l as [| x' l''].
+      * discriminate.
+      * f_equal.
+        -- apply Heqb. simpl in H. 
+          apply andb_true_iff in H as [H _]. apply H.
+        -- apply IHl'. simpl in H.
+            apply andb_true_iff in H as [_ H]. apply H.
+  - generalize l2. induction l1 as [| x l' IHl'].
+    + intros l H. rewrite <- H. reflexivity.
+    + intros l H. destruct l as [| x' l''].
+      * discriminate.
+      * simpl. apply andb_true_iff. injection H as Hh Ht. split.
+        -- apply Heqb. apply Hh.
+        -- apply IHl'. apply Ht.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (binder
+              (ident)
+              (type
+                (arrow_term
+                  antecedent: (ident)
+                  consequent: (arrow_term
+                    antecedent: (ident)
+                    consequent: (ident))))))
+          (type
+            (arrow_term
+              antecedent: (parenthesized_term
+                (quantifier_term
+                  (open_binders
+                    (binder
+                      (ident))
+                    (binder
+                      (ident)))
+                  (type
+                    (logical_equivalence
+                      (comparison_operation
+                        (application
+                          (application
+                            (ident)
+                            (ident))
+                          (ident))
+                        (ident))
+                      (comparison_operation
+                        (ident)
+                        (ident))))))
+              consequent: (quantifier_term
+                (open_binders
+                  (binder
+                    (ident))
+                  (binder
+                    (ident)))
+                (type
+                  (logical_equivalence
+                    (comparison_operation
+                      (application
+                        (application
+                          (application
+                            (ident)
+                            (ident))
+                          (ident))
+                        (ident))
+                      (ident))
+                    (comparison_operation
+                      (ident)
+                      (ident)))))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (in_clause
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (in_clause
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (wildcard))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (in_clause
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (in_clause
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (wildcard)
+                (ident))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))
+          (as_clause
+            (intro_pattern
+              (ident))
+            (intro_pattern
+              (ident)))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Lemma with Named Assert and Proof Block
+==================
+Lemma add_comm3_take2 :
+  forall x y z, x + (y + z) = (z + y) + x.
+Proof.
+  intros x y z.
+  rewrite add_comm.
+  assert (H : y + z = z + y).
+    { rewrite add_comm. reflexivity. }
+  rewrite H.
+  reflexivity.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (binder
+              (ident))
+            (binder
+              (ident)))
+          (type
+            (comparison_operation
+              (additive_operation
+                (ident)
+                (parenthesized_term
+                  (additive_operation
+                    (ident)
+                    (ident))))
+              (additive_operation
+                (parenthesized_term
+                  (additive_operation
+                    (ident)
+                    (ident)))
+                (ident))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (assert_tactic
+        (ident)
+        (type
+          (comparison_operation
+            (additive_operation
+              (ident)
+              (ident))
+            (additive_operation
+              (ident)
+              (ident)))))))
+  (sentence
+    (proof_block
+      (sentence
+        (tactic_invocation
+          (rewrite_tactic
+            (oriented_rewriter
+              (atomic_term_with_bindings
+                (ident))))))
+      (sentence
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))))
+  (sentence
+    (tactic_invocation
+      (rewrite_tactic
+        (oriented_rewriter
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (qed_command)))
+
+==================
+Theorem with Named Assert and By Clause
+==================
+Theorem implies_to_or_implies_consequential_mirabilis :
+  implies_to_or -> consequentia_mirabilis.
+Proof.
+  unfold implies_to_or. unfold consequentia_mirabilis.
+  intros ITO P H. assert (HPP : P -> P) by apply iff_refl.
+  specialize (ITO P P HPP) as [A | A].
+  - apply H. apply A.
+  - apply A.
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (arrow_term
+          antecedent: (ident)
+          consequent: (ident)))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident))
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_invocation
+      (assert_tactic
+        (ident)
+        (type
+          (arrow_term
+            antecedent: (ident)
+            consequent: (ident)))
+        (by_clause
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident)))))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (parenthesized_term
+              (application
+                (application
+                  (application
+                    (ident)
+                    (ident))
+                  (ident))
+                (ident))))
+          (as_clause
+            (intro_pattern
+              (bracketed_intro_pattern
+                (ident)
+                (ident))))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (qed_command)))
+
+==================
+Theorem with Try, Sequence Tactics, and Branch Tactics
+==================
+Theorem optimize_0times_sound : forall a,
+  aeval (optimize_0times a) = aeval a.
+Proof.
+  intro a. 
+  induction a; 
+  try (simpl; rewrite IHa1, IHa2; reflexivity);
+  try reflexivity.
+  (* AMult case *)
+  - destruct a1 eqn:Ea1; 
+    try (simpl; simpl in IHa1; rewrite IHa1, IHa2;
+        reflexivity).
+    (* AMult case *)
+    + destruct n eqn:En;
+      [reflexivity | simpl; rewrite IHa2; reflexivity].
+Qed.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (comparison_operation
+              (application
+                (ident)
+                (parenthesized_term
+                  (application
+                    (ident)
+                    (ident))))
+              (application
+                (ident)
+                (ident))))))))
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_sequence
+      (tactic_sequence
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident)))))
+        (tactic_invocation
+          (tactical
+            (parenthesized_tactic
+              (tactic_sequence
+                (tactic_sequence
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident)))
+                  (tactic_invocation
+                    (rewrite_tactic
+                      (oriented_rewriter
+                        (atomic_term_with_bindings
+                          (ident)))
+                      (oriented_rewriter
+                        (atomic_term_with_bindings
+                          (ident))))))
+                (tactic_invocation
+                  (generic_tactic
+                    name: (ident))))))))
+      (tactic_invocation
+        (tactical
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
+  (comment)
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident))
+            (eqn_clause
+              (ident)))))
+      (tactic_invocation
+        (tactical
+          (parenthesized_tactic
+            (tactic_sequence
+              (tactic_sequence
+                (tactic_sequence
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident)))
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident)
+                      (generic_tactic_body
+                        (in_clause
+                          (ident))))))
+                (tactic_invocation
+                  (rewrite_tactic
+                    (oriented_rewriter
+                      (atomic_term_with_bindings
+                        (ident)))
+                    (oriented_rewriter
+                      (atomic_term_with_bindings
+                        (ident))))))
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))))))))
+  (comment)
+  (sentence
+    (bullet))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident))
+            (eqn_clause
+              (ident)))))
+      branch: (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      branch: (tactic_sequence
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))
+          (tactic_invocation
+            (rewrite_tactic
+              (oriented_rewriter
+                (atomic_term_with_bindings
+                  (ident))))))
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))))
+  (sentence
+    (qed_command)))

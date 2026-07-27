@@ -1,0 +1,18 @@
+==================
+Single Bullet
+==================
++
+---
+(source_file
+  (sentence
+    (bullet)))
+
+==================
+Multiple Bullets
+==================
++++
+---
+(source_file
+  (sentence
+    (bullet)))
+

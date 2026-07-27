@@ -1,0 +1,71 @@
+==================
+Selectors
+==================
+Proof.
+  split.
+  all: simpl.
+  2: exact HA.
+  1: exact HB.
+  3-5: assumption.
+  6,7,49-100 : auto.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector)
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector
+      (goal_selector
+        (range_selector
+          (number))))
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (selector
+      (goal_selector
+        (range_selector
+          (number))))
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (selector
+      (goal_selector
+        (range_selector
+          start: (number)
+          end: (number))))
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (selector
+      (goal_selector
+        (range_selector
+          (number))
+        (range_selector
+          (number))
+        (range_selector
+          start: (number)
+          end: (number))))
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (qed_command)))

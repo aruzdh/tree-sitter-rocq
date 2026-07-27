@@ -1,0 +1,27 @@
+==================
+Simple Section Declaration
+==================
+Section Props. 
+  Definition add_0_n (n : nat) : 0 + n = n.
+End Props.
+---
+
+(source_file
+  (sentence
+    (section_command (ident)))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (type
+        (comparison_operation
+          (additive_operation
+            (number)
+            (ident))
+          (ident)))))
+      (sentence
+        (end_command (ident))))

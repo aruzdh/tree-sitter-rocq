@@ -1,0 +1,27 @@
+==================
+Add Command (1)
+==================
+Add Search Blacklist "Coq.Init".
+---
+(source_file
+  (sentence
+    (add_command
+      (setting_name
+        (ident)
+        (ident))
+      (string))))
+
+==================
+Add Command (2)
+==================
+Add Search Blacklist MyCustomModule "Top.Submodule.Hidden" Core.
+---
+(source_file
+  (sentence
+    (add_command
+      (setting_name
+        (ident)
+        (ident)
+        (ident))
+      (string)
+      (ident))))

@@ -1,0 +1,166 @@
+==================
+Single Assumptions
+==================
+Variable x : nat.
+Hypothesis H : x = 0.
+Axiom P : Prop.
+Conjecture C : P.
+Parameter y : nat.
+---
+
+(source_file
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (comparison_operation
+              (ident)
+              (number)))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident)))))))
+
+==================
+Multiple Assumptions with Parameters
+==================
+Variables (A B : Type) (f : A -> B).
+Parameters (x : A) (y : B).
+Hypotheses (H1 : x = x) (H2 : y = y).
+---
+
+(source_file
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (arrow_term
+              antecedent: (ident)
+              consequent: (ident)))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (ident))))))
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (comparison_operation
+              (ident)
+              (ident)))))
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (comparison_operation
+              (ident)
+              (ident))))))))
+
+==================
+Functional Extensionality Axiom
+==================
+Axiom functional_extensionality : forall {X Y: Type}
+                                    {f g : X -> Y},
+  (forall (x:X), f x = g x) -> f = g.
+---
+
+(source_file
+  (sentence
+    (assumption_command
+      (assumpt
+        (ident_decl
+          (ident))
+        (of_type
+          (type
+            (quantifier_term
+              (open_binders
+                (binder
+                  (implicit_binders
+                    (ident)
+                    (ident)
+                    (type
+                      (ident))))
+                (binder
+                  (implicit_binders
+                    (ident)
+                    (ident)
+                    (type
+                      (arrow_term
+                        antecedent: (ident)
+                        consequent: (ident))))))
+              (type
+                (arrow_term
+                  antecedent: (parenthesized_term
+                    (quantifier_term
+                      (open_binders
+                        (binder
+                          (ident)
+                          (type
+                            (ident))))
+                      (type
+                        (comparison_operation
+                          (application
+                            (ident)
+                            (ident))
+                          (application
+                            (ident)
+                            (ident))))))
+                  consequent: (comparison_operation
+                    (ident)
+                    (ident)))))))))))

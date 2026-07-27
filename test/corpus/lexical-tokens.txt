@@ -1,0 +1,134 @@
+==================
+Identifier in Definition
+==================
+Definition theorem : 2 + 2 = 4.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (comparison_operation
+          (additive_operation
+            (number)
+            (number))
+          (number))))))
+
+==================
+Qualid in Evaluation Command
+==================
+Check Nat.List.app.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (qualid))))
+
+==================
+Name in Require Statement (1)
+==================
+From Stdlib Require Import Strings.Ascii.
+---
+
+(source_file
+  (sentence
+    (require_command
+      dirpath: (ident)
+      (filtered_import
+        module: (qualid)))))
+
+==================
+Name in Require Statement (2)
+==================
+From Chapter1.Structures Require Import Strings.Ascii.
+---
+
+(source_file
+  (sentence
+    (require_command
+      dirpath: (qualid)
+      (filtered_import
+        module: (qualid)))))
+
+==================
+Metavariable in Evaluation Command
+==================
+Search (?x <= ?y).
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (comparison_operation
+          (metavariable)
+          (metavariable))))))
+
+==================
+Hex Number in Definition
+==================
+Definition hex_num : 0xffa.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (number)))))
+
+==================
+Number with underscores in Definition
+==================
+Definition hex_num : 10_809_08.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (number)))))
+
+==================
+Number with exponent in Definition
+==================
+Definition hex_num : 10_000e-4.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (number)))))
+
+==================
+String in Notation
+==================
+Notation "'__' '!->' v" := (t_empty v)
+  (at level 100, right associativity).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (ident)
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (associativity_modifier)))))))

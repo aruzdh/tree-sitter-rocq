@@ -1,0 +1,21 @@
+==================
+Definition with If Expression
+==================
+Definition is_even_prime n :=
+  if n =? 2 then true
+  else false.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident))
+      body: (if_expression
+        condition: (comparison_operation
+          (ident)
+          (number))
+        then: (ident)
+        else: (ident)))))

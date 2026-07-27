@@ -1,0 +1,8 @@
+==================
+Open Scope Command
+==================
+Open Scope com_scope.
+---
+(source_file
+  (sentence
+    (open_scope_command name: (ident))))

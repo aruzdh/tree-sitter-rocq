@@ -1,0 +1,40 @@
+==================
+Match Goal in Ltac Definition
+==================
+Ltac find_rwd :=
+  match goal with
+    H1: ?E = true, H2: ?E = false |- _
+       =>
+    rwd H1 H2
+  end.
+---
+
+(source_file
+  (sentence
+    (ltac_definition
+      name: (ident)
+      body: (match_goal
+        (match_goal_case
+          (goal_pattern
+            (match_hyp
+              (ident)
+              (match_pattern
+                (comparison_operation
+                  (metavariable)
+                  (ident))))
+            (match_hyp
+              (ident)
+              (match_pattern
+                (comparison_operation
+                  (metavariable)
+                  (ident))))
+            (match_pattern
+              (ident)))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident))
+                (atomic_term_with_bindings
+                  (ident))))))))))

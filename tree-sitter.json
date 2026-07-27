@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "rocq",
+      "camelcase": "Rocq",
+      "title": "Rocq",
+      "scope": "source.rocq",
+      "file-types": [
+        "v"
+      ],
+      "injection-regex": "^rocq$",
+      "class-name": "TreeSitterRocq"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Rocq (formerly Coq) grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Aru Zdh",
+        "email": "aruzdh@gmail.com",
+        "url": "https://aruzdh.dev"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/aruzdh/tree-sitter-rocq"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

@@ -1,0 +1,74 @@
+==================
+Custom Notation Blocks DSL
+==================
+Check <{ SKIP }>.
+Check <{ X := 1 ; Y := 2 }>.
+Check {| X := 1 |}.
+Check [| Y := 2 |].
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (custom_notation_block
+        (ident))))
+  (sentence
+    (evaluation_command
+      (custom_notation_block
+        (ident)
+        (number)
+        (ident)
+        (number))))
+  (sentence
+    (evaluation_command
+      (custom_notation_block
+        (ident)
+        (number))))
+  (sentence
+    (evaluation_command
+      (custom_notation_block
+        (ident)
+        (number)))))
+
+==================
+Imp Evaluation Operation Sandbox
+==================
+Check st =[ SKIP ]=> st.
+Check st =[ X := 1 ; IF X <= 1 THEN Y := 3 ELSE Z := 4 END ]=> st'.
+Check st0 =[ c1 ; c2 ]=> st2.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (imp_evaluation_operation
+        initial_state: (ident)
+        (imp_program
+          (ident))
+        final_state: (ident))))
+  (sentence
+    (evaluation_command
+      (imp_evaluation_operation
+        initial_state: (ident)
+        (imp_program
+          (ident)
+          (number)
+          (ident)
+          (ident)
+          (number)
+          (ident)
+          (ident)
+          (number)
+          (ident)
+          (ident)
+          (number)
+          (ident))
+        final_state: (ident))))
+  (sentence
+    (evaluation_command
+      (imp_evaluation_operation
+        initial_state: (ident)
+        (imp_program
+          (ident)
+          (ident))
+        final_state: (ident)))))

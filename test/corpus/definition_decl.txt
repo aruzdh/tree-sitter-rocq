@@ -1,0 +1,196 @@
+==================
+Definition declaration with quantifiers and parenthesized terms
+==================
+Definition add_0_n (n : nat) : 0 + n = n.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (type
+        (comparison_operation
+          (additive_operation
+            (number)
+            (ident))
+          (ident))))))
+
+==================
+Definition declaration with arrow_term
+==================
+Definition relation (X: Type) := X -> X -> Prop.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      body: (arrow_term
+        antecedent: (ident)
+        consequent: (arrow_term
+          antecedent: (ident)
+          consequent: (ident))))))
+
+==================
+Definition declaration of partial_function
+==================
+Definition partial_function {X: Type} (R: relation X) :=
+  forall x y1 y2 : X, R x y1 -> R x y2 -> y1 = y2.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (ident)
+        (type
+          (application
+            (ident)
+            (ident))))
+      body: (quantifier_term
+        (open_binders
+          (binder
+            (ident))
+          (binder
+            (ident))
+          (binder
+            (ident))
+          (type
+            (ident)))
+        (type
+          (arrow_term
+            antecedent: (application
+              (application
+                (ident)
+                (ident))
+              (ident))
+            consequent: (arrow_term
+              antecedent: (application
+                (application
+                  (ident)
+                  (ident))
+                (ident))
+              consequent: (comparison_operation
+                (ident)
+                (ident)))))))))
+
+==================
+Definition declaration of equivalence
+==================
+Definition equivalence {X:Type} (R: relation X) :=
+  (reflexive R) /\ (symmetric R) /\ (transitive R).
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (binder
+        (implicit_binders
+          (ident)
+          (type
+            (ident))))
+      (binder
+        (ident)
+        (type
+          (application
+            (ident)
+            (ident))))
+      body: (logical_conjunction
+        (parenthesized_term
+          (application
+            (ident)
+            (ident)))
+        (logical_conjunction
+          (parenthesized_term
+            (application
+              (ident)
+              (ident)))
+          (parenthesized_term
+            (application
+              (ident)
+              (ident))))))))
+
+==================
+Proof Object Definition with Show
+==================
+Definition add2 : nat -> nat.
+intros n.
+Show Proof.
+apply S.
+Show Proof.
+apply S.
+Show Proof.
+apply n. Defined.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (arrow_term
+          antecedent: (ident)
+          consequent: (ident)))))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (show_proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (show_proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (show_proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (defined_command)))
+
+==================
+Invalid Definition
+:error
+==================
+Definition x
+---
+
+

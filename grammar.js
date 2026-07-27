@@ -1,0 +1,1434 @@
+/**
+ * @file Rocq (formerly Coq) grammar for tree-sitter
+ * @author Aru Zdh <aruzdh@gmail.com>
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
+export default grammar({
+  name: "rocq",
+
+  word: $ => $.ident,
+
+  extras: $ => [
+    /\s/,
+    $.comment
+  ],
+
+  conflicts: $ => [
+    [$.fixannot, $._atomic_term],
+    [$.plural_variable_modifier, $._atomic_term],
+    [$.generic_tactic_body],
+    [$.match_pattern, $.list_literal],
+    [$.binder],
+    [$._pattern_atomic, $.pattern_application],
+    [$._atomic_term], // For ImpParser Chapter (the -'- in the rule)
+  ],
+
+  precedences: $ => [
+    [
+      'scope',
+      'application',
+      'negation',
+      'list_ops',
+      'multiplicative',
+      'additive',
+      'comparison',
+
+      'conjunction',
+      'disjunction',
+      'equivalence',
+
+      'custom',
+      'arrow_term',
+      'quantifier_term',
+      'binder',
+    ],
+    [
+      'tactic_match',
+      'tactic_application',
+      'tactic_or',
+      'tactic_sequence'
+    ]
+  ],
+
+  rules: {
+    // ~~~~~~~~~~~~~ Top-level structure ~~~~~~~~~~~~
+    source_file: $ => repeat($.sentence),
+
+    sentence: $ => choice(
+      seq(
+        optional($.fail),
+        optional($.attributes),
+        optional($.selector),
+        choice(
+          $._vernacular_command,
+          $.ltac_definition,
+          $._ltac_expr,
+        ),
+        choice(".", "...")
+      ),
+      $.proof_block,
+      $.bullet
+    ),
+
+    fail: $ => "Fail",
+
+    attributes: $ => choice(
+      seq(
+        repeat1($._modern_attribute_block),
+        repeat($.legacy_attr)
+      ),
+      repeat1($.legacy_attr)
+    ),
+
+    _modern_attribute_block: $ => seq(
+      "#",
+      "[",
+      optional(seq(
+        $.attribute,
+        repeat(seq(",", $.attribute))
+      )),
+      "]"
+    ),
+
+    attribute: $ => seq($.ident, optional($.attr_value)),
+
+    attr_value: $ => choice(
+      seq("=", $.string),
+      seq("=", $.qualid),
+      seq(
+        "(",
+        $.attribute,
+        repeat(seq(",", $.attribute)),
+        ")"
+      ),
+    ),
+
+    legacy_attr: $ => choice(
+      choice("Local", "Global"),
+      choice("Polymorphic", "Monomorphic"),
+      choice("Cumulative", "NonCumulative"),
+      "Private",
+      "Program"
+    ),
+
+    selector: $ => seq(
+      choice($.goal_selector, "all", "!", "par"),
+      ":",
+    ),
+
+    goal_selector: $ => choice(
+      seq(
+        $.range_selector,
+        repeat(seq(",", $.range_selector))),
+      seq("[", $.ident, "]")
+    ),
+
+    range_selector: $ => choice(
+      $.number,
+      seq(field("start", $.number), "-", field("end", $.number))
+    ),
+
+    // ~~~~~~~~~~ Veracular command ~~~~~~~~~~~~~~~
+
+    _vernacular_command: $ =>
+      choice(
+        $.require_command,
+        $.import_command,
+        $.export_command,
+        $.create_hintdb_command,
+        $.create_rewrite_hintdb_command,
+        $.hint_command,
+        $.evaluation_command,
+        $.extraction_command,
+        $.extract_command,
+        $.set_command,
+        $.unset_command,
+        $.add_command,
+        $.remove_command,
+        $.test_command,
+        $.show_proof_command,
+        $.coercion_command,
+        $.declare_command,
+        $.open_scope_command,
+        $.close_scope_command,
+
+        $.theorem_command,
+        $.definition_command,
+        $.fixpoint_command,
+        $.inductive_command,
+        $.assumption_command,
+        $.arguments_command,
+        $.section_command,
+        $.module_command,
+        $.end_command,
+        $.reserved_notation_command,
+        $.notation_command,
+
+        $.proof_command,
+        $.qed_command,
+        $.save_command,
+        $.defined_command,
+        $.admitted_command,
+        $.abort_command,
+      ),
+
+    require_command: $ => seq(
+      optional(seq("From", field("dirpath", $._name))),
+      "Require",
+      optional(seq(
+        choice("Import", "Export"),
+        optional($.import_categories)
+      )),
+      repeat1($.filtered_import)
+    ),
+
+    import_command: $ => seq(
+      "Import",
+      optional($.import_categories),
+      repeat1($.filtered_import)
+    ),
+
+    export_command: $ => seq(
+      "Export",
+      optional($.import_categories),
+      repeat1($.filtered_import)
+    ),
+
+    neg_selection: $ => "-",
+
+    import_categories: $ => seq(
+      optional($.neg_selection),
+      "(",
+      field("category", $._name),
+      repeat(seq(",", field("category", $._name))),
+      ")"
+    ),
+
+    filtered_import: $ => seq(
+      field("module", $._name),
+      optional(seq(
+        "(",
+        $.filtered_import_item,
+        repeat(seq(",", $.filtered_import_item)),
+        ")"
+      ))
+    ),
+
+    filtered_import_item: $ => seq(
+      field("name", $._name),
+      optional($.import_wildcard)
+    ),
+
+    import_wildcard: $ => "(..)",
+
+    create_hintdb_command: $ => seq(
+      "Create",
+      "HintDb",
+      field("name", $.ident),
+      optional($.discriminated_db)
+    ),
+
+    create_rewrite_hintdb_command: $ => seq(
+      "Create",
+      "Rewrite",
+      "HintDb",
+      field("name", $.ident),
+    ),
+
+    discriminated_db: $ => "discriminated",
+
+    hint_command: $ => seq(
+      "Hint",
+      choice(
+        $.hint_extern,
+        seq(
+          choice("Resolve", "Rewrite", "Constructors", "Unfold", "Immediate", "Transparent", "Opaque"),
+          repeat1(field("name", $._name)),
+          optional(seq(":", field("database", $.ident))))
+      )),
+
+    hint_extern: $ => seq(
+      "Extern",
+      field("cost", $.number),
+      field("pattern", optional($._term)),
+      "=>",
+      field("tactic", $._ltac_expr),
+
+      optional(seq(
+        ":",
+        repeat1(field("database", $.ident))
+      ))
+    ),
+
+    evaluation_command: $ => seq(
+      choice("Check", "Compute", "Print", "Search", "Locate"),
+      $._term,
+      optional(seq(":", $.type))
+    ),
+
+    extraction_command: $ => choice(
+      seq("Extraction", $._name),
+      seq("Recursive", "Extraction", repeat1($._name)),
+      seq("Extraction", $.string, repeat1($._name)),
+      seq("Extraction", "Library", $.ident),
+      seq("Recursive", "Extraction", "Library", $.ident),
+      seq("Separete", "Extraction", repeat1($._name)),
+      seq("Extraction", "TestCompile", repeat1($._name)),
+      seq("Extraction", "Language", $.language),
+      seq("Extraction", "Optimize"),
+      seq("Extraction", "Conservative", "Types"),
+      seq("Extraction", "KeepSingleton"),
+      seq("Extraction", "AutoInline"),
+      seq("Extraction", choice("Inline", "NoInline"), repeat1($._name)),
+      seq("Extraction", "Implicit", $._name, "[", repeat(choice($.ident, $.number)), "]"),
+      seq("Extraction", "SafeImplicits"),
+      seq("Extraction", "AccessOpaque"),
+      seq("Extraction", "Blacklist", repeat1($.ident)),
+      seq("Extraction", "File", "Comment", $.string),
+      seq("Extraction", "Flag", $.number),
+      seq("Extraction", "TypeExpand"),
+      seq("Extraction", "Output", "Directory", $.string),
+    ),
+
+    extract_command: $ => choice(
+      seq("Extract", "Constant", $._name, repeat($.string), "=>", choice($.ident, $.string)),
+      seq("Extract", "Inlined", "Constant", $._name, "=>", choice($.ident, $.string)),
+      seq("Extract", "Inductive", $._name, "=>", choice($.ident, $.string),
+        "[", repeat(choice($.ident, $.string)), "]", optional($.string)),
+      seq("Extract", "Foreign", "Constant", $._name, "=>", $.string),
+      seq("Extract", "Callback", optional($.string), $._name),
+    ),
+
+    language: $ => choice("OCaml", "Haskell", "Scheme", "JSON"),
+
+    set_command: $ =>
+      seq("Set", $.setting_name, optional(choice($.number, $.string))),
+
+    unset_command: $ =>
+      seq("Unset", $.setting_name),
+
+    add_command: $ =>
+      seq("Add", $.setting_name, repeat1(choice($._name, $.string))),
+
+    remove_command: $ =>
+      seq("Remove", $.setting_name, repeat1(choice($._name, $.string))),
+
+    test_command: $ =>
+      seq("Test", $.setting_name, optional(seq("for", repeat1(choice($._name, $.string))))),
+
+    setting_name: $ => prec.right(repeat1($.ident)),
+
+    show_proof_command: $ => seq(
+      "Show", "Proof", optional(seq("Diffs", optional("removed")))
+    ),
+
+    coercion_command: $ => seq(
+      "Coercion",
+      field("name", $.reference),
+      optional(seq(
+        ":", $.coercion_class, ">->", $.coercion_class))
+    ),
+
+    coercion_class: $ => choice("Funclass", "Sortclass", $.reference),
+
+    declare_command: $ => choice(
+      $._declare_scope_command,
+      $._declare_custom_entry_command
+    ),
+
+    _declare_scope_command: $ => seq(
+      "Declare", "Scope", field("name", $.ident)
+    ),
+
+    _declare_custom_entry_command: $ => seq(
+      "Declare", "Custom", "Entry", field("name", $.ident)
+    ),
+
+    open_scope_command: $ => seq(
+      "Open", "Scope", field("name", $.ident)
+    ),
+
+    close_scope_command: $ => seq(
+      "Close", "Scope", field("name", $.ident)
+    ),
+
+    theorem_command: $ => seq(
+      choice("Theorem", "Lemma", "Fact", "Remark", "Corollary", "Proposition", "Property"),
+      $.ident_decl,
+      repeat($.binder),
+      ":",
+      $.type,
+      repeat(seq(
+        "with",
+        $.ident_decl,
+        repeat($.binder),
+        ":",
+        $.type
+      ))
+    ),
+
+    definition_command: $ => seq(
+      choice("Definition", "Example"),
+      $.ident_decl,
+      $._def_body
+    ),
+
+    _def_body: $ => choice(
+      seq(
+        repeat($.binder),
+        optional(seq(":", $.type)),
+        ":=",
+        field("body", $._term)
+      ),
+      seq(
+        repeat($.binder),
+        ":",
+        $.type
+      )
+    ),
+
+    fixpoint_command: $ => seq(
+      "Fixpoint",
+      $._fix_definition,
+      repeat(seq("with", $._fix_definition)),
+    ),
+
+    _fix_definition: $ => seq(
+      $.ident_decl,
+      repeat($.binder),
+      optional($.fixannot),
+      optional(seq(":", $.type)),
+      optional(seq(":=", field("body", $._term))),
+      optional($.decl_notations)
+    ),
+
+    fixannot: $ => choice(
+      seq("{", "struct", $.ident, "}"),
+      seq("{", "wf", $._term, $.ident, "}"),
+      seq("{", "measure", $._atomic_term, optional($.ident), optional($._atomic_term), "}"),
+    ),
+
+    decl_notations: $ => seq(
+      "where", $.notation_declaration,
+      repeat(seq("and", $.notation_declaration))
+    ),
+
+    inductive_command: $ => seq(
+      "Inductive",
+      $.inductive_definition,
+      repeat(seq("with", $.inductive_definition)),
+    ),
+
+    inductive_definition: $ => seq(
+      field("name", $.ident),
+      repeat($.binder),
+      optional(seq("|", repeat($.binder))),
+      optional(seq(":", $.type)),
+      ":=",
+      optional($.constructor_block),
+      optional($.decl_notations)
+    ),
+
+    constructor_block: $ => seq(
+      optional("|"),
+      $.constructor,
+      repeat(seq("|", $.constructor))
+    ),
+
+    constructor: $ => seq(
+      repeat($._constructor_attr),
+      field("name", $.ident),
+      repeat($.binder),
+      optional($.of_type_inst)
+    ),
+
+    of_type_inst: $ => seq(
+      choice(":", ":>", "::", "::>"),
+      $.type
+    ),
+
+    _constructor_attr: $ =>
+      seq(
+        "#",
+        "[",
+        $.attribute,
+        repeat(seq(",", $.attribute)),
+        "]"),
+
+    assumption_command: $ => seq(
+      choice(
+        "Axiom", "Axioms",
+        "Conjecture", "Conjectures",
+        "Parameter", "Parameters",
+        "Hypothesis", "Hypotheses",
+        "Variable", "Variables",
+      ),
+
+      optional(seq(
+        "Inline",
+        optional(seq("(", $.number, ")"))
+      )),
+
+      choice(
+        $.assumpt,
+        repeat1(seq("(", $.assumpt, ")"))
+      )
+    ),
+
+    assumpt: $ => seq(repeat1($.ident_decl), $.of_type),
+
+    of_type: $ => seq(choice(":", ":>"), $.type),
+
+    arguments_command: $ => seq(
+      "Arguments",
+      $.reference,
+
+      repeat(choice(
+        $.wildcard,
+        $.ident,
+        seq("(", repeat1($.ident), ")"),
+        seq("{", repeat1($.ident), "}"),
+        seq("[", repeat1($.ident), "]"),
+        "/",
+        "&"
+      )),
+
+      optional(seq(
+        ",",
+        repeat1(choice(
+          $.ident,
+          seq("[", repeat1($.ident), "]"),
+          seq("{", repeat1($.ident), "}")
+        ))
+      )),
+
+      // optional(seq(
+      //   ":",
+      //   repeat1($._args_modifier_placeholder)
+      // ))
+    ),
+
+    // _args_modifier_placeholder: $ => "",
+
+    section_command: $ => seq("Section", $.ident),
+
+    module_command: $ => seq("Module", $.ident,),
+
+    end_command: $ => seq("End", $.ident),
+
+    reserved_notation_command: $ => seq(
+      "Reserved",
+      "Notation",
+      field("notation", $.string),
+      optional($.syntax_modifier_list)
+    ),
+
+    notation_command: $ => seq(
+      "Notation",
+      $.notation_declaration
+    ),
+
+    notation_declaration: $ => seq(
+      field("notation", $.string),
+      ":=",
+      field("definition", $._term),
+      optional($.syntax_modifier_list),
+      optional($.notation_scope)
+    ),
+
+    notation_scope: $ => seq(
+      ":",
+      field("scope_name", $.ident)
+    ),
+
+    syntax_modifier_list: $ => seq(
+      "(",
+      $.syntax_modifier,
+      repeat(seq(",", $.syntax_modifier)),
+      optional(","),
+      ")"
+    ),
+
+    syntax_modifier: $ => choice(
+      $.level_modifier,
+      $.custom_entry_modifier,
+      $.associativity_modifier,
+      $.parsing_modifier,
+      $.printing_modifier,
+      $.format_modifier,
+      $.plural_variable_modifier,
+      $.singular_variable_modifier
+    ),
+
+    level_modifier: $ => $.at_level_num,
+
+    custom_entry_modifier: $ => seq(
+      "in",
+      "custom",
+      $._name,
+      optional($.at_level_num)
+    ),
+
+    associativity_modifier: $ => seq(
+      choice("left", "right", "no"),
+      "associativity"
+    ),
+
+    parsing_modifier: $ => seq(
+      "only",
+      "parsing"
+    ),
+
+    printing_modifier: $ => seq(
+      "only",
+      "printing"
+    ),
+
+    format_modifier: $ => seq(
+      "format",
+      $.string
+    ),
+
+    plural_variable_modifier: $ => seq(
+      $.ident,
+      repeat1(seq(",", $.ident)),
+      choice($.at_level, seq("in", "scope", $.ident))
+    ),
+
+    singular_variable_modifier: $ => seq(
+      $.ident,
+      choice(
+        seq("in", "scope", $.ident),
+        seq("at", $.level, optional($.binder_interp)),
+        $.explicit_subentry,
+        $.binder_interp
+      )
+    ),
+
+    explicit_subentry: $ => choice(
+      "ident",
+      "name",
+      "global",
+      "bigint",
+      seq("strict", "pattern", optional($.at_level_num)),
+      "binder",
+      seq("closed", "binder"),
+      seq("constr", optional($.at_level), optional($.binder_interp)),
+      seq("custom", $.ident, optional($.at_level), optional($.binder_interp)),
+      seq("pattern", optional($.at_level_num))
+    ),
+
+    binder_interp: $ => seq(
+      "as",
+      choice("ident", "name", "pattern", seq("strict", "pattern"))
+    ),
+
+    level: $ => choice(
+      seq("level", $.number),
+      seq("next", "level"),
+    ),
+
+    at_level_num: $ => seq("at", "level", $.number),
+
+    at_level: $ => seq("at", $.level),
+
+    proof_command: $ => seq(
+      "Proof",
+      optional(
+        choice(
+          seq(
+            "using", $.section_var_expr,
+            optional(seq("with", $._ltac_expr))
+          ),
+          seq(
+            "with", $._ltac_expr,
+            optional(seq("using", $.section_var_expr))
+          )
+        )
+      )
+    ),
+
+    section_var_expr: $ => choice(
+      seq($.expr_leaf, repeat1($.expr_leaf)),
+
+      seq(
+        optional("-"),
+        $.expr_ops
+      )
+    ),
+
+    expr_ops: $ => choice(
+      seq($.expr_atomic, "-", $.expr_atomic),
+      seq($.expr_atomic, "+", $.expr_atomic),
+      $.expr_atomic
+    ),
+
+    expr_atomic: $ => choice(
+      $.expr_leaf,
+      seq("(", ")"),
+      seq("(", $.section_var_expr, ")", optional("*"))
+    ),
+
+    expr_leaf: $ => choice(
+      seq($.ident, optional("*")),
+      seq("Type", optional("*")),
+      "All"
+    ),
+
+    qed_command: $ => "Qed",
+
+    admitted_command: $ => "Admitted",
+
+    save_command: $ => seq("Save", $.ident),
+
+    defined_command: $ => seq("Defined", optional($.ident)),
+
+    abort_command: $ => seq("Abort", optional("All")),
+
+    proof_block: $ => seq(
+      "{",
+      repeat(
+        $.sentence,
+      ),
+      "}"
+    ),
+
+    bullet: $ => /[+*-]+/,
+
+    // ~~~~~~~~~~~~~~~ Terms ~~~~~~~~~~~~~~~~~~
+
+    _term: $ => choice(
+      $._atomic_term,
+      $.application,
+      $.lambda_function,
+      $.quantifier_term,
+      $.let_expression,
+      $.fix_expression,
+      $.if_expression,
+      $.arrow_term,
+      $._infix_operation,
+      $.imp_evaluation_operation,
+    ),
+
+    _atomic_term: $ => seq(
+      optional("'"),
+      choice(
+        $.ident,
+        $.qualid,
+        seq("@", $._name),
+        $.scoped_term,
+        $.number,
+        $.string,
+        $.metavariable,
+        $.parenthesized_term,
+        $.list_literal,
+        $.match_expression,
+        $.double_dot,
+
+        $.custom_notation_block,
+      ),
+    ),
+
+    double_dot: $ => "..",
+
+    parenthesized_term: $ => seq(
+      "(",
+      $._term,
+
+      optional(choice(
+        repeat1(seq(",", $._term)),
+        repeat1(seq(";", $._term))
+      )),
+
+      optional(choice(",", ";")),
+      ")"
+    ),
+
+    list_literal: $ => seq(
+      "[",
+      optional(seq(
+        $._term,
+        repeat(seq(";", $._term)),
+        optional(";")
+      )),
+      "]"
+    ),
+
+    scoped_term: $ => prec.left('scope', seq(
+      $._atomic_term,
+      '%',
+      optional("_"),
+      $.ident
+    )),
+
+    application: $ => prec.left('application', seq(
+      $._term,
+      repeat1(choice(
+        seq("(", $.ident, ":=", $._term, ")"),
+        seq("(", $.number, ":=", $._term, ")"),
+        $._atomic_term
+      ))
+    )),
+
+    lambda_function: $ => prec('binder', seq(
+      "fun",
+      $.open_binders,
+      "=>",
+      $._term,
+    )),
+
+    quantifier_term: $ => prec.right('quantifier_term', seq(
+      choice("forall", "exists"),
+      $.open_binders,
+      ",",
+      alias($._term, $.type)
+    )),
+
+    let_expression: $ => choice(
+      $._let_expression_term,
+      $._destructuring_let_name_list,
+      $._destructuring_let_apos
+    ),
+
+    _let_expression_term: $ => prec.right('binder',
+      seq(
+        "let",
+        field("name", $._binder_name),
+        repeat($.binder),
+        optional(seq(":", $.type)),
+        ":=",
+        field("value", $._term),
+        "in",
+        field("body", $._term),
+      )
+    ),
+
+    _destructuring_let_name_list: $ => prec.right('binder', seq(
+      "let",
+      field("pattern", $.let_expression_name_list),
+      optional($.term_as_clause),
+      optional($.term_return_clause),
+      ":=",
+      field("value", $._term),
+      "in",
+      field("body", $._term),
+    )),
+
+    _destructuring_let_apos: $ => prec.right('binder', seq(
+      "let",
+      field("pattern", $.destructuring_pattern),
+      optional($.term_in_pattern),
+      ":=",
+      field("value", $._term),
+      optional($.term_return_clause),
+      "in",
+      field("body", $._term),
+    )),
+
+    let_expression_name_list: $ => seq(
+      "(",
+      optional(seq($._binder_name, repeat(seq(",", $._binder_name)))),
+      ")"
+    ),
+
+    match_expression: $ => seq(
+      "match",
+      $.case_item,
+      repeat(seq(",", $.case_item)),
+      optional(seq("return", $._term)),
+      "with",
+      optional(choice(
+        seq(
+          $.match_case,
+          repeat(seq("|", $.match_case))
+        ),
+        repeat1(seq("|", $.match_case)),
+      )),
+      "end"
+    ),
+
+    case_item: $ => seq(
+      $._term,
+      optional($.term_as_clause),
+      optional($.term_in_pattern),
+    ),
+
+    match_case: $ => seq(
+      $.pattern_option,
+      repeat(seq("|", $.pattern_option)),
+      "=>",
+      field("body", $._term)
+    ),
+
+    pattern_option: $ => seq(
+      field("pattern", $._pattern),
+      repeat(seq(",", field("pattern", $._pattern))),
+    ),
+
+    if_expression: $ => prec.right('binder', seq(
+      "if",
+      field("condition", $._term),
+      optional($.term_as_clause),
+      optional($.term_return_clause),
+      "then",
+      field("then", $._term),
+      "else",
+      field("else", $._term),
+    )),
+
+    fix_expression: $ => prec.right(seq(
+      "fix",
+      $.fix_decl,
+      optional(seq(
+        repeat1(seq("with", $.fix_decl)),
+        "for",
+        $.ident
+      )),
+    )),
+
+    fix_decl: $ => prec.right(seq(
+      field("name", $.ident),
+      repeat($.binder),
+      optional($.fixannot),
+      optional(seq(":", $.type)),
+      ":=",
+      field("body", $._term)
+    )),
+
+    // ~~~~~~~~~~ Term Clauses
+    term_as_clause: $ => seq(
+      "as", field("as_name", $._binder_name)
+    ),
+
+    term_return_clause: $ => seq(
+      "return", field("as_return", $._term)
+    ),
+
+    term_in_pattern: $ => prec.left(seq(
+      "in",
+      field("in_pattern", $._pattern)
+    )),
+
+    _infix_operation: $ => choice(
+      $.negation_operation,
+      $.cons_operation,
+      $.app_operation,
+      $.multiplicative_operation,
+      $.additive_operation,
+      $.comparison_operation,
+      $.logical_conjunction,
+      $.logical_disjunction,
+      $.logical_equivalence,
+      $.custom_operation
+    ),
+
+    negation_operation: $ => prec('negation', seq(
+      "~",
+      $._term
+    )),
+
+    cons_operation: $ => prec.right('list_ops', seq(
+      $._term,
+      "::",
+      $._term
+    )),
+
+    app_operation: $ => prec.right('list_ops', seq(
+      $._term,
+      "++",
+      $._term
+    )),
+
+    multiplicative_operation: $ => prec.left('multiplicative', seq(
+      $._term,
+      choice("*", "/"),
+      $._term
+    )),
+
+    additive_operation: $ => prec.left('additive', seq(
+      $._term,
+      choice("+", "-"),
+      $._term
+    )),
+
+    comparison_operation: $ => prec.left('comparison', seq(
+      $._term,
+      choice("=", "<>", "<", "<=", ">", ">=", "=?", "<>?", "<?", "<=?", ">?", ">=?"),
+      $._term
+    )),
+
+    logical_conjunction: $ => prec.right('conjunction', seq(
+      $._term,
+      "/\\",
+      $._term
+    )),
+
+    logical_disjunction: $ => prec.right('disjunction', seq(
+      $._term,
+      "\\/",
+      $._term
+    )),
+
+    logical_equivalence: $ => prec.left('equivalence', seq(
+      $._term,
+      "<->",
+      $._term
+    )),
+
+    custom_operation: $ => prec.left('custom', seq(
+      $._term,
+      alias(
+        choice(
+          // any combination, but a dot
+          /[\-!#$%&*+\/<=>?@^|~;]+/,
+          // any combination with a dot, but using at least one non-dot char
+          /[\-!#$%&*+.\/<=>?@^|~;]*[\-!#$%&*+\/<=>?@^|~;][\-!#$%&*+.\/<=>?@^|~;]*/,
+          /\.\./,
+          /\.\.\.\.+/
+        )
+        , $.custom_operator),
+      $._term
+    )),
+
+    arrow_term: $ => prec.right('arrow_term', seq(
+      field("antecedent", $._term),
+      "->",
+      field("consequent", $._term)
+    )),
+
+    // ~~~~~~~~~~~~~~~~ Patterns ~~~~~~~~~~~~~~~~
+    // https://rocq-prover.org/doc/V9.2.0/refman/language/core/variants.html#grammar-token-term_match
+
+    _pattern: $ => choice(
+      $._pattern_atomic,
+      $.pattern_application,
+      $.infix_pattern,
+
+      $.custom_notation_block,
+    ),
+
+    _pattern_atomic: $ => choice(
+      $.wildcard,
+      $._name,
+      $.number,
+      $.string,
+      $.parenthesized_pattern,
+      $.list_pattern,
+      seq("{", "|", repeat(seq($._name, ":=", $._pattern)), "|", "}"),
+    ),
+
+    parenthesized_pattern: $ => seq(
+      "(",
+      $._pattern,
+      repeat(seq(choice("|", ","), $._pattern)),
+      ")"
+    ),
+
+    list_pattern: $ => seq(
+      "[",
+      optional(seq(
+        $._pattern,
+        repeat(seq(";", $._pattern)),
+      )),
+      "]"
+    ),
+
+    pattern_application: $ => prec.left('application', seq(
+      field("constructor", $._name),
+      repeat1($._pattern_atomic)
+    )),
+
+    infix_pattern: $ => prec.right('list_ops', seq(
+      $._pattern,
+      choice("::", "++"),
+      $._pattern,
+    )),
+
+    destructuring_pattern: $ => prec.right(seq(
+      "'", $._pattern
+    )),
+
+    // ~~~~~~~~~~~~~~~~ Binders and Type ~~~~~~~~~~~~~~~~ 
+    type: $ => $._term,
+
+    _binder_name: $ => choice($.wildcard, $._name),
+
+    binder: $ => choice(
+      $._binder_name,
+      seq("(", repeat($._binder_name), ":", $.type, ")"),
+      seq("(", $._binder_name, optional(seq(":", $.type)), ":=", $._term, ")"),
+      $.implicit_binders,
+      seq("(", $._binder_name, ":", $.type, "|", $._term, ")"),
+      seq($.destructuring_pattern),
+    ),
+
+    implicit_binders: $ => choice(
+      seq("{", repeat1($._binder_name), optional(seq(":", $.type)), "}"),
+      seq("[", repeat1($._binder_name), optional(seq(":", $.type)), "]")
+    ),
+
+    open_binders: $ => seq(
+      repeat1($.binder),
+      optional(seq(":", $.type))
+    ),
+
+    // ~~~~~~~~~~~~~~~ Tactics ~~~~~~~~~~~~~~~~~~~
+
+    ltac_definition: $ => seq(
+      "Ltac",
+      field("name", $.ident),
+      repeat($.ident),
+      ":=",
+      field("body", $._ltac_expr)
+    ),
+
+    _ltac_expr: $ => choice(
+      $.parenthesized_tactic,
+
+      $.tactic_sequence,
+      $.tactic_branch,
+      $.tactic_invocation,
+
+      $.tactic_or,
+      $.match_goal,
+    ),
+
+    parenthesized_tactic: $ => seq(
+      "(",
+      $._ltac_expr,
+      ")"
+    ),
+
+    tactic_sequence: $ => prec.left('tactic_sequence', seq(
+      $._ltac_expr,
+      ";",
+      $._ltac_expr
+    )),
+
+    tactic_branch: $ => seq(
+      $._ltac_expr,
+      ";",
+      "[",
+      optional($._for_each_goal),
+      "]"
+    ),
+
+    _for_each_goal: $ => choice(
+      $._goal_tactics,
+    ),
+
+    _goal_tactics: $ => prec.left('tactic_sequence', choice(
+      field("branch", $._ltac_expr),
+      seq(
+        field("branch", optional($._ltac_expr)),
+        repeat1(seq("|", field("branch", optional($._ltac_expr))))
+      )
+    )),
+
+    tactic_invocation: $ => choice(
+      $.intros_tactic,
+      $.assert_tactic,
+      $.rewrite_tactic,
+      $.tactical,
+      $.generic_tactic
+    ),
+
+    intros_tactic: $ => seq(
+      choice("intro", "intros"),
+      repeat($.intro_pattern)
+    ),
+
+    assert_tactic: $ => prec.right(seq(
+      "assert",
+      choice(
+        seq(
+          "(",
+          $.ident,
+          ":",
+          $.type,
+          ")",
+          optional($.by_clause)
+        ),
+        seq(
+          "(",
+          $.ident,
+          ":=",
+          $._term,
+          ")"
+        ),
+        seq(
+          $._atomic_term,
+          optional($.as_clause),
+          optional($.by_clause)
+        )
+      )
+    )),
+
+    rewrite_tactic: $ => prec.left('tactic_application', seq(
+      "rewrite",
+      $.oriented_rewriter,
+      repeat(seq(",", $.oriented_rewriter)),
+      optional($.in_clause),
+      optional($.by_clause)
+    )),
+
+    oriented_rewriter: $ => seq(
+      optional(choice("<-", "->")),
+      optional($.number),
+      optional(choice("?", "!")),
+      $.atomic_term_with_bindings
+    ),
+
+    atomic_term_with_bindings: $ => prec.right(seq(
+      $._atomic_term, optional(seq("with", $.bindings))
+    )),
+
+    tactical: $ => prec('tactic_application', seq(
+      choice("repeat", "try"),
+      $._ltac_expr
+    )),
+
+    generic_tactic: $ => prec.left('tactic_application', seq(
+      field("name", $.ident),
+      optional($.generic_tactic_body),
+      repeat(seq(",", $.generic_tactic_body)),
+      optional(",")
+    )),
+
+    generic_tactic_body: $ => choice(
+      seq(
+        repeat1($._tactic_arg),
+        repeat($._tactic_clause)
+      ),
+      repeat1($._tactic_clause)
+    ),
+
+    _tactic_clause: $ => choice(
+      $.in_clause,
+      $.as_clause,
+      $.eqn_clause,
+      $.by_clause,
+      $.using_clause,
+    ),
+
+    _tactic_arg: $ => choice(
+      $.atomic_term_with_bindings,
+    ),
+
+    tactic_or: $ => prec.left('tactic_or', seq(
+      $._ltac_expr,
+      choice("+", "||"),
+      $._ltac_expr
+    )),
+
+    match_goal: $ => seq(
+      choice("match", "lazymatch", "multimatch"),
+      optional("reverse"),
+      "goal",
+      "with",
+      choice(
+        repeat1(seq("|", $.match_goal_case)),
+        seq(
+          $.match_goal_case,
+          repeat(seq("|", $.match_goal_case))
+        ),
+        optional("|")
+      ),
+      "end"
+    ),
+
+    match_goal_case: $ => seq(
+      $.goal_pattern,
+      "=>",
+      $._ltac_expr
+    ),
+
+    goal_pattern: $ => choice(
+      $._goal_pattern_body,
+      seq("[", $._goal_pattern_body, "]"),
+      "_"
+    ),
+
+    _goal_pattern_body: $ => seq(
+      optional(seq($.match_hyp, repeat(seq(",", $.match_hyp)))),
+      "|-",
+      $.match_pattern
+    ),
+
+    match_hyp: $ => seq(
+      $.ident,
+      choice(
+        seq(":", $.match_pattern),
+        seq(":=", $.match_pattern),
+        seq(":=", "[", $.match_pattern, "]", ":", $.match_pattern),
+      )
+    ),
+
+    // ~~~~~~~~~~~~~~~~ Tactic Patterns ~~~~~~~~~~~~~~~~
+
+    match_pattern: $ => choice(
+      $._term,
+      seq("context", optional($.ident), "[", $._term, "]")
+    ),
+
+    intro_pattern: $ => choice(
+      $.ident,
+      $.wildcard,
+      "?",
+      "->",
+      "<-",
+      $.bracketed_intro_pattern
+    ),
+
+    bracketed_intro_pattern: $ => seq(
+      "[",
+      repeat(choice(
+        $.ident,
+        "?",
+        $.wildcard,
+        "|",
+        "&",
+        $.bracketed_intro_pattern
+      )),
+      "]"
+    ),
+
+    // ~~~~~~~~~~~~~ Tactic Clauses ~~~~~~~~~~~~~~~ 
+
+    in_clause: $ => prec.right(seq(
+      "in",
+      choice(
+        seq($.ident, repeat(seq(",", $.ident))),
+        "*")
+    )),
+
+    as_clause: $ => seq(
+      "as",
+      repeat1($.intro_pattern)
+    ),
+
+    by_clause: $ => prec.right(seq(
+      "by",
+      $._ltac_expr
+    )),
+
+    bindings: $ => prec.right('binder', choice(
+      repeat1($._atomic_term),
+      repeat1(seq(
+        "(",
+        field("name", choice($.ident, $.number)),
+        ":=",
+        field("value", $._term),
+        ")"
+      ))
+    )),
+
+    eqn_clause: $ => seq("eqn", ":", $.ident),
+
+    using_clause: $ => prec.right(seq(
+      "using",
+      $._atomic_term,
+      repeat(seq(",", $._atomic_term))
+    )),
+
+    // ~~~~~~~~~~~~~ Lexical tokens ~~~~~~~~~~~~~~~
+
+    _name: $ => choice(
+      $.ident,
+      $.qualid
+    ),
+
+    comment: $ => seq(
+      "(*",
+      repeat(choice(
+        /[^*()]+/,
+        /[*()]/
+      )),
+      "*)"
+    ),
+
+    ident: $ => /[\p{L}_][\p{L}_\p{N}']*/u,
+
+    ident_decl: $ => seq(
+      $.ident,
+    ),
+
+
+    metavariable: $ => token(seq(
+      "?",
+      choice(
+        /[a-zA-Z_][a-zA-Z0-9_']*/,
+        /[0-9]+/
+      )
+    )),
+
+    number: $ => choice(
+      /\d[\d_]*(\.[\d_]+)?([eE][+-]?\d[\d_]*)?/,
+      /0[xX][0-9a-fA-F][0-9a-fA-F_]*(\.[0-9a-fA-F_]+)?([pP][+-]?\d[\d_]*)?/
+    ),
+
+    qualid: $ => token(seq(
+      /[\p{L}_][\p{L}_\p{N}']*/u,
+      repeat1(seq('.', /[\p{L}_][\p{L}_\p{N}']*/u))
+    )),
+
+    reference: $ => choice(
+      $._name,
+      seq($.string, optional(seq("%", $.ident)))
+    ),
+
+    string: $ => seq(
+      '"',
+      repeat(choice(
+        /[^"]/,
+        '""'
+      )),
+      '"'
+    ),
+
+    wildcard: $ => "_",
+
+    // Rules for Software Foundations Imp Chapters
+    custom_notation_block: $ => choice(
+      seq('<{', repeat($._dsl_token), '}>'),
+      seq('[|', repeat($._dsl_token), '|]'),
+      seq('{|', repeat($._dsl_token), '|}')
+    ),
+
+    _dsl_token: $ => choice(
+      $.ident,
+      $.number,
+      $.string,
+      /[+\-*/&=<>!~|%^:;]+/,
+      seq('(', repeat($._dsl_token), ')'),
+      seq('[', repeat($._dsl_token), ']'),
+      seq('{', repeat($._dsl_token), '}')
+    ),
+
+
+    imp_evaluation_operation: $ => prec.left('custom', seq(
+      field("initial_state", $._term),
+      '=[',
+      $.imp_program,
+      ']=>',
+      field("final_state", $._term),
+    )),
+
+    imp_program: $ => repeat1($._imp_token),
+
+    _imp_token: $ => choice(
+      $.ident,
+      $.number,
+      ":=",
+      /[+\-*/&=<>!~|%;]+/,
+      seq("(", repeat($._imp_token), ")"),
+      seq("[", repeat($._imp_token), "]"),
+      seq("{", repeat($._imp_token), "}")
+    ),
+  }
+});
+

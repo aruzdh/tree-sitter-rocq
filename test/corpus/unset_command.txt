@@ -1,0 +1,23 @@
+==================
+Unset Command (1)
+==================
+Unset Strict Implicit.
+---
+(source_file
+  (sentence
+    (unset_command
+      (setting_name
+        (ident)
+        (ident)))))
+
+==================
+Unset Command (2)
+==================
+Unset Printing Notations.
+---
+(source_file
+  (sentence
+    (unset_command
+      (setting_name
+        (ident)
+        (ident)))))

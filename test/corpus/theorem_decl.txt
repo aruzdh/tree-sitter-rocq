@@ -1,0 +1,118 @@
+==================
+Simple Theorem Declaration (=)
+==================
+Theorem simple_theo : x = x.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (comparison_operation
+          (ident)
+          (ident))))))
+
+==================
+Simple Theorem Declaration (neg operation)
+==================
+Theorem one_not_even : ~ ev 1.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (negation_operation
+          (application
+            (ident)
+            (number)))))))
+
+==================
+Theorem Declaration with Quantifiers.
+==================
+Theorem SSSSev__even : forall n,
+  ev n -> ev n.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (arrow_term
+              antecedent: (application
+                (ident)
+                (ident))
+              consequent: (application
+                (ident)
+                (ident)))))))))
+
+==================
+Theorem Declaration with Quantifiers and Parenthesized Terms (1)
+==================
+Theorem SSSSev__even : forall n,
+  ev (S (S (S (S n)))) -> ev n.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (arrow_term
+              antecedent: (application
+                (ident)
+                (parenthesized_term
+                  (application
+                    (ident)
+                    (parenthesized_term
+                      (application
+                        (ident)
+                        (parenthesized_term
+                          (application
+                            (ident)
+                            (parenthesized_term
+                              (application
+                                (ident)
+                                (ident))))))))))
+              consequent: (application
+                (ident)
+                (ident)))))))))
+
+==================
+Theorem Declaration with Quantifiers and Parenthesized Terms (2)
+==================
+Theorem add_0_n (n : nat) : 0 + n = n.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (type
+        (comparison_operation
+          (additive_operation
+            (number)
+            (ident))
+          (ident))))))

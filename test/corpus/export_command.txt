@@ -1,0 +1,32 @@
+==================
+Filtered Import with Wildcard Items
+==================
+Export List (length, MyInductiveType(..)).
+---
+
+(source_file
+  (sentence
+    (export_command
+      (filtered_import
+        module: (ident)
+        (filtered_import_item
+          name: (ident))
+        (filtered_import_item
+          name: (ident)
+          (import_wildcard))))))
+
+==================
+Export Category Restrictions and Exclusions
+==================
+Export - (coercions, hints) AnotherModule.
+---
+
+(source_file
+  (sentence
+    (export_command
+      (import_categories
+        (neg_selection)
+        category: (ident)
+        category: (ident))
+      (filtered_import
+        module: (ident)))))

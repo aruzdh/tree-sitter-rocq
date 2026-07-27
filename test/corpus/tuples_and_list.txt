@@ -1,0 +1,98 @@
+==================
+Standard and Trailing Comma Tuples
+==================
+Check (1, 2).
+Check (x, y, z).
+Check (1,).
+Check (a, b, c,).
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (number)
+        (number))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (ident)
+        (ident)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (number))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (ident)
+        (ident)
+        (ident)))))
+
+==================
+Semicolon Sequences inside Parentheses (No Rocq valid code)
+==================
+Check (simpl; reflexivity).
+Check (unfold id; simpl; trivial).
+Check (apply H;).
+Check (rewrite H1; rewrite H2;).
+---
+(source_file
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (ident)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (application
+          (ident)
+          (ident))
+        (ident)
+        (ident))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (application
+          (ident)
+          (ident)))))
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (application
+          (ident)
+          (ident))
+        (application
+          (ident)
+          (ident))))))
+
+==================
+List Literal Variations
+==================
+Check [].
+Check [1].
+Check [1; 2; 3].
+Check [x; y;].
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (list_literal)))
+  (sentence
+    (evaluation_command
+      (list_literal
+        (number))))
+  (sentence
+    (evaluation_command
+      (list_literal
+        (number)
+        (number)
+        (number))))
+  (sentence
+    (evaluation_command
+      (list_literal
+        (ident)
+        (ident)))))

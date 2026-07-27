@@ -1,0 +1,48 @@
+==================
+Require Statement with Ident and Qualid
+==================
+From Stdlib Require Import Strings.Ascii.
+---
+
+(source_file
+  (sentence
+    (require_command
+      dirpath: (ident)
+      (filtered_import module: (qualid)))))
+
+==================
+Require Statement with Qualid
+==================
+From Props.Data Require Import Strings.Ascii.
+---
+
+(source_file
+  (sentence
+    (require_command
+      dirpath: (qualid)
+      (filtered_import module: (qualid)))))
+
+==================
+Require Export with Multiple Modules
+==================
+Require Export List String Arith.
+---
+
+(source_file
+  (sentence
+    (require_command
+      (filtered_import module: (ident))
+      (filtered_import module: (ident))
+      (filtered_import module: (ident)))))
+
+==================
+Plain Require Statement with From
+==================
+From Coq Require Lists.List.
+---
+
+(source_file
+  (sentence
+    (require_command
+      dirpath: (ident)
+      (filtered_import module: (qualid)))))

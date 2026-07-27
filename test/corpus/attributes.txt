@@ -1,0 +1,191 @@
+==================
+Legacy Attributes Only
+==================
+Local Polymorphic Definition x : nat.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (legacy_attr)
+      (legacy_attr))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))
+
+==================
+Single Modern Attribute
+==================
+#[inline] Definition x : poly.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident)))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))
+
+==================
+Multiple Attributes in One Bracket
+==================
+#[canonical, deprecate] Definition x := 0.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident))
+      (attribute
+        (ident)))
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (number))))
+
+==================
+Attribute with String Value
+==================
+#[warn="none"] Definition x : X.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident)
+        (attr_value
+          (string))))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))
+
+==================
+Attribute with Qualified Identifier Value
+==================
+#[using=Nat.add] Definition x : X.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident)
+        (attr_value
+          (qualid))))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))
+
+==================
+Nested Attribute Grouping
+==================
+#[foo(bar, baz="yes")] Definition x : 8.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident)
+        (attr_value
+          (attribute
+            (ident))
+          (attribute
+            (ident)
+            (attr_value
+              (string))))))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (number)))))
+
+==================
+Multiple Modern Attribute Brackets
+==================
+#[inline] #[beta] Definition x := 8.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident))
+      (attribute
+        (ident)))
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (number))))
+
+==================
+Mixed Modern and Legacy Attributes
+==================
+#[inline] Global Private Definition x : X.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident))
+      (legacy_attr)
+      (legacy_attr))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))
+
+==================
+Empty Attribute Bracket
+==================
+#[] Definition x := 8.
+---
+
+(source_file
+  (sentence
+    (attributes)
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (number))))
+
+==================
+Nested Multiple Mix Modern Attribute Brackets
+==================
+#[foo(bar, bar="yes"), inline] Private Definition x : nat.
+---
+
+(source_file
+  (sentence
+    (attributes
+      (attribute
+        (ident)
+        (attr_value
+          (attribute
+            (ident))
+          (attribute
+            (ident)
+            (attr_value
+              (string)))))
+      (attribute
+        (ident))
+      (legacy_attr))
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident)))))

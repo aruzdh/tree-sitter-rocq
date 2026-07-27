@@ -1,0 +1,76 @@
+==================
+Parenthesized Check Command
+==================
+Check (true && false).
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (custom_operation
+          (ident)
+          (custom_operator)
+          (ident))))))
+
+==================
+Parenthesized Compute Command
+==================
+Compute (1 + 1).
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (parenthesized_term
+        (additive_operation
+          (number)
+          (number))))))
+
+==================
+Print Command
+==================
+Print nat.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (ident))))
+
+==================
+Search Command
+==================
+Search nat.
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (ident))))
+
+==================
+Locate Command
+==================
+Locate "&&".
+---
+
+(source_file
+  (sentence
+    (evaluation_command
+      (string))))
+
+==================
+Fail Check Command
+==================
+Fail Check (0 + true).
+---
+
+(source_file
+  (sentence
+    (fail)
+    (evaluation_command
+      (parenthesized_term
+        (additive_operation
+          (number)
+          (ident))))))

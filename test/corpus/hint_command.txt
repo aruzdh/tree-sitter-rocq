@@ -1,0 +1,134 @@
+==================
+Plain Hint Command (Resolve)
+==================
+Hint Resolve my_theorem.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident))))
+
+==================
+Plain Hint Command (Rewrite)
+==================
+Hint Rewrite my_lemma.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident))))
+
+==================
+Plain Hint Command (Constructors)
+==================
+Hint Constructors my_inductive.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident))))
+
+==================
+Plain Hint Command (Unfold)
+==================
+Hint Unfold my_def.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident))))
+
+==================
+Plain Hint Command (Immediate)
+==================
+Hint Immediate my_fact.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident))))
+
+==================
+Hint Command (Extern)
+==================
+Hint Extern 5 (x = y) => reflexivity.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      (hint_extern
+        cost: (number)
+        pattern: (parenthesized_term
+          (comparison_operation
+            (ident)
+            (ident)))
+        tactic: (tactic_invocation
+          (generic_tactic
+            name: (ident)))))))
+
+==================
+Hint Extern with Tactics and Databases
+==================
+Hint Extern 5 (x = y) => subst; reflexivity : core mydb.
+Hint Extern 10 => constructor : db1 db2.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      (hint_extern
+        cost: (number)
+        pattern: (parenthesized_term
+          (comparison_operation
+            (ident)
+            (ident)))
+        tactic: (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))
+        database: (ident)
+        database: (ident))))
+  (sentence
+    (hint_command
+      (hint_extern
+        cost: (number)
+        tactic: (tactic_invocation
+          (generic_tactic
+            name: (ident)))
+        database: (ident)
+        database: (ident)))))
+
+==================
+Standard Hint Varieties
+==================
+Hint Constructors MyInductive.
+Hint Immediate hyp1 hyp2 : typecheck.
+Hint Transparent foo bar.
+Hint Opaque baz.
+---
+
+(source_file
+  (sentence
+    (hint_command
+      name: (ident)))
+  (sentence
+    (hint_command
+      name: (ident)
+      name: (ident)
+      database: (ident)))
+  (sentence
+    (hint_command
+      name: (ident)
+      name: (ident)))
+  (sentence
+    (hint_command
+      name: (ident))))

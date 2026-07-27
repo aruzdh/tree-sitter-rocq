@@ -1,0 +1,8 @@
+==================
+Close Scope Command
+==================
+Close Scope com_scope.
+---
+(source_file
+  (sentence
+    (close_scope_command name: (ident))))
