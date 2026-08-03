@@ -72,3 +72,78 @@ Check st0 =[ c1 ; c2 ]=> st2.
           (ident)
           (ident))
         final_state: (ident)))))
+
+==================
+Imp seq_assoc Theorem with cequiv
+==================
+Theorem seq_assoc : forall c1 c2 c3,
+  cequiv <{(c1;c2);c3}> <{c1;(c2;c3)}>.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (binder
+              (ident))
+            (binder
+              (ident)))
+          (type
+            (application
+              (application
+                (ident)
+                (custom_notation_block
+                  (ident)
+                  (ident)
+                  (ident)))
+              (custom_notation_block
+                (ident)
+                (ident)
+                (ident)))))))))
+
+==================
+Imp assign_aequiv Theorem with aequiv and cequiv
+==================
+Theorem assign_aequiv : forall (X : string) (a : aexp),
+  aequiv <{ X }> a ->
+  cequiv <{ skip }> <{ X := a }>.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)
+              (type
+                (ident)))
+            (binder
+              (ident)
+              (type
+                (ident))))
+          (type
+            (arrow_term
+              antecedent: (application
+                (application
+                  (ident)
+                  (custom_notation_block
+                    (ident)))
+                (ident))
+              consequent: (application
+                (application
+                  (ident)
+                  (custom_notation_block
+                    (ident)))
+                (custom_notation_block
+                  (ident)
+                  (ident))))))))))
