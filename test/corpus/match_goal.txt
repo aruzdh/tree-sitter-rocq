@@ -28,7 +28,7 @@ Ltac find_rwd :=
                 (comparison_operation
                   (metavariable)
                   (ident))))
-            (match_pattern
+            goal: (match_pattern
               (ident)))
           (tactic_invocation
             (generic_tactic
@@ -38,3 +38,82 @@ Ltac find_rwd :=
                   (ident))
                 (atomic_term_with_bindings
                   (ident))))))))))
+
+==================
+Ltac Definition with Match Goal, where H contains a `c1;c2` Imp com
+==================
+Ltac find_seq :=
+  match goal with
+  | [ H : _ =[_;_]=> _ |- _ ] => inversion H; clear H
+  end.
+---
+
+(source_file
+  (sentence
+    (ltac_definition
+      name: (ident)
+      body: (match_goal
+        (match_goal_case
+          (goal_pattern
+            (match_hyp
+              (ident)
+              (match_pattern
+                (imp_evaluation_operation
+                  initial_state: (ident)
+                  (imp_program
+                    (ident)
+                    (ident))
+                  final_state: (ident))))
+            goal: (match_pattern
+              (ident)))
+          (tactic_sequence
+            (tactic_invocation
+              (generic_tactic
+                name: (ident)
+                (generic_tactic_body
+                  (atomic_term_with_bindings
+                    (ident)))))
+            (tactic_invocation
+              (generic_tactic
+                name: (ident)
+                (generic_tactic_body
+                  (atomic_term_with_bindings
+                    (ident)))))))))))
+==================
+Ltac Definition with Match Goal, where H contains any Imp com
+==================
+Ltac invert_eval :=
+  repeat match goal with
+  | H : _ =[ _ ]=> _ |- _ => inversion_clear H; subst
+  end.
+---
+
+(source_file
+  (sentence
+    (ltac_definition
+      name: (ident)
+      body: (tactic_invocation
+        (tactical
+          (match_goal
+            (match_goal_case
+              (goal_pattern
+                (match_hyp
+                  (ident)
+                  (match_pattern
+                    (imp_evaluation_operation
+                      initial_state: (ident)
+                      (imp_program
+                        (ident))
+                      final_state: (ident))))
+                goal: (match_pattern
+                  (ident)))
+              (tactic_sequence
+                (tactic_invocation
+                  (generic_tactic
+                    name: (ident)
+                    (generic_tactic_body
+                      (atomic_term_with_bindings
+                        (ident)))))
+                (tactic_invocation
+                  (generic_tactic
+                    name: (ident)))))))))))
