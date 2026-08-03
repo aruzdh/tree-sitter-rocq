@@ -7169,8 +7169,12 @@
           "value": "|-"
         },
         {
-          "type": "SYMBOL",
-          "name": "match_pattern"
+          "type": "FIELD",
+          "name": "goal",
+          "content": {
+            "type": "SYMBOL",
+            "name": "match_pattern"
+          }
         }
       ]
     },

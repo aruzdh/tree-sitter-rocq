@@ -3346,17 +3346,24 @@
   {
     "type": "goal_pattern",
     "named": true,
-    "fields": {},
+    "fields": {
+      "goal": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "match_pattern",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
           "type": "match_hyp",
-          "named": true
-        },
-        {
-          "type": "match_pattern",
           "named": true
         }
       ]

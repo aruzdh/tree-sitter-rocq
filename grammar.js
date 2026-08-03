@@ -1256,7 +1256,7 @@ export default grammar({
     _goal_pattern_body: $ => seq(
       optional(seq($.match_hyp, repeat(seq(",", $.match_hyp)))),
       "|-",
-      $.match_pattern
+      field("goal", $.match_pattern)
     ),
 
     match_hyp: $ => seq(
