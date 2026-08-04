@@ -1329,3 +1329,379 @@ Qed.
             name: (ident))))))
   (sentence
     (qed_command)))
+
+==================
+Sequence Tactic and Repeat Tactical
+==================
+Proof.
+  split; intros; repeat find_seq; subst; 
+  repeat eapply E_Seq; eassumption.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_sequence
+      (tactic_sequence
+        (tactic_sequence
+          (tactic_sequence
+            (tactic_sequence
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))
+              (tactic_invocation
+                (intros_tactic)))
+            (tactic_invocation
+              (tactical
+                (tactic_invocation
+                  (generic_tactic
+                    name: (ident))))))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))
+        (tactic_invocation
+          (tactical
+            (tactic_invocation
+              (generic_tactic
+                name: (ident)
+                (generic_tactic_body
+                  (atomic_term_with_bindings
+                    (ident))))))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (qed_command)))
+
+==================
+Complex Proof with lots of tactics
+==================
+Proof.
+  unfold ctrans_sound. intros c.
+  induction c; simpl.
+  - (* skip *) apply refl_cequiv.
+  - (* := *) apply CAsgn_congruence.
+              apply fold_constants_aexp_sound.
+  - (* ; *) apply CSeq_congruence; assumption.
+  - (* if *)
+    assert (bequiv b (fold_constants_bexp b)). {
+      apply fold_constants_bexp_sound. }
+    destruct (fold_constants_bexp b) eqn:Heqb;
+      try (apply CIf_congruence; assumption).
+      (* (If the optimization doesn't eliminate the if, then the
+          result is easy to prove from the IH and
+          [fold_constants_bexp_sound].) *)
+    + (* b always true *)
+      apply trans_cequiv with c1; try assumption.
+      apply if_true; assumption.
+    + (* b always false *)
+      apply trans_cequiv with c2; try assumption.
+      apply if_false; assumption.
+  - (* while *)
+    assert (bequiv b (fold_constants_bexp b)) 
+        by (apply fold_constants_bexp_sound).
+    destruct (fold_constants_bexp b) eqn:Heqb;
+      try (apply CWhile_congruence; assumption);
+      [apply while_true | apply while_false]; assumption.
+Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (intros_tactic
+        (intro_pattern
+          (ident)))))
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident)
+        (generic_tactic_body
+          (atomic_term_with_bindings
+            (ident))))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_invocation
+      (assert_tactic
+        (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (parenthesized_term
+              (application
+                (ident)
+                (ident))))))))
+  (sentence
+    (proof_block
+      (sentence
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident))))))))
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (parenthesized_term
+                (application
+                  (ident)
+                  (ident))))
+            (eqn_clause
+              (ident)))))
+      (tactic_invocation
+        (tactical
+          (parenthesized_tactic
+            (tactic_sequence
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)
+                  (generic_tactic_body
+                    (atomic_term_with_bindings
+                      (ident)))))
+              (tactic_invocation
+                (generic_tactic
+                  name: (ident)))))))))
+  (comment)
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)
+              (bindings
+                (ident))))))
+      (tactic_invocation
+        (tactical
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)
+              (bindings
+                (ident))))))
+      (tactic_invocation
+        (tactical
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
+  (sentence
+    (tactic_sequence
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (ident)))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (bullet))
+  (comment)
+  (sentence
+    (tactic_invocation
+      (assert_tactic
+        (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (parenthesized_term
+              (application
+                (ident)
+                (ident)))))
+        (by_clause
+          (parenthesized_tactic
+            (tactic_invocation
+              (generic_tactic
+                name: (ident)
+                (generic_tactic_body
+                  (atomic_term_with_bindings
+                    (ident))))))))))
+  (sentence
+    (tactic_sequence
+      (tactic_branch
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (parenthesized_term
+                    (application
+                      (ident)
+                      (ident))))
+                (eqn_clause
+                  (ident)))))
+          (tactic_invocation
+            (tactical
+              (parenthesized_tactic
+                (tactic_sequence
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident)
+                      (generic_tactic_body
+                        (atomic_term_with_bindings
+                          (ident)))))
+                  (tactic_invocation
+                    (generic_tactic
+                      name: (ident))))))))
+        branch: (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident)))))
+        branch: (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident))))))
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (qed_command)))
+
+==================
+Branch Tactic with SF Maps
+==================
+Proof.
+  left. split; intros; invert_eval;
+    [permute_havoc (Y !-> n; st) | permute_havoc (X !-> n; st)].
+ Qed.
+---
+
+(source_file
+  (sentence
+    (proof_command))
+  (sentence
+    (tactic_invocation
+      (generic_tactic
+        name: (ident))))
+  (sentence
+    (tactic_branch
+      (tactic_sequence
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))
+          (tactic_invocation
+            (intros_tactic)))
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))
+      branch: (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (parenthesized_term
+                (custom_operation
+                  (ident)
+                  (custom_operator)
+                  (ident))
+                (ident))))))
+      branch: (tactic_invocation
+        (generic_tactic
+          name: (ident)
+          (generic_tactic_body
+            (atomic_term_with_bindings
+              (parenthesized_term
+                (custom_operation
+                  (ident)
+                  (custom_operator)
+                  (ident))
+                (ident))))))))
+  (sentence
+    (qed_command)))
