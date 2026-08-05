@@ -72,10 +72,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -145,6 +141,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -199,10 +199,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -272,6 +268,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -326,10 +326,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -399,6 +395,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -484,10 +484,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -557,6 +553,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -614,10 +614,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -687,6 +683,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -765,10 +765,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -838,6 +834,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -945,10 +945,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "ident",
           "named": true
         },
@@ -974,6 +970,10 @@
         },
         {
           "type": "qualid",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -1093,10 +1093,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -1170,6 +1166,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -1259,10 +1259,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -1335,6 +1331,10 @@
             "named": true
           },
           {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
             "type": "scoped_term",
             "named": true
           },
@@ -1351,10 +1351,6 @@
       "types": [
         {
           "type": "custom_notation_block",
-          "named": true
-        },
-        {
-          "type": "double_dot",
           "named": true
         },
         {
@@ -1383,6 +1379,10 @@
         },
         {
           "type": "qualid",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -1495,10 +1495,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -1568,6 +1564,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -1693,10 +1693,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -1766,6 +1762,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -1820,10 +1820,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -1893,6 +1889,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -2088,10 +2088,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -2161,6 +2157,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -2269,10 +2269,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -2342,6 +2338,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -2496,10 +2496,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -2569,6 +2565,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -2844,10 +2844,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -2917,6 +2913,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -3019,10 +3019,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -3095,6 +3091,10 @@
           "named": true
         },
         {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
           "type": "scoped_term",
           "named": true
         },
@@ -3151,10 +3151,6 @@
           },
           {
             "type": "custom_operation",
-            "named": true
-          },
-          {
-            "type": "double_dot",
             "named": true
           },
           {
@@ -3227,6 +3223,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -3497,10 +3497,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -3570,6 +3566,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -3678,10 +3678,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -3751,6 +3747,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -3808,10 +3808,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -3881,6 +3877,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -3938,10 +3938,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -4011,6 +4007,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -4088,10 +4088,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -4161,6 +4157,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -4218,10 +4218,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -4291,6 +4287,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -4608,10 +4608,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -4688,6 +4684,10 @@
           "named": true
         },
         {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
           "type": "scoped_term",
           "named": true
         },
@@ -4754,10 +4754,6 @@
           },
           {
             "type": "custom_operation",
-            "named": true
-          },
-          {
-            "type": "double_dot",
             "named": true
           },
           {
@@ -4830,6 +4826,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -4919,10 +4919,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -4992,6 +4988,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -5126,10 +5126,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -5199,6 +5195,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -5304,10 +5304,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -5377,6 +5373,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -5431,10 +5431,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -5504,6 +5500,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -5558,10 +5558,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -5631,6 +5627,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -5749,10 +5749,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -5825,6 +5821,10 @@
             "named": true
           },
           {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
             "type": "scoped_term",
             "named": true
           },
@@ -5888,10 +5888,6 @@
         },
         {
           "type": "custom_operation",
-          "named": true
-        },
-        {
-          "type": "double_dot",
           "named": true
         },
         {
@@ -5968,6 +5964,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -6095,10 +6095,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -6168,6 +6164,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -6237,10 +6237,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -6310,6 +6306,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -6369,10 +6369,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -6442,6 +6438,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -6519,10 +6519,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -6592,6 +6588,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -6862,10 +6862,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -6935,6 +6931,10 @@
         },
         {
           "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -7221,6 +7221,65 @@
     }
   },
   {
+    "type": "recursive_notation_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "double_dot",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
+          "type": "qualid",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "reference",
     "named": true,
     "fields": {},
@@ -7381,10 +7440,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "ident",
           "named": true
         },
@@ -7410,6 +7465,10 @@
         },
         {
           "type": "qualid",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {
@@ -8167,10 +8226,6 @@
             "named": true
           },
           {
-            "type": "double_dot",
-            "named": true
-          },
-          {
             "type": "fix_expression",
             "named": true
           },
@@ -8240,6 +8295,10 @@
           },
           {
             "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
             "named": true
           },
           {
@@ -8345,10 +8404,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "fix_expression",
           "named": true
         },
@@ -8421,6 +8476,10 @@
           "named": true
         },
         {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
           "type": "scoped_term",
           "named": true
         },
@@ -8459,10 +8518,6 @@
           "named": true
         },
         {
-          "type": "double_dot",
-          "named": true
-        },
-        {
           "type": "ident",
           "named": true
         },
@@ -8488,6 +8543,10 @@
         },
         {
           "type": "qualid",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
           "named": true
         },
         {

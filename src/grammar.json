@@ -4323,7 +4323,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "double_dot"
+              "name": "recursive_notation_term"
             },
             {
               "type": "SYMBOL",
@@ -4336,6 +4336,23 @@
     "double_dot": {
       "type": "STRING",
       "value": ".."
+    },
+    "recursive_notation_term": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "double_dot"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_atomic_term"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "double_dot"
+        }
+      ]
     },
     "parenthesized_term": {
       "type": "SEQ",

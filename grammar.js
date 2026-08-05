@@ -727,13 +727,19 @@ export default grammar({
         $.parenthesized_term,
         $.list_literal,
         $.match_expression,
-        $.double_dot,
+        $.recursive_notation_term,
 
         $.custom_notation_block,
       ),
     ),
 
     double_dot: $ => "..",
+
+    recursive_notation_term: $ => seq(
+      $.double_dot,
+      $._atomic_term,
+      $.double_dot,
+    ),
 
     parenthesized_term: $ => seq(
       "(",
