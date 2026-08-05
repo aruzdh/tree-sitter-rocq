@@ -143,15 +143,14 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..).
         definition: (parenthesized_term
           (application
             (application
-              (application
-                (application
-                  (ident)
-                  (ident))
-                (double_dot))
+              (ident)
+              (ident))
+            (recursive_notation_term
+              (double_dot)
               (parenthesized_term
                 (application
                   (application
                     (ident)
                     (ident))
-                  (ident))))
-            (double_dot)))))))
+                    (ident)))
+              (double_dot))))))))

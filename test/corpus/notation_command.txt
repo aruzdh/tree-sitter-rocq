@@ -170,18 +170,17 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
         definition: (parenthesized_term
           (application
             (application
-              (application
-                (application
-                  (ident)
-                  (ident))
-                (double_dot))
+              (ident)
+              (ident))
+            (recursive_notation_term
+              (double_dot)
               (parenthesized_term
                 (application
                   (application
                     (ident)
                     (ident))
-                  (ident))))
-            (double_dot)))
+                (ident)))
+              (double_dot))))
         (syntax_modifier_list
           (syntax_modifier
             (plural_variable_modifier
@@ -190,3 +189,17 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
               (at_level
                 (level
                   (number))))))))))
+
+==================
+Notations with recursive patterns involving binders (1)
+==================
+Notation "'exists' x .. y , p" :=
+  (ex (fun x => .. (ex (fun y => p)) ..))
+  (at level 200, x binder, y binder, right associativity).
+
+==================
+Notations with recursive patterns involving binders (2)
+==================
+Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
+  ((fun b A a => a <= b /\ A b) y .. ((fun b A a => a <= b /\ A b) z (fun b => b <= t)) .. x)
+  (at level 70, y at next level, z at next level, t at next level).
