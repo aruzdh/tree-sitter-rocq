@@ -179,7 +179,7 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
                   (application
                     (ident)
                     (ident))
-                (ident)))
+                  (ident)))
               (double_dot))))
         (syntax_modifier_list
           (syntax_modifier
@@ -196,6 +196,48 @@ Notations with recursive patterns involving binders (1)
 Notation "'exists' x .. y , p" :=
   (ex (fun x => .. (ex (fun y => p)) ..))
   (at level 200, x binder, y binder, right associativity).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (ident)
+            (parenthesized_term
+              (lambda_function
+                (open_binders
+                  (binder
+                    (ident)))
+                (recursive_notation_term
+                  (double_dot)
+                  (parenthesized_term
+                    (application
+                      (ident)
+                      (parenthesized_term
+                        (lambda_function
+                          (open_binders
+                            (binder
+                              (ident)))
+                          (ident)))))
+                  (double_dot))))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (explicit_subentry)))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (explicit_subentry)))
+          (syntax_modifier
+            (associativity_modifier)))))))
 
 ==================
 Notations with recursive patterns involving binders (2)
@@ -203,3 +245,80 @@ Notations with recursive patterns involving binders (2)
 Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
   ((fun b A a => a <= b /\ A b) y .. ((fun b A a => a <= b /\ A b) z (fun b => b <= t)) .. x)
   (at level 70, y at next level, z at next level, t at next level).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (application
+                (parenthesized_term
+                  (lambda_function
+                    (open_binders
+                      (binder
+                        (ident))
+                      (binder
+                        (ident))
+                      (binder
+                        (ident)))
+                    (logical_conjunction
+                      (comparison_operation
+                        (ident)
+                        (ident))
+                      (application
+                        (ident)
+                        (ident)))))
+                (ident))
+              (recursive_notation_term
+                (double_dot)
+                (parenthesized_term
+                  (application
+                    (application
+                      (parenthesized_term
+                        (lambda_function
+                          (open_binders
+                            (binder
+                              (ident))
+                            (binder
+                              (ident))
+                            (binder
+                              (ident)))
+                          (logical_conjunction
+                            (comparison_operation
+                              (ident)
+                              (ident))
+                            (application
+                              (ident)
+                              (ident)))))
+                      (ident))
+                    (parenthesized_term
+                      (lambda_function
+                        (open_binders
+                          (binder
+                            (ident)))
+                        (comparison_operation
+                          (ident)
+                          (ident))))))
+                (double_dot)))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (level)))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (level)))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (level))))))))
