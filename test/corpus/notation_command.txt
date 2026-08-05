@@ -322,3 +322,49 @@ Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
             (singular_variable_modifier
               (ident)
               (level))))))))
+
+==================
+Notations with recursive patterns involving binders in Let Expression
+==================
+Notation "'mylet' f x .. y :=  t 'in' u":=
+  (let f := fun x => .. (fun y => t) .. in u)
+  (at level 200, x closed binder, y closed binder, right associativity).
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (let_expression
+            name: (ident)
+            value: (lambda_function
+              (open_binders
+                (binder
+                  (ident)))
+              (recursive_notation_term
+                (double_dot)
+                (parenthesized_term
+                  (lambda_function
+                    (open_binders
+                      (binder
+                        (ident)))
+                    (ident)))
+                (double_dot)))
+            body: (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (number))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (explicit_subentry)))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (explicit_subentry)))
+          (syntax_modifier
+            (associativity_modifier)))))))
