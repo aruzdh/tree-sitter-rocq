@@ -189,7 +189,7 @@
 (double_dot) @operator
 (custom_operation (custom_operator) @operator)
 
-(goal_selector (ident) @variable.builtin)
+(range_selector (ident) @variable.builtin)
 
 (application . (ident) @function.call)
 (application . (qualid) @function.call)
