@@ -1,0 +1,27 @@
+==================
+Basic Extraction Commands
+==================
+Extraction Language OCaml.
+Extraction "imp1.ml" ceval_step.
+Extraction "imp2.ml" ceval_step.
+Extraction "imp.ml" empty_st ceval_step parse.
+---
+
+(source_file
+  (sentence
+    (extraction_command
+      (language)))
+  (sentence
+    (extraction_command
+      (string)
+      (ident)))
+  (sentence
+    (extraction_command
+      (string)
+      (ident)))
+  (sentence
+    (extraction_command
+      (string)
+      (ident)
+      (ident)
+      (ident))))
