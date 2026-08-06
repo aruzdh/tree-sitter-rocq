@@ -1407,7 +1407,7 @@ export default grammar({
 
     qualid: $ => token(seq(
       /[\p{L}_][\p{L}_\p{N}']*/u,
-      repeat1(seq('.', /[\p{L}_][\p{L}_\p{N}']*/u))
+      repeat(seq('.', /[\p{L}_][\p{L}_\p{N}']*/u))
     )),
 
     reference: $ => choice(
