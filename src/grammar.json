@@ -6425,13 +6425,8 @@
       ]
     },
     "_for_each_goal": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_goal_tactics"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "_goal_tactics"
     },
     "_goal_tactics": {
       "type": "PREC_LEFT",
@@ -6440,31 +6435,23 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "FIELD",
-            "name": "branch",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_ltac_expr"
-            }
+            "type": "SYMBOL",
+            "name": "goal_branch"
           },
           {
             "type": "SEQ",
             "members": [
               {
-                "type": "FIELD",
-                "name": "branch",
-                "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_ltac_expr"
-                    },
-                    {
-                      "type": "BLANK"
-                    }
-                  ]
-                }
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "goal_branch"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
               },
               {
                 "type": "REPEAT1",
@@ -6476,20 +6463,16 @@
                       "value": "|"
                     },
                     {
-                      "type": "FIELD",
-                      "name": "branch",
-                      "content": {
-                        "type": "CHOICE",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "_ltac_expr"
-                          },
-                          {
-                            "type": "BLANK"
-                          }
-                        ]
-                      }
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "goal_branch"
+                        },
+                        {
+                          "type": "BLANK"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -6498,6 +6481,36 @@
           }
         ]
       }
+    },
+    "goal_branch": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_ltac_expr"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "double_dot"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "double_dot"
+        }
+      ]
     },
     "tactic_invocation": {
       "type": "CHOICE",
@@ -8073,6 +8086,10 @@
       "pattern_application"
     ],
     [
+      "_atomic_term"
+    ],
+    [
+      "oriented_rewriter",
       "_atomic_term"
     ]
   ],

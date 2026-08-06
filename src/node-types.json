@@ -3344,6 +3344,45 @@
     }
   },
   {
+    "type": "goal_branch",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "double_dot",
+          "named": true
+        },
+        {
+          "type": "match_goal",
+          "named": true
+        },
+        {
+          "type": "parenthesized_tactic",
+          "named": true
+        },
+        {
+          "type": "tactic_branch",
+          "named": true
+        },
+        {
+          "type": "tactic_invocation",
+          "named": true
+        },
+        {
+          "type": "tactic_or",
+          "named": true
+        },
+        {
+          "type": "tactic_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "goal_pattern",
     "named": true,
     "fields": {
@@ -7886,42 +7925,15 @@
   {
     "type": "tactic_branch",
     "named": true,
-    "fields": {
-      "branch": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "match_goal",
-            "named": true
-          },
-          {
-            "type": "parenthesized_tactic",
-            "named": true
-          },
-          {
-            "type": "tactic_branch",
-            "named": true
-          },
-          {
-            "type": "tactic_invocation",
-            "named": true
-          },
-          {
-            "type": "tactic_or",
-            "named": true
-          },
-          {
-            "type": "tactic_sequence",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "goal_branch",
+          "named": true
+        },
         {
           "type": "match_goal",
           "named": true

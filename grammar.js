@@ -25,6 +25,9 @@ export default grammar({
     [$.binder],
     [$._pattern_atomic, $.pattern_application],
     [$._atomic_term], // For ImpParser Chapter (the -'- in the rule)
+    // For ".. t .." and "; [rewrite _ ..]" conflict
+    // A double_dot can only appear as ".. t .." or in a branch tactic, but they belongs to the branch, not the tactic
+    [$.oriented_rewriter, $._atomic_term],
   ],
 
   precedences: $ => [
@@ -1123,17 +1126,20 @@ export default grammar({
       "]"
     ),
 
-    _for_each_goal: $ => choice(
-      $._goal_tactics,
-    ),
+    _for_each_goal: $ => $._goal_tactics,
 
     _goal_tactics: $ => prec.left('tactic_sequence', choice(
-      field("branch", $._ltac_expr),
+      $.goal_branch,
       seq(
-        field("branch", optional($._ltac_expr)),
-        repeat1(seq("|", field("branch", optional($._ltac_expr))))
+        optional($.goal_branch),
+        repeat1(seq("|", optional($.goal_branch)))
       )
     )),
+
+    goal_branch: $ => choice(
+      seq($._ltac_expr, optional($.double_dot)),
+      $.double_dot
+    ),
 
     tactic_invocation: $ => choice(
       $.intros_tactic,
