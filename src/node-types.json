@@ -6686,11 +6686,6 @@
     }
   },
   {
-    "type": "number",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "of_type",
     "named": true,
     "fields": {},
@@ -9420,6 +9415,10 @@
   {
     "type": "no",
     "named": false
+  },
+  {
+    "type": "number",
+    "named": true
   },
   {
     "type": "only",

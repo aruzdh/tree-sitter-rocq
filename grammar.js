@@ -1378,10 +1378,36 @@ export default grammar({
       )
     )),
 
-    number: $ => choice(
-      /\d[\d_]*(\.[\d_]+)?([eE][+-]?\d[\d_]*)?/,
-      /0[xX][0-9a-fA-F][0-9a-fA-F_]*(\.[0-9a-fA-F_]+)?([pP][+-]?\d[\d_]*)?/
-    ),
+    number: $ => token(choice(
+      seq(
+        optional('-'),
+        /[0-9][0-9_]*/,
+        optional(seq('.', /[0-9_]+/)),
+        optional(seq(/[eE]/, optional(/[+-]/), /[0-9][0-9_]*/))
+      ),
+      seq(
+        optional('-'),
+        /0[xX][0-9a-fA-F][0-9a-fA-F_]*/,
+        optional(seq('.', /[0-9a-fA-F_]+/)),
+        optional(seq(/[pP]/, optional(/[+-]/), /[0-9][0-9_]*/))
+      )
+    )),
+
+    integer: $ => $.bigint,
+
+    bigint: $ => seq(optional("_"), $.bignat),
+
+    natural: $ => $.bignat,
+
+    bignat: $ => choice($.decnat, $.hexnat),
+
+    decnat: $ => seq($.digit, repeat(choice($.digit, "_"))),
+
+    digit: $ => /[0-9]/,
+
+    hexnat: $ => /0[xX][0-9a-fA-F][0-9a-fA-F_]*/,
+
+    hexdigit: $ => /[0-9a-fA-F]/,
 
     qualid: $ => token(seq(
       /[\p{L}_][\p{L}_\p{N}']*/u,
