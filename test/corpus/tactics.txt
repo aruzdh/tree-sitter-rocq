@@ -1311,22 +1311,24 @@ Qed.
               (ident))
             (eqn_clause
               (ident)))))
-      branch: (tactic_invocation
-        (generic_tactic
-          name: (ident)))
-      branch: (tactic_sequence
-        (tactic_sequence
-          (tactic_invocation
-            (generic_tactic
-              name: (ident)))
-          (tactic_invocation
-            (rewrite_tactic
-              (oriented_rewriter
-                (atomic_term_with_bindings
-                  (ident))))))
+      (goal_branch
         (tactic_invocation
           (generic_tactic
-            name: (ident))))))
+            name: (ident))))
+      (goal_branch
+        (tactic_sequence
+          (tactic_sequence
+            (tactic_invocation
+              (generic_tactic
+                name: (ident)))
+            (tactic_invocation
+              (rewrite_tactic
+                (oriented_rewriter
+                  (atomic_term_with_bindings
+                    (ident))))))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))))))
   (sentence
     (qed_command)))
 
@@ -1635,18 +1637,20 @@ Qed.
                   (tactic_invocation
                     (generic_tactic
                       name: (ident))))))))
-        branch: (tactic_invocation
-          (generic_tactic
-            name: (ident)
-            (generic_tactic_body
-              (atomic_term_with_bindings
-                (ident)))))
-        branch: (tactic_invocation
-          (generic_tactic
-            name: (ident)
-            (generic_tactic_body
-              (atomic_term_with_bindings
-                (ident))))))
+        (goal_branch
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident))))))
+        (goal_branch
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)
+              (generic_tactic_body
+                (atomic_term_with_bindings
+                  (ident)))))))
       (tactic_invocation
         (generic_tactic
           name: (ident)))))
@@ -1681,27 +1685,206 @@ Proof.
         (tactic_invocation
           (generic_tactic
             name: (ident))))
-      branch: (tactic_invocation
-        (generic_tactic
-          name: (ident)
-          (generic_tactic_body
-            (atomic_term_with_bindings
-              (parenthesized_term
-                (custom_operation
-                  (ident)
-                  (custom_operator)
-                  (ident))
-                (ident))))))
-      branch: (tactic_invocation
-        (generic_tactic
-          name: (ident)
-          (generic_tactic_body
-            (atomic_term_with_bindings
-              (parenthesized_term
-                (custom_operation
-                  (ident)
-                  (custom_operator)
-                  (ident))
-                (ident))))))))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (parenthesized_term
+                  (custom_operation
+                    (ident)
+                    (custom_operator)
+                    (ident))
+                  (ident)))))))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (parenthesized_term
+                  (custom_operation
+                    (ident)
+                    (custom_operator)
+                    (ident))
+                  (ident)))))))))
   (sentence
     (qed_command)))
+
+==================
+Empty Branch Tactic
+==================
+simpl; [].
+simpl; [||||||||||||||||||].
+---
+
+(source_file
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident))))))
+
+==================
+Branch Tactics with a double-dot in a Branch
+==================
+simpl; [simpl | assumption ..].
+simpl; [apply optimize_0plus_bexp_sound | ..].
+simpl; [assumption | ..].
+simpl; [assumption .. | ].
+simpl; [assumption .. ].
+simpl; [ subst; reflexivity .. | contradiction ].
+simpl; [ contradiction | .. | rewrite H ].
+simpl; [ rewrite H | .. | rewrite H ].
+simpl; [ .. ].
+simpl; [ .. | rewrite H ].
+simpl; [ | .. | ].
+---
+
+(source_file
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)))
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)
+            (generic_tactic_body
+              (atomic_term_with_bindings
+                (ident))))))
+      (goal_branch
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))
+      (goal_branch
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)))
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident)))
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_sequence
+          (tactic_invocation
+            (generic_tactic
+              name: (ident)))
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))
+        (double_dot))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (generic_tactic
+            name: (ident))))
+      (goal_branch
+        (double_dot))
+      (goal_branch
+        (tactic_invocation
+          (rewrite_tactic
+            (oriented_rewriter
+              (atomic_term_with_bindings
+                (ident))))))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (tactic_invocation
+          (rewrite_tactic
+            (oriented_rewriter
+              (atomic_term_with_bindings
+                (ident))))))
+      (goal_branch
+        (double_dot))
+      (goal_branch
+        (tactic_invocation
+          (rewrite_tactic
+            (oriented_rewriter
+              (atomic_term_with_bindings
+                (ident))))))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (double_dot))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (double_dot))
+      (goal_branch
+        (tactic_invocation
+          (rewrite_tactic
+            (oriented_rewriter
+              (atomic_term_with_bindings
+                (ident))))))))
+  (sentence
+    (tactic_branch
+      (tactic_invocation
+        (generic_tactic
+          name: (ident)))
+      (goal_branch
+        (double_dot)))))

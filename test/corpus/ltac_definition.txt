@@ -59,12 +59,14 @@ Ltac all_in_one H :=
               (generic_tactic_body
                 (atomic_term_with_bindings
                   (ident))))))
-        branch: (tactic_invocation
-          (generic_tactic
-            name: (ident)))
-        branch: (tactic_invocation
-          (generic_tactic
-            name: (ident)))))))
+        (goal_branch
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))
+        (goal_branch
+          (tactic_invocation
+            (generic_tactic
+              name: (ident))))))))
 
 ==================
 Ltac Definition with Sequence, Try, and Branch Tactics
@@ -108,17 +110,19 @@ Ltac permute_havoc st :=
                     (oriented_rewriter
                       (atomic_term_with_bindings
                         (ident)))))
-                branch: (tactic_invocation
-                  (generic_tactic
-                    name: (ident)
-                    (generic_tactic_body
-                      (atomic_term_with_bindings
-                        (ident)))))
-                branch: (tactic_sequence
-                  (tactic_invocation
-                    (intros_tactic
-                      (intro_pattern
-                        (ident))))
+                (goal_branch
                   (tactic_invocation
                     (generic_tactic
-                      name: (ident))))))))))))
+                      name: (ident)
+                      (generic_tactic_body
+                        (atomic_term_with_bindings
+                          (ident))))))
+                (goal_branch
+                  (tactic_sequence
+                    (tactic_invocation
+                      (intros_tactic
+                        (intro_pattern
+                          (ident))))
+                    (tactic_invocation
+                      (generic_tactic
+                        name: (ident)))))))))))))
