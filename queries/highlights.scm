@@ -56,8 +56,11 @@
   "Inlined" "KeepSingleton" "Language" "Library" "NoInline"
   "Optimize" "Output" "Recursive" "SafeImplicits" "Separete"
   "TestCompile" "TypeExpand" "Types"
-
 ] @keyword.directive
+
+[
+ "OCaml" "Haskell" "Scheme" "JSON"
+] @keyword.declaration.language
 
 (fail) @keyword.directive.fail
 
