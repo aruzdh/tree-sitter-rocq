@@ -98,7 +98,7 @@ export default grammar({
 
     attr_value: $ => choice(
       seq("=", $.string),
-      seq("=", $.qualid),
+      seq("=", $._name),
       seq(
         "(",
         $.attribute,

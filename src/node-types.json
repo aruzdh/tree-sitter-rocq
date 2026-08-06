@@ -1016,6 +1016,10 @@
           "named": true
         },
         {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "qualid",
           "named": true
         },

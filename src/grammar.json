@@ -225,7 +225,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "qualid"
+              "name": "_name"
             }
           ]
         },
