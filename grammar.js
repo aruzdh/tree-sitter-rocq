@@ -25,9 +25,6 @@ export default grammar({
     [$.binder],
     [$._pattern_atomic, $.pattern_application],
     [$._atomic_term], // For ImpParser Chapter (the -'- in the rule)
-    // For ".. t .." and "; [rewrite _ ..]" conflict
-    // A double_dot can only appear as ".. t .." or in a branch tactic, but they belongs to the branch, not the tactic
-    [$.oriented_rewriter, $._atomic_term],
   ],
 
   precedences: $ => [
@@ -123,16 +120,15 @@ export default grammar({
       ":",
     ),
 
-    goal_selector: $ => choice(
-      seq(
-        $.range_selector,
-        repeat(seq(",", $.range_selector))),
-      seq("[", $.ident, "]")
+    goal_selector: $ => seq(
+      $.range_selector,
+      repeat(seq(",", $.range_selector))
     ),
 
     range_selector: $ => choice(
-      $.number,
-      seq(field("start", $.number), "-", field("end", $.number))
+      $._natural,
+      seq("[", $._name, "]"),
+      seq(field("start", $._natural), "-", field("end", $._natural)),
     ),
 
     // ~~~~~~~~~~ Veracular command ~~~~~~~~~~~~~~~
@@ -256,7 +252,7 @@ export default grammar({
 
     hint_extern: $ => seq(
       "Extern",
-      field("cost", $.number),
+      field("cost", $._natural),
       field("pattern", optional($._term)),
       "=>",
       field("tactic", $._ltac_expr),
@@ -287,12 +283,12 @@ export default grammar({
       seq("Extraction", "KeepSingleton"),
       seq("Extraction", "AutoInline"),
       seq("Extraction", choice("Inline", "NoInline"), repeat1($._name)),
-      seq("Extraction", "Implicit", $._name, "[", repeat(choice($.ident, $.number)), "]"),
+      seq("Extraction", "Implicit", $._name, "[", repeat(choice($.ident, $.integer)), "]"),
       seq("Extraction", "SafeImplicits"),
       seq("Extraction", "AccessOpaque"),
       seq("Extraction", "Blacklist", repeat1($.ident)),
       seq("Extraction", "File", "Comment", $.string),
-      seq("Extraction", "Flag", $.number),
+      seq("Extraction", "Flag", $._natural),
       seq("Extraction", "TypeExpand"),
       seq("Extraction", "Output", "Directory", $.string),
     ),
@@ -309,7 +305,7 @@ export default grammar({
     language: $ => choice("OCaml", "Haskell", "Scheme", "JSON"),
 
     set_command: $ =>
-      seq("Set", $.setting_name, optional(choice($.number, $.string))),
+      seq("Set", $.setting_name, optional(choice($.integer, $.string))),
 
     unset_command: $ =>
       seq("Unset", $.setting_name),
@@ -473,7 +469,7 @@ export default grammar({
 
       optional(seq(
         "Inline",
-        optional(seq("(", $.number, ")"))
+        optional(seq("(", $._natural, ")"))
       )),
 
       choice(
@@ -631,11 +627,11 @@ export default grammar({
     ),
 
     level: $ => choice(
-      seq("level", $.number),
+      seq("level", $._natural),
       seq("next", "level"),
     ),
 
-    at_level_num: $ => seq("at", "level", $.number),
+    at_level_num: $ => seq("at", "level", $._natural),
 
     at_level: $ => seq("at", $.level),
 
@@ -778,7 +774,7 @@ export default grammar({
       $._term,
       repeat1(choice(
         seq("(", $.ident, ":=", $._term, ")"),
-        seq("(", $.number, ":=", $._term, ")"),
+        seq("(", $._natural, ":=", $._term, ")"),
         $._atomic_term
       ))
     )),
@@ -1023,7 +1019,7 @@ export default grammar({
     _pattern_atomic: $ => choice(
       $.wildcard,
       $._name,
-      $.number,
+      $.number, // TODO: change this by the correct "option"
       $.string,
       $.parenthesized_pattern,
       $.list_pattern,
@@ -1190,7 +1186,7 @@ export default grammar({
 
     oriented_rewriter: $ => seq(
       optional(choice("<-", "->")),
-      optional($.number),
+      optional($._natural),
       optional(choice("?", "!")),
       $.atomic_term_with_bindings
     ),
@@ -1332,7 +1328,7 @@ export default grammar({
       repeat1($._atomic_term),
       repeat1(seq(
         "(",
-        field("name", choice($.ident, $.number)),
+        field("name", choice($.ident, $._natural)),
         ":=",
         field("value", $._term),
         ")"
@@ -1393,15 +1389,15 @@ export default grammar({
       )
     )),
 
-    integer: $ => $.bigint,
+    integer: $ => $._bigint,
 
-    bigint: $ => seq(optional("_"), $.bignat),
+    _bigint: $ => seq(optional("-"), $._bignat),
 
-    natural: $ => $.bignat,
+    _natural: $ => $._bignat,
 
-    bignat: $ => choice($.decnat, $.hexnat),
+    _bignat: $ => choice($.decnat, $.hexnat),
 
-    decnat: $ => seq($.digit, repeat(choice($.digit, "_"))),
+    decnat: $ => /[0-9][0-9_]*/,
 
     digit: $ => /[0-9]/,
 
