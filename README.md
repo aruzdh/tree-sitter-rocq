@@ -69,9 +69,6 @@ to improve maintainability and readability. The most notable cases are shown bel
 
 - `Eval` command hasn't been implemented
 ([ref](https://rocq-prover.org/doc/V9.2.0/refman/proofs/writing-proofs/equality.html#rocq:cmd.Eval).).
-- `Extraction` and `Extract` haven't been
-tested
-([ref](https://rocq-prover.org/doc/V9.2.0/refman/addendum/extraction.html#rocq:cmd.Extraction)).
 
 ## Context & Motivation
 
