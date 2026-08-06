@@ -27,7 +27,7 @@ Qed.
     (selector
       (goal_selector
         (range_selector
-          (number))))
+          (decnat))))
     (tactic_invocation
       (generic_tactic
         name: (ident)
@@ -38,7 +38,7 @@ Qed.
     (selector
       (goal_selector
         (range_selector
-          (number))))
+          (decnat))))
     (tactic_invocation
       (generic_tactic
         name: (ident)
@@ -49,8 +49,8 @@ Qed.
     (selector
       (goal_selector
         (range_selector
-          start: (number)
-          end: (number))))
+          start: (decnat)
+          end: (decnat))))
     (tactic_invocation
       (generic_tactic
         name: (ident))))
@@ -58,12 +58,12 @@ Qed.
     (selector
       (goal_selector
         (range_selector
-          (number))
+          (decnat))
         (range_selector
-          (number))
+          (decnat))
         (range_selector
-          start: (number)
-          end: (number))))
+          start: (decnat)
+          end: (decnat))))
     (tactic_invocation
       (generic_tactic
         name: (ident))))

@@ -16,7 +16,7 @@ Qed.
     (selector
       (goal_selector
         (range_selector
-          (number))))
+          (decnat))))
     (tactic_invocation
       (generic_tactic
         name: (ident))))

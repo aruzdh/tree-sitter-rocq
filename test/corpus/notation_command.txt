@@ -39,7 +39,7 @@ Notation "x + y" := (plus x y)
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (associativity_modifier)))
         (notation_scope
@@ -87,7 +87,7 @@ Notation "x :: y" := (cons x y) (at level 60, right associativity, only parsing)
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (associativity_modifier))))))
   (sentence
@@ -104,7 +104,7 @@ Notation "x :: y" := (cons x y) (at level 60, right associativity, only parsing)
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (associativity_modifier))
           (syntax_modifier
@@ -134,12 +134,12 @@ Notation "'IF' c1 'THEN' c2 'ELSE' c3 'END'" := (If c1 c2 c3) (in custom com at 
             (custom_entry_modifier
               (ident)
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (singular_variable_modifier
               (ident)
               (level
-                (number)))))))))
+                (decnat)))))))))
 
 ==================
 Format and Variable Modifiers
@@ -188,7 +188,7 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
               (ident)
               (at_level
                 (level
-                  (number))))))))))
+                  (decnat))))))))))
 
 ==================
 Notations with recursive patterns involving binders (1)
@@ -227,7 +227,7 @@ Notation "'exists' x .. y , p" :=
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (singular_variable_modifier
               (ident)
@@ -309,7 +309,7 @@ Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (singular_variable_modifier
               (ident)
@@ -357,7 +357,7 @@ Notation "'mylet' f x .. y :=  t 'in' u":=
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (singular_variable_modifier
               (ident)

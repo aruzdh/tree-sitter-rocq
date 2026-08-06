@@ -129,6 +129,6 @@ Notation "'__' '!->' v" := (t_empty v)
           (syntax_modifier
             (level_modifier
               (at_level_num
-                (number))))
+                (decnat))))
           (syntax_modifier
             (associativity_modifier)))))))

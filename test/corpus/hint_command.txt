@@ -63,7 +63,7 @@ Hint Extern 5 (x = y) => reflexivity.
   (sentence
     (hint_command
       (hint_extern
-        cost: (number)
+        cost: (decnat)
         pattern: (parenthesized_term
           (comparison_operation
             (ident)
@@ -83,7 +83,7 @@ Hint Extern 10 => constructor : db1 db2.
   (sentence
     (hint_command
       (hint_extern
-        cost: (number)
+        cost: (decnat)
         pattern: (parenthesized_term
           (comparison_operation
             (ident)
@@ -100,7 +100,7 @@ Hint Extern 10 => constructor : db1 db2.
   (sentence
     (hint_command
       (hint_extern
-        cost: (number)
+        cost: (decnat)
         tactic: (tactic_invocation
           (generic_tactic
             name: (ident)))
