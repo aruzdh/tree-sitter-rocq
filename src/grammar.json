@@ -5828,7 +5828,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_pattern_atomic"
+          "name": "_pattern0"
         },
         {
           "type": "SYMBOL",
@@ -5844,32 +5844,16 @@
         }
       ]
     },
-    "_pattern_atomic": {
+    "_pattern0": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "SYMBOL",
-          "name": "wildcard"
-        },
         {
           "type": "SYMBOL",
           "name": "_qualid"
         },
         {
           "type": "SYMBOL",
-          "name": "number"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "parenthesized_pattern"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "list_pattern"
+          "name": "wildcard"
         },
         {
           "type": "SEQ",
@@ -5911,6 +5895,22 @@
               "value": "}"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_pattern"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_pattern"
         }
       ]
     },
@@ -6020,7 +6020,7 @@
             "type": "REPEAT1",
             "content": {
               "type": "SYMBOL",
-              "name": "_pattern_atomic"
+              "name": "_pattern0"
             }
           }
         ]
@@ -8345,7 +8345,7 @@
       "binder"
     ],
     [
-      "_pattern_atomic",
+      "_pattern0",
       "pattern_application"
     ],
     [

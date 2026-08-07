@@ -21,7 +21,7 @@ export default grammar({
     [$.generic_tactic_body],
     [$.match_pattern, $.list_literal],
     [$.binder],
-    [$._pattern_atomic, $.pattern_application],
+    [$._pattern0, $.pattern_application],
 
     [$.fixannot, $._qualid],
     [$.assert_tactic, $._qualid],
@@ -709,7 +709,7 @@ export default grammar({
     ),
 
     _term100: $ => choice(
-      $.term_cast, //FIX: PENDING!!
+      $.term_cast,
       $._term99,
     ),
 
@@ -1043,21 +1043,23 @@ export default grammar({
     // https://rocq-prover.org/doc/V9.2.0/refman/language/core/variants.html#grammar-token-term_match
 
     _pattern: $ => choice(
-      $._pattern_atomic,
+      $._pattern0,
       $.pattern_application,
       $.infix_pattern,
 
       $.custom_notation_block,
     ),
 
-    _pattern_atomic: $ => choice(
-      $.wildcard,
+    _pattern0: $ => choice(
       $._qualid,
+      $.wildcard,
+      seq("{", "|", repeat(seq($._qualid, ":=", $._pattern)), "|", "}"),
+      $.parenthesized_pattern,
       $.number,
       $.string,
-      $.parenthesized_pattern,
-      $.list_pattern,
-      seq("{", "|", repeat(seq($._qualid, ":=", $._pattern)), "|", "}"),
+
+      // Custom
+      $.list_pattern
     ),
 
     parenthesized_pattern: $ => seq(
@@ -1078,7 +1080,7 @@ export default grammar({
 
     pattern_application: $ => prec.left('application', seq(
       field("constructor", $._qualid),
-      repeat1($._pattern_atomic)
+      repeat1($._pattern0)
     )),
 
     infix_pattern: $ => prec.right('list_ops', seq(
