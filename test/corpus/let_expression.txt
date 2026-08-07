@@ -134,9 +134,11 @@ Check let 'exist _ x p := t in x.
       (let_expression
         pattern: (destructuring_pattern
           (pattern_application
-            constructor: (ident)
-            (wildcard)
-            (ident)
+            (pattern_application
+              (pattern_application
+                (ident)
+                (wildcard))
+              (ident))
             (ident)))
         value: (ident)
         body: (ident)))))

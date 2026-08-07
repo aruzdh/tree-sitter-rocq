@@ -60,7 +60,7 @@ Fixpoint mult (n m : nat) : nat :=
         (match_case
           (pattern_option
             pattern: (pattern_application
-              constructor: (ident)
+              (ident)
               (ident)))
           body: (application
             (application

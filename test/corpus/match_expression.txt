@@ -24,7 +24,7 @@ end.
         (match_case
           (pattern_option
             pattern: (pattern_application
-              constructor: (ident)
+              (ident)
               (wildcard))
             pattern: (wildcard))
           body: (ident))
@@ -32,7 +32,7 @@ end.
           (pattern_option
             pattern: (wildcard)
             pattern: (pattern_application
-              constructor: (ident)
+              (ident)
               (wildcard)))
           body: (ident))))))
 

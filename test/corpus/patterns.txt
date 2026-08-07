@@ -101,12 +101,14 @@ end.
           (pattern_option
             pattern: (parenthesized_pattern
               (pattern_application
-                constructor: (ident)
-                (parenthesized_pattern
-                  (pattern_application
-                    constructor: (ident)
-                    (ident)
-                    (ident)))
+                (pattern_application
+                  (ident)
+                  (parenthesized_pattern
+                    (pattern_application
+                      (pattern_application
+                        (ident)
+                        (ident))
+                      (ident))))
                 (ident))
               (ident)))
           body: (ident))
