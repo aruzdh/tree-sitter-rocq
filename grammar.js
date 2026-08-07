@@ -98,7 +98,7 @@ export default grammar({
 
     attr_value: $ => choice(
       seq("=", $.string),
-      seq("=", $._name),
+      seq("=", $._qualid),
       seq(
         "(",
         $.attribute,
@@ -127,7 +127,7 @@ export default grammar({
 
     range_selector: $ => choice(
       $._natural,
-      seq("[", $._name, "]"),
+      seq("[", $._qualid, "]"),
       seq(field("start", $._natural), "-", field("end", $._natural)),
     ),
 
@@ -176,7 +176,7 @@ export default grammar({
       ),
 
     require_command: $ => seq(
-      optional(seq("From", field("dirpath", $._name))),
+      optional(seq("From", field("dirpath", $._qualid))),
       "Require",
       optional(seq(
         choice("Import", "Export"),
@@ -202,13 +202,13 @@ export default grammar({
     import_categories: $ => seq(
       optional($.neg_selection),
       "(",
-      field("category", $._name),
-      repeat(seq(",", field("category", $._name))),
+      field("category", $._qualid),
+      repeat(seq(",", field("category", $._qualid))),
       ")"
     ),
 
     filtered_import: $ => seq(
-      field("module", $._name),
+      field("module", $._qualid),
       optional(seq(
         "(",
         $.filtered_import_item,
@@ -218,7 +218,7 @@ export default grammar({
     ),
 
     filtered_import_item: $ => seq(
-      field("name", $._name),
+      field("name", $._qualid),
       optional($.import_wildcard)
     ),
 
@@ -246,7 +246,7 @@ export default grammar({
         $.hint_extern,
         seq(
           choice("Resolve", "Rewrite", "Constructors", "Unfold", "Immediate", "Transparent", "Opaque"),
-          repeat1(field("name", $._name)),
+          repeat1(field("name", $._qualid)),
           optional(seq(":", field("database", $.ident))))
       )),
 
@@ -270,20 +270,20 @@ export default grammar({
     ),
 
     extraction_command: $ => choice(
-      seq("Extraction", $._name),
-      seq("Recursive", "Extraction", repeat1($._name)),
-      seq("Extraction", $.string, repeat1($._name)),
+      seq("Extraction", $._qualid),
+      seq("Recursive", "Extraction", repeat1($._qualid)),
+      seq("Extraction", $.string, repeat1($._qualid)),
       seq("Extraction", "Library", $.ident),
       seq("Recursive", "Extraction", "Library", $.ident),
-      seq("Separete", "Extraction", repeat1($._name)),
-      seq("Extraction", "TestCompile", repeat1($._name)),
+      seq("Separete", "Extraction", repeat1($._qualid)),
+      seq("Extraction", "TestCompile", repeat1($._qualid)),
       seq("Extraction", "Language", $.language),
       seq("Extraction", "Optimize"),
       seq("Extraction", "Conservative", "Types"),
       seq("Extraction", "KeepSingleton"),
       seq("Extraction", "AutoInline"),
-      seq("Extraction", choice("Inline", "NoInline"), repeat1($._name)),
-      seq("Extraction", "Implicit", $._name, "[", repeat(choice($.ident, $.integer)), "]"),
+      seq("Extraction", choice("Inline", "NoInline"), repeat1($._qualid)),
+      seq("Extraction", "Implicit", $._qualid, "[", repeat(choice($.ident, $.integer)), "]"),
       seq("Extraction", "SafeImplicits"),
       seq("Extraction", "AccessOpaque"),
       seq("Extraction", "Blacklist", repeat1($.ident)),
@@ -294,12 +294,12 @@ export default grammar({
     ),
 
     extract_command: $ => choice(
-      seq("Extract", "Constant", $._name, repeat($.string), "=>", choice($.ident, $.string)),
-      seq("Extract", "Inlined", "Constant", $._name, "=>", choice($.ident, $.string)),
-      seq("Extract", "Inductive", $._name, "=>", choice($.ident, $.string),
+      seq("Extract", "Constant", $._qualid, repeat($.string), "=>", choice($.ident, $.string)),
+      seq("Extract", "Inlined", "Constant", $._qualid, "=>", choice($.ident, $.string)),
+      seq("Extract", "Inductive", $._qualid, "=>", choice($.ident, $.string),
         "[", repeat(choice($.ident, $.string)), "]", optional($.string)),
-      seq("Extract", "Foreign", "Constant", $._name, "=>", $.string),
-      seq("Extract", "Callback", optional($.string), $._name),
+      seq("Extract", "Foreign", "Constant", $._qualid, "=>", $.string),
+      seq("Extract", "Callback", optional($.string), $._qualid),
     ),
 
     language: $ => choice("OCaml", "Haskell", "Scheme", "JSON"),
@@ -311,13 +311,13 @@ export default grammar({
       seq("Unset", $.setting_name),
 
     add_command: $ =>
-      seq("Add", $.setting_name, repeat1(choice($._name, $.string))),
+      seq("Add", $.setting_name, repeat1(choice($._qualid, $.string))),
 
     remove_command: $ =>
-      seq("Remove", $.setting_name, repeat1(choice($._name, $.string))),
+      seq("Remove", $.setting_name, repeat1(choice($._qualid, $.string))),
 
     test_command: $ =>
-      seq("Test", $.setting_name, optional(seq("for", repeat1(choice($._name, $.string))))),
+      seq("Test", $.setting_name, optional(seq("for", repeat1(choice($._qualid, $.string))))),
 
     setting_name: $ => prec.right(repeat1($.ident)),
 
@@ -568,7 +568,7 @@ export default grammar({
     custom_entry_modifier: $ => seq(
       "in",
       "custom",
-      $._name,
+      $._qualid,
       optional($.at_level_num)
     ),
 
@@ -717,8 +717,8 @@ export default grammar({
       optional("'"),
       choice(
         $.ident,
-        $.qualid,
-        seq("@", $._name),
+        $.dotted_qualid,
+        seq("@", $._qualid),
         $.scoped_term,
         $.number,
         $.string,
@@ -1018,12 +1018,12 @@ export default grammar({
 
     _pattern_atomic: $ => choice(
       $.wildcard,
-      $._name,
+      $._qualid,
       $.number, // TODO: change this by the correct "option"
       $.string,
       $.parenthesized_pattern,
       $.list_pattern,
-      seq("{", "|", repeat(seq($._name, ":=", $._pattern)), "|", "}"),
+      seq("{", "|", repeat(seq($._qualid, ":=", $._pattern)), "|", "}"),
     ),
 
     parenthesized_pattern: $ => seq(
@@ -1043,7 +1043,7 @@ export default grammar({
     ),
 
     pattern_application: $ => prec.left('application', seq(
-      field("constructor", $._name),
+      field("constructor", $._qualid),
       repeat1($._pattern_atomic)
     )),
 
@@ -1060,7 +1060,7 @@ export default grammar({
     // ~~~~~~~~~~~~~~~~ Binders and Type ~~~~~~~~~~~~~~~~ 
     type: $ => $._term,
 
-    _binder_name: $ => choice($.wildcard, $._name),
+    _binder_name: $ => choice($.wildcard, $._qualid),
 
     binder: $ => choice(
       $._binder_name,
@@ -1345,9 +1345,9 @@ export default grammar({
 
     // ~~~~~~~~~~~~~ Lexical tokens ~~~~~~~~~~~~~~~
 
-    _name: $ => choice(
+    _qualid: $ => choice(
       $.ident,
-      $.qualid
+      $.dotted_qualid
     ),
 
     comment: $ => seq(
@@ -1405,13 +1405,13 @@ export default grammar({
 
     hexdigit: $ => /[0-9a-fA-F]/,
 
-    qualid: $ => token(seq(
+    dotted_qualid: $ => token(seq(
       /[\p{L}_][\p{L}_\p{N}']*/u,
       repeat(seq('.', /[\p{L}_][\p{L}_\p{N}']*/u))
     )),
 
     reference: $ => choice(
-      $._name,
+      $._qualid,
       seq($.string, optional(seq("%", $.ident)))
     ),
 

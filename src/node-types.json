@@ -13,11 +13,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -69,6 +69,10 @@
         },
         {
           "type": "custom_operation",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
           "named": true
         },
         {
@@ -133,10 +137,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -199,6 +199,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -260,10 +264,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -327,6 +327,10 @@
         },
         {
           "type": "decnat",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
           "named": true
         },
         {
@@ -395,10 +399,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -492,6 +492,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -553,10 +557,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -622,6 +622,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -683,10 +687,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -773,6 +773,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -834,10 +838,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -961,6 +961,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -982,10 +986,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -1016,11 +1016,11 @@
           "named": true
         },
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -1113,6 +1113,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -1178,10 +1182,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -1283,6 +1283,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -1347,10 +1351,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -1378,6 +1378,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -1399,10 +1403,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -1519,6 +1519,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -1580,10 +1584,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -1717,6 +1717,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -1778,10 +1782,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -1844,6 +1844,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -1905,10 +1909,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -2034,11 +2034,11 @@
           "named": true
         },
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         }
       ]
@@ -2112,6 +2112,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -2173,10 +2177,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -2293,6 +2293,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -2357,10 +2361,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -2411,6 +2411,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -2432,10 +2436,6 @@
         },
         {
           "type": "pattern_application",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -2520,6 +2520,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -2581,10 +2585,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -2714,11 +2714,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -2741,6 +2741,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "hexnat",
           "named": true
         },
@@ -2754,10 +2758,6 @@
         },
         {
           "type": "language",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -2776,11 +2776,11 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -2806,11 +2806,11 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -2876,6 +2876,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -2937,10 +2941,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -3051,6 +3051,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -3112,10 +3116,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -3186,6 +3186,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -3247,10 +3251,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -3474,11 +3474,11 @@
         "required": false,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -3568,6 +3568,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -3629,10 +3633,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -3749,6 +3749,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -3810,10 +3814,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -3879,6 +3879,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -3940,10 +3944,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -4009,6 +4009,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -4070,10 +4074,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -4159,6 +4159,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -4220,10 +4224,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -4289,6 +4289,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -4353,10 +4357,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -4414,11 +4414,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -4441,11 +4441,11 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -4562,6 +4562,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -4583,10 +4587,6 @@
         },
         {
           "type": "pattern_application",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -4698,6 +4698,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -4763,10 +4767,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -4847,6 +4847,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -4911,10 +4915,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -4937,11 +4937,11 @@
         "required": false,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           },
           {
@@ -5009,6 +5009,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -5073,10 +5077,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -5131,11 +5131,11 @@
       "required": false,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -5220,6 +5220,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -5284,10 +5288,6 @@
           "named": true
         },
         {
-          "type": "qualid",
-          "named": true
-        },
-        {
           "type": "quantifier_term",
           "named": true
         },
@@ -5319,6 +5319,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -5340,10 +5344,6 @@
         },
         {
           "type": "pattern_application",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -5398,6 +5398,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -5459,10 +5463,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -5525,6 +5525,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -5586,10 +5590,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -5652,6 +5652,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -5713,10 +5717,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -5843,6 +5843,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -5904,10 +5908,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -5985,6 +5985,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -6050,10 +6054,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -6189,6 +6189,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -6250,10 +6254,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -6331,6 +6331,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -6392,10 +6396,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -6463,6 +6463,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -6524,10 +6528,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -6613,6 +6613,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -6674,10 +6678,6 @@
           },
           {
             "type": "parenthesized_term",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -6841,6 +6841,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -6862,10 +6866,6 @@
         },
         {
           "type": "pattern_application",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -6955,6 +6955,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -7019,10 +7023,6 @@
           "named": true
         },
         {
-          "type": "qualid",
-          "named": true
-        },
-        {
           "type": "quantifier_term",
           "named": true
         },
@@ -7055,11 +7055,11 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -7071,6 +7071,10 @@
       "types": [
         {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
           "named": true
         },
         {
@@ -7095,10 +7099,6 @@
         },
         {
           "type": "pattern_application",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -7129,6 +7129,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "ident",
             "named": true
           },
@@ -7150,10 +7154,6 @@
           },
           {
             "type": "pattern_application",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -7319,15 +7319,15 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "hexnat",
           "named": true
         },
         {
           "type": "ident",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         }
       ]
@@ -7343,6 +7343,10 @@
       "types": [
         {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
           "named": true
         },
         {
@@ -7374,10 +7378,6 @@
           "named": true
         },
         {
-          "type": "qualid",
-          "named": true
-        },
-        {
           "type": "recursive_notation_term",
           "named": true
         },
@@ -7401,11 +7401,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -7424,11 +7424,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -7451,11 +7451,11 @@
         "required": false,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           }
         ]
@@ -7553,6 +7553,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -7574,10 +7578,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -8180,11 +8180,11 @@
         "required": true,
         "types": [
           {
-            "type": "ident",
+            "type": "dotted_qualid",
             "named": true
           },
           {
-            "type": "qualid",
+            "type": "ident",
             "named": true
           },
           {
@@ -8212,6 +8212,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "ident",
             "named": true
           },
@@ -8233,10 +8237,6 @@
           },
           {
             "type": "pattern_application",
-            "named": true
-          },
-          {
-            "type": "qualid",
             "named": true
           },
           {
@@ -8312,6 +8312,10 @@
             "named": true
           },
           {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
             "type": "fix_expression",
             "named": true
           },
@@ -8376,10 +8380,6 @@
             "named": true
           },
           {
-            "type": "qualid",
-            "named": true
-          },
-          {
             "type": "quantifier_term",
             "named": true
           },
@@ -8408,11 +8408,11 @@
       "required": true,
       "types": [
         {
-          "type": "ident",
+          "type": "dotted_qualid",
           "named": true
         },
         {
-          "type": "qualid",
+          "type": "ident",
           "named": true
         },
         {
@@ -8490,6 +8490,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "fix_expression",
           "named": true
         },
@@ -8554,10 +8558,6 @@
           "named": true
         },
         {
-          "type": "qualid",
-          "named": true
-        },
-        {
           "type": "quantifier_term",
           "named": true
         },
@@ -8604,6 +8604,10 @@
           "named": true
         },
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
@@ -8625,10 +8629,6 @@
         },
         {
           "type": "parenthesized_term",
-          "named": true
-        },
-        {
-          "type": "qualid",
           "named": true
         },
         {
@@ -9376,6 +9376,10 @@
     "named": true
   },
   {
+    "type": "dotted_qualid",
+    "named": true
+  },
+  {
     "type": "double_dot",
     "named": true
   },
@@ -9529,10 +9533,6 @@
   },
   {
     "type": "qed_command",
-    "named": true
-  },
-  {
-    "type": "qualid",
     "named": true
   },
   {
