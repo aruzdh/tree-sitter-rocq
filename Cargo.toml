@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-rocq"
 description = "Rocq (formerly Coq) grammar for tree-sitter"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Aru Zdh <aruzdh@gmail.com>"]
 license = "MIT"
 readme = "README.md"

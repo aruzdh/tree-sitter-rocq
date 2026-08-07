@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-rocq
 HOMEPAGE_URL := https://github.com/tree-sitter/tree-sitter-rocq
-VERSION := 0.1.0
+VERSION := 0.2.0
 
 # repository
 SRC_DIR := src
