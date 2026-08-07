@@ -61,11 +61,12 @@ to improve maintainability and readability. The most notable cases are shown bel
 | **`in_clause`** | | ● | | Variant of [occurrences](https://rocq-prover.org/doc/V9.2.0/refman/proof-engine/tactics.html#grammar-token-occurrences). |
 | **`as_clause`** | | ● | | Variant of [as_ipat](https://rocq-prover.org/doc/V9.2.0/refman/proof-engine/tactics.html#grammar-token-as_ipat). |
 | **`intro_pattern`** | | ● | | Variant of [intropattern](https://rocq-prover.org/doc/V9.2.0/refman/proof-engine/tactics.html). |
-| **`pattern`** | | ● | | Variant of [pattern](https://rocq-prover.org/doc/V9.2.0/refman/language/core/variants.html#definition-by-cases-match). |
-| **`term`** | | ● | | Variant of [term](https://rocq-prover.org/doc/V9.2.0/refman/language/core/basic.html#grammar-token-term). |
+| **`pattern`** | | ● | | [ref](https://rocq-prover.org/doc/V9.2.0/refman/language/core/variants.html#definition-by-cases-match). |
+| **`term`** | | ● | | [ref](https://rocq-prover.org/doc/V9.2.0/refman/language/core/basic.html#grammar-token-term). |
 | **Tactics, Tacticals, and Ltac** | | | ● | Uses a generalized tactic rule; tacticals support a minimal set (`repeat`, `try`); ltac is defined in terms of `_ltac_expr` rule ([ref](https://rocq-prover.org/doc/V9.2.0/refman/proof-engine/ltac.html#grammar-token-ltac_expr)). |
 | **`Hint`** | | | ● | Uses a generalized version of the [official rule](https://rocq-prover.org/doc/V9.2.0/refman/proofs/automatic-tactics/auto.html). |
 | **`evaluation_command`** | | | ● | Uses a unified rule to cover `Check`, `Compute`, `Print`, `Search`, and `Locate`. |
+| **`_qualid_annotated`** | ● | | | Missing `univ_annot` ([ref](https://rocq-prover.org/doc/V9.2.0/refman/language/core/basic.html#grammar-token-qualid_annotated)). |
 
 - `Eval` command hasn't been implemented
 ([ref](https://rocq-prover.org/doc/V9.2.0/refman/proofs/writing-proofs/equality.html#rocq:cmd.Eval).).
