@@ -3,6 +3,7 @@ Remove Command (1)
 ==================
 Remove Search Blacklist "Coq.Init".
 ---
+
 (source_file
   (sentence
     (remove_command
@@ -16,6 +17,7 @@ Remove Command (2)
 ==================
 Remove Search Blacklist MyCustomModule Top.Submodule.Hidden Core.
 ---
+
 (source_file
   (sentence
     (remove_command
@@ -23,5 +25,5 @@ Remove Search Blacklist MyCustomModule Top.Submodule.Hidden Core.
         (ident)
         (ident)
         (ident))
-      (qualid)
+      (dotted_qualid)
       (ident))))

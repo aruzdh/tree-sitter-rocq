@@ -81,7 +81,7 @@ Attribute with Qualified Identifier Value
       (attribute
         (ident)
         (attr_value
-          (qualid))))
+          (dotted_qualid))))
     (definition_command
       (ident_decl
         (ident))

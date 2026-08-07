@@ -25,7 +25,7 @@ Check Nat.List.app.
 (source_file
   (sentence
     (evaluation_command
-      (qualid))))
+      (dotted_qualid))))
 
 ==================
 Name in Require Statement (1)
@@ -38,7 +38,7 @@ From Stdlib Require Import Strings.Ascii.
     (require_command
       dirpath: (ident)
       (filtered_import
-        module: (qualid)))))
+        module: (dotted_qualid)))))
 
 ==================
 Name in Require Statement (2)
@@ -49,9 +49,9 @@ From Chapter1.Structures Require Import Strings.Ascii.
 (source_file
   (sentence
     (require_command
-      dirpath: (qualid)
+      dirpath: (dotted_qualid)
       (filtered_import
-        module: (qualid)))))
+        module: (dotted_qualid)))))
 
 ==================
 Metavariable in Evaluation Command

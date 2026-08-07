@@ -11,7 +11,7 @@ Import -(coercions) Coq.Lists.List.
         (neg_selection)
         category: (ident))
       (filtered_import
-        module: (qualid)))))
+        module: (dotted_qualid)))))
 
 ==================
 Modern Import with Multiple Categories
@@ -60,7 +60,7 @@ Import M1 (f, g) M2.M3 (h(..)).
         (filtered_import_item
           name: (ident)))
       (filtered_import
-        module: (qualid)
+        module: (dotted_qualid)
         (filtered_import_item
           name: (ident)
           (import_wildcard))))))
@@ -79,7 +79,7 @@ Import -(coercions, hints) Top.M1 (x, y(..)) M2.
         category: (ident)
         category: (ident))
       (filtered_import
-        module: (qualid)
+        module: (dotted_qualid)
         (filtered_import_item
           name: (ident))
         (filtered_import_item
