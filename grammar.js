@@ -18,19 +18,15 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    // [$.fixannot, $._atomic_term],
-    // [$.plural_variable_modifier, $._atomic_term],
     [$.generic_tactic_body],
     [$.match_pattern, $.list_literal],
     [$.binder],
     [$._pattern_atomic, $.pattern_application],
-    // [$._atomic_term],
-
 
     [$.fixannot, $._qualid],
-    [$.plural_variable_modifier, $._qualid],
-    [$._one_type, $._term10],
-    [$._term99, $.application]
+    [$.assert_tactic, $._qualid],
+
+    [$._term100, $.term_cast],
   ],
 
   precedences: $ => [
@@ -51,6 +47,7 @@ export default grammar({
       'arrow_term',
       'quantifier_term',
       'binder',
+      'type'
     ],
     [
       'tactic_match',
@@ -259,7 +256,7 @@ export default grammar({
     hint_extern: $ => seq(
       "Extern",
       field("cost", $._natural),
-      field("pattern", optional($._term)),
+      field("pattern", optional($._one_pattern)),
       "=>",
       field("tactic", $._ltac_expr),
 
@@ -269,10 +266,11 @@ export default grammar({
       ))
     ),
 
+    _one_pattern: $ => $._one_term,
+
     evaluation_command: $ => seq(
       choice("Check", "Compute", "Print", "Search", "Locate"),
       $._term,
-      optional(seq(":", $.type))
     ),
 
     extraction_command: $ => choice(
@@ -413,9 +411,8 @@ export default grammar({
 
     fixannot: $ => choice(
       seq("{", "struct", $.ident, "}"),
-      seq("{", "wf", $._term, $.ident, "}"),
+      seq("{", "wf", $._one_term, $.ident, "}"),
       seq("{", "measure", $._one_term, optional($.ident), optional($._one_term), "}"),
-      // FIX: PENDING!!!!!!! $._one_term
     ),
 
     decl_notations: $ => seq(
@@ -541,7 +538,7 @@ export default grammar({
     notation_declaration: $ => seq(
       field("notation", $.string),
       ":=",
-      field("definition", $._term),
+      field("definition", $._one_term),
       optional($.syntax_modifier_list),
       optional($.notation_scope)
     ),
@@ -708,30 +705,19 @@ export default grammar({
     // ~~~~~~~~~~~~~~~ Terms ~~~~~~~~~~~~~~~~~~
 
     _term: $ => choice(
-      // FIX: PENDING!
-      $.arrow_term,
-      $._infix_operation,
-      $.imp_evaluation_operation,
-
       $._term100,
     ),
 
-    // _atomic_term: $ => seq(
-    // For ImpParser Chapter (the -'- in the rule)
-    // TODO: paste it in term0, as a sequence
-    //   optional("'"),
-    // ),
-
     _term100: $ => choice(
-      // $.term_cast, FIX: PENDING!!
+      $.term_cast, //FIX: PENDING!!
       $._term99,
     ),
 
-    term_cast: $ => seq(
-      $._term,
+    term_cast: $ => prec.right('type', seq(
+      $._term99,
       choice(":", "<:", "<<:", ":>"),
       $.type
-    ),
+    )),
 
     _term99: $ => choice(
       $._term10,
@@ -746,9 +732,9 @@ export default grammar({
       $.if_expression,
       $._one_term,
 
-      // $.arrow_term,
-      // $._infix_operation,
-      // $.imp_evaluation_operation,
+      $.arrow_term,
+      $._infix_operation,
+      $.imp_evaluation_operation,
     ),
 
     _one_term: $ => choice(
@@ -761,19 +747,23 @@ export default grammar({
       $._term0,
     ),
 
-    _term0: $ => choice(
-      $._qualid_annotated,
-      $.number,
-      $.string,
-      $.match_expression,
-      $.parenthesized_term,
-      $.metavariable,
+    _term0: $ => seq(
+      optional("'"), // For ImpParser Chapter
+      choice(
+        $._qualid_annotated,
+        $.number,
+        $.string,
+        $.match_expression,
+        $.parenthesized_term,
+        $.metavariable,
 
-      // Custom
-      $.list_literal,
-      $.recursive_notation_term,
-      $.custom_notation_block,
+        // Custom
+        $.list_literal,
+        $.recursive_notation_term,
+        $.custom_notation_block,
+      ),
     ),
+
 
     double_dot: $ => "..",
 
@@ -814,13 +804,14 @@ export default grammar({
     )),
 
     application: $ => prec.left('application', seq(
-      $._term,
-      repeat1(choice(
-        seq("(", $.ident, ":=", $._term, ")"),
-        seq("(", $._natural, ":=", $._term, ")"),
-        $._term1,
-      ))
+      $._term, repeat1($._arg)
     )),
+
+    _arg: $ => choice(
+      seq("(", $.ident, ":=", $._term, ")"),
+      seq("(", $._natural, ":=", $._term, ")"),
+      $._term1,
+    ),
 
     lambda_function: $ => prec('binder', seq(
       "fun",
@@ -833,7 +824,7 @@ export default grammar({
       choice("forall", "exists"),
       $.open_binders,
       ",",
-      alias($._term, $.type)
+      $.type
     )),
 
     let_expression: $ => choice(
@@ -845,7 +836,7 @@ export default grammar({
     _let_expression_term: $ => prec.right('binder',
       seq(
         "let",
-        field("name", $._binder_name),
+        field("name", $._name),
         repeat($.binder),
         optional(seq(":", $.type)),
         ":=",
@@ -879,7 +870,7 @@ export default grammar({
 
     let_expression_name_list: $ => seq(
       "(",
-      optional(seq($._binder_name, repeat(seq(",", $._binder_name)))),
+      optional(seq($._name, repeat(seq(",", $._name)))),
       ")"
     ),
 
@@ -887,7 +878,7 @@ export default grammar({
       "match",
       $.case_item,
       repeat(seq(",", $.case_item)),
-      optional(seq("return", $._term)),
+      optional($.term_return_clause),
       "with",
       optional(choice(
         seq(
@@ -900,7 +891,7 @@ export default grammar({
     ),
 
     case_item: $ => seq(
-      $._term,
+      $._term100,
       optional($.term_as_clause),
       optional($.term_in_pattern),
     ),
@@ -949,11 +940,11 @@ export default grammar({
 
     // ~~~~~~~~~~ Term Clauses
     term_as_clause: $ => seq(
-      "as", field("as_name", $._binder_name)
+      "as", field("as_name", $._name)
     ),
 
     term_return_clause: $ => seq(
-      "return", field("as_return", $._term)
+      "return", field("as_return", $._term100)
     ),
 
     term_in_pattern: $ => prec.left(seq(
@@ -1062,7 +1053,7 @@ export default grammar({
     _pattern_atomic: $ => choice(
       $.wildcard,
       $._qualid,
-      $.number, // TODO: change this by the correct "option"
+      $.number,
       $.string,
       $.parenthesized_pattern,
       $.list_pattern,
@@ -1101,22 +1092,22 @@ export default grammar({
     )),
 
     // ~~~~~~~~~~~~~~~~ Binders and Type ~~~~~~~~~~~~~~~~ 
-    type: $ => $._term,
+    type: $ => prec.right($._term),
 
-    _binder_name: $ => choice($.wildcard, $._qualid),
+    _name: $ => choice($.wildcard, $._qualid),
 
     binder: $ => choice(
-      $._binder_name,
-      seq("(", repeat($._binder_name), ":", $.type, ")"),
-      seq("(", $._binder_name, optional(seq(":", $.type)), ":=", $._term, ")"),
+      $._name,
+      seq("(", repeat($._name), ":", $.type, ")"),
+      seq("(", $._name, optional(seq(":", $.type)), ":=", $._term, ")"),
       $.implicit_binders,
-      seq("(", $._binder_name, ":", $.type, "|", $._term, ")"),
+      seq("(", $._name, ":", $.type, "|", $._term, ")"),
       seq($.destructuring_pattern),
     ),
 
     implicit_binders: $ => choice(
-      seq("{", repeat1($._binder_name), optional(seq(":", $.type)), "}"),
-      seq("[", repeat1($._binder_name), optional(seq(":", $.type)), "]")
+      seq("{", repeat1($._name), optional(seq(":", $.type)), "}"),
+      seq("[", repeat1($._name), optional(seq(":", $.type)), "]")
     ),
 
     open_binders: $ => seq(
@@ -1212,9 +1203,7 @@ export default grammar({
           ")"
         ),
         seq(
-          // $._one_type, FIX: PENDING!!!!
           $._one_type,
-          // $._one_term,
           optional($.as_clause),
           optional($.by_clause)
         )
@@ -1373,7 +1362,6 @@ export default grammar({
 
     bindings: $ => prec.right('binder', choice(
       repeat1($._one_term),
-      //repeat1($._one_term), FIX: PENDING!!!!!!
       repeat1(seq(
         "(",
         field("name", choice($.ident, $._natural)),
@@ -1388,8 +1376,6 @@ export default grammar({
     using_clause: $ => prec.right(seq(
       "using",
       $._one_term,
-      // $._one_term FIX: PENDING!!!!!!
-      // below too
       repeat(seq(",", $._one_term))
     )),
 
