@@ -204,7 +204,6 @@
 (type (arrow_term . (ident) @type))
 (application (_) . (ident) @type)
 (arrow_term (ident) @type)
-(evaluation_command (type (ident) @type))
 
 (match_case (pattern_option pattern: (ident) @constructor))
 
