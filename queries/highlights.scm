@@ -2,6 +2,8 @@
 (dotted_qualid (#set! "priority" 50) ) @variable.qualid
 (metavariable) @variable.metavariable
 (number) @number
+(decnat) @number
+(hexnat) @number
 (string) @string
 (wildcard) @variable.builtin
 (comment) @comment
