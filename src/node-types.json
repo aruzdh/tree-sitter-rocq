@@ -291,7 +291,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "additive_operation",
@@ -452,10 +452,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -581,10 +577,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -730,7 +722,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "additive_operation",
@@ -1242,10 +1234,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -2253,10 +2241,6 @@
         "required": false,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -2836,10 +2820,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -3145,10 +3125,6 @@
         "multiple": true,
         "required": false,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -3528,10 +3504,6 @@
         "required": false,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -3709,10 +3681,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -3839,10 +3807,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -3968,10 +3932,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -4119,10 +4079,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -4248,10 +4204,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -4807,10 +4759,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -4968,10 +4916,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -5803,10 +5747,6 @@
         "required": true,
         "types": [
           {
-            "type": "'",
-            "named": false
-          },
-          {
             "type": "@",
             "named": false
           },
@@ -6572,10 +6512,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false
@@ -7379,10 +7315,6 @@
         },
         {
           "type": "recursive_notation_term",
-          "named": true
-        },
-        {
-          "type": "scoped_term",
           "named": true
         },
         {
@@ -8271,10 +8203,6 @@
         "multiple": true,
         "required": true,
         "types": [
-          {
-            "type": "'",
-            "named": false
-          },
           {
             "type": "@",
             "named": false

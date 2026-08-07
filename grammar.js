@@ -18,17 +18,19 @@ export default grammar({
   ],
 
   conflicts: $ => [
-    [$.fixannot, $._atomic_term],
-    [$.plural_variable_modifier, $._atomic_term],
+    // [$.fixannot, $._atomic_term],
+    // [$.plural_variable_modifier, $._atomic_term],
     [$.generic_tactic_body],
     [$.match_pattern, $.list_literal],
     [$.binder],
     [$._pattern_atomic, $.pattern_application],
-    [$._atomic_term], // For ImpParser Chapter (the -'- in the rule)
+    // [$._atomic_term],
 
 
     [$.fixannot, $._qualid],
     [$.plural_variable_modifier, $._qualid],
+    [$._one_type, $._term10],
+    [$._term99, $.application]
   ],
 
   precedences: $ => [
@@ -56,13 +58,6 @@ export default grammar({
       'tactic_or',
       'tactic_sequence'
     ],
-    [
-      'term100',
-      'term99',
-      'term10',
-      'term1',
-      'term0',
-    ]
   ],
 
   rules: {
@@ -419,7 +414,8 @@ export default grammar({
     fixannot: $ => choice(
       seq("{", "struct", $.ident, "}"),
       seq("{", "wf", $._term, $.ident, "}"),
-      seq("{", "measure", $._atomic_term, optional($.ident), optional($._atomic_term), "}"),
+      seq("{", "measure", $._one_term, optional($.ident), optional($._one_term), "}"),
+      // FIX: PENDING!!!!!!! $._one_term
     ),
 
     decl_notations: $ => seq(
@@ -712,48 +708,24 @@ export default grammar({
     // ~~~~~~~~~~~~~~~ Terms ~~~~~~~~~~~~~~~~~~
 
     _term: $ => choice(
-      $._atomic_term,
-      // $.application,
-      // $.lambda_function,
-      // $.quantifier_term,
-      // $.let_expression,
-      // $.fix_expression,
-      // $.if_expression,
+      // FIX: PENDING!
       $.arrow_term,
       $._infix_operation,
       $.imp_evaluation_operation,
 
-      $._term10,
-      $._one_term,
+      $._term100,
     ),
 
-    _atomic_term: $ => seq(
-      optional("'"),
-      choice(
-        // $._qualid,
-        // $.ident,
-        // $.dotted_qualid,
-        // seq("@", $._qualid),
-        // $.scoped_term,
-        // $.number,
-        // $.string,
-        // $.metavariable,
-        // $.parenthesized_term,
-        // $.match_expression,
-        // $.list_literal,
-        // $.recursive_notation_term,
-        //
-        // $.custom_notation_block,
+    // _atomic_term: $ => seq(
+    // For ImpParser Chapter (the -'- in the rule)
+    // TODO: paste it in term0, as a sequence
+    //   optional("'"),
+    // ),
 
-        $._term1,
-        $._term0
-      ),
-    ),
-
-    _term100: $ => prec('term100', choice(
-      $.term_cast,
+    _term100: $ => choice(
+      // $.term_cast, FIX: PENDING!!
       $._term99,
-    )),
+    ),
 
     term_cast: $ => seq(
       $._term,
@@ -761,29 +733,35 @@ export default grammar({
       $.type
     ),
 
-    _term99: $ => prec('term99', choice(
+    _term99: $ => choice(
       $._term10,
-    )),
+    ),
 
-    _term10: $ => prec('term10', choice(
+    _term10: $ => choice(
       $.application,
       $.lambda_function,
       $.quantifier_term,
       $.let_expression,
       $.fix_expression,
       $.if_expression,
-    )),
+      $._one_term,
+
+      // $.arrow_term,
+      // $._infix_operation,
+      // $.imp_evaluation_operation,
+    ),
 
     _one_term: $ => choice(
       seq("@", $._qualid),
-      // $._term1 TODO: uncommment
+      $._term1
     ),
 
-    _term1: $ => prec('term1', choice(
+    _term1: $ => choice(
       $.scoped_term,
-    )),
+      $._term0,
+    ),
 
-    _term0: $ => prec('term0', choice(
+    _term0: $ => choice(
       $._qualid_annotated,
       $.number,
       $.string,
@@ -795,13 +773,13 @@ export default grammar({
       $.list_literal,
       $.recursive_notation_term,
       $.custom_notation_block,
-    )),
+    ),
 
     double_dot: $ => "..",
 
     recursive_notation_term: $ => seq(
       $.double_dot,
-      $._atomic_term,
+      $._term0,
       $.double_dot,
     ),
 
@@ -829,7 +807,7 @@ export default grammar({
     ),
 
     scoped_term: $ => prec.left('scope', seq(
-      $._atomic_term,
+      $._term1,
       '%',
       optional("_"),
       $.ident
@@ -840,7 +818,7 @@ export default grammar({
       repeat1(choice(
         seq("(", $.ident, ":=", $._term, ")"),
         seq("(", $._natural, ":=", $._term, ")"),
-        $._atomic_term
+        $._term1,
       ))
     )),
 
@@ -996,7 +974,7 @@ export default grammar({
       $.custom_operation
     ),
 
-    negation_operation: $ => prec('negation', seq(
+    negation_operation: $ => prec.left('negation', seq(
       "~",
       $._term
     )),
@@ -1234,12 +1212,16 @@ export default grammar({
           ")"
         ),
         seq(
-          $._atomic_term,
+          // $._one_type, FIX: PENDING!!!!
+          $._one_type,
+          // $._one_term,
           optional($.as_clause),
           optional($.by_clause)
         )
       )
     )),
+
+    _one_type: $ => $._one_term,
 
     rewrite_tactic: $ => prec.left('tactic_application', seq(
       "rewrite",
@@ -1257,7 +1239,7 @@ export default grammar({
     ),
 
     atomic_term_with_bindings: $ => prec.right(seq(
-      $._atomic_term, optional(seq("with", $.bindings))
+      $._one_term, optional(seq("with", $.bindings))
     )),
 
     tactical: $ => prec('tactic_application', seq(
@@ -1390,7 +1372,8 @@ export default grammar({
     )),
 
     bindings: $ => prec.right('binder', choice(
-      repeat1($._atomic_term),
+      repeat1($._one_term),
+      //repeat1($._one_term), FIX: PENDING!!!!!!
       repeat1(seq(
         "(",
         field("name", choice($.ident, $._natural)),
@@ -1404,8 +1387,10 @@ export default grammar({
 
     using_clause: $ => prec.right(seq(
       "using",
-      $._atomic_term,
-      repeat(seq(",", $._atomic_term))
+      $._one_term,
+      // $._one_term FIX: PENDING!!!!!!
+      // below too
+      repeat(seq(",", $._one_term))
     )),
 
     // ~~~~~~~~~~~~~ Lexical tokens ~~~~~~~~~~~~~~~

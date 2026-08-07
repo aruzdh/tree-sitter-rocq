@@ -2487,7 +2487,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_atomic_term"
+              "name": "_one_term"
             },
             {
               "type": "CHOICE",
@@ -2506,7 +2506,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_atomic_term"
+                  "name": "_one_term"
                 },
                 {
                   "type": "BLANK"
@@ -4209,10 +4209,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_atomic_term"
-        },
-        {
-          "type": "SYMBOL",
           "name": "arrow_term"
         },
         {
@@ -4225,60 +4221,18 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_term10"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_one_term"
-        }
-      ]
-    },
-    "_atomic_term": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "'"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_term1"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_term0"
-            }
-          ]
+          "name": "_term100"
         }
       ]
     },
     "_term100": {
-      "type": "PREC",
-      "value": "term100",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "term_cast"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_term99"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_term99"
+        }
+      ]
     },
     "term_cast": {
       "type": "SEQ",
@@ -4315,50 +4269,46 @@
       ]
     },
     "_term99": {
-      "type": "PREC",
-      "value": "term99",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_term10"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_term10"
+        }
+      ]
     },
     "_term10": {
-      "type": "PREC",
-      "value": "term10",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "application"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "lambda_function"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "quantifier_term"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "let_expression"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "fix_expression"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "if_expression"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "application"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lambda_function"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "quantifier_term"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "let_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "fix_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "if_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_one_term"
+        }
+      ]
     },
     "_one_term": {
       "type": "CHOICE",
@@ -4375,66 +4325,66 @@
               "name": "_qualid"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_term1"
         }
       ]
     },
     "_term1": {
-      "type": "PREC",
-      "value": "term1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "scoped_term"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "scoped_term"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_term0"
+        }
+      ]
     },
     "_term0": {
-      "type": "PREC",
-      "value": "term0",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_qualid_annotated"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "number"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "string"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "match_expression"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "parenthesized_term"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "metavariable"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "list_literal"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "recursive_notation_term"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "custom_notation_block"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_qualid_annotated"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "match_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parenthesized_term"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "metavariable"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "recursive_notation_term"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "custom_notation_block"
+        }
+      ]
     },
     "double_dot": {
       "type": "STRING",
@@ -4449,7 +4399,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_atomic_term"
+          "name": "_term0"
         },
         {
           "type": "SYMBOL",
@@ -4606,7 +4556,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_atomic_term"
+            "name": "_term1"
           },
           {
             "type": "STRING",
@@ -4698,7 +4648,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_atomic_term"
+                  "name": "_term1"
                 }
               ]
             }
@@ -5552,7 +5502,7 @@
       ]
     },
     "negation_operation": {
-      "type": "PREC",
+      "type": "PREC_LEFT",
       "value": "negation",
       "content": {
         "type": "SEQ",
@@ -6745,7 +6695,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_atomic_term"
+                    "name": "_one_type"
                   },
                   {
                     "type": "CHOICE",
@@ -6777,6 +6727,10 @@
           }
         ]
       }
+    },
+    "_one_type": {
+      "type": "SYMBOL",
+      "name": "_one_term"
     },
     "rewrite_tactic": {
       "type": "PREC_LEFT",
@@ -6906,7 +6860,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "_atomic_term"
+            "name": "_one_term"
           },
           {
             "type": "CHOICE",
@@ -7586,7 +7540,7 @@
             "type": "REPEAT1",
             "content": {
               "type": "SYMBOL",
-              "name": "_atomic_term"
+              "name": "_one_term"
             }
           },
           {
@@ -7666,7 +7620,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "_atomic_term"
+            "name": "_one_term"
           },
           {
             "type": "REPEAT",
@@ -7679,7 +7633,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_atomic_term"
+                  "name": "_one_term"
                 }
               ]
             }
@@ -8379,14 +8333,6 @@
   ],
   "conflicts": [
     [
-      "fixannot",
-      "_atomic_term"
-    ],
-    [
-      "plural_variable_modifier",
-      "_atomic_term"
-    ],
-    [
       "generic_tactic_body"
     ],
     [
@@ -8401,15 +8347,20 @@
       "pattern_application"
     ],
     [
-      "_atomic_term"
-    ],
-    [
       "fixannot",
       "_qualid"
     ],
     [
       "plural_variable_modifier",
       "_qualid"
+    ],
+    [
+      "_one_type",
+      "_term10"
+    ],
+    [
+      "_term99",
+      "application"
     ]
   ],
   "precedences": [
@@ -8487,28 +8438,6 @@
       {
         "type": "STRING",
         "value": "tactic_sequence"
-      }
-    ],
-    [
-      {
-        "type": "STRING",
-        "value": "term100"
-      },
-      {
-        "type": "STRING",
-        "value": "term99"
-      },
-      {
-        "type": "STRING",
-        "value": "term10"
-      },
-      {
-        "type": "STRING",
-        "value": "term1"
-      },
-      {
-        "type": "STRING",
-        "value": "term0"
       }
     ]
   ],
