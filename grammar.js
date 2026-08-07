@@ -21,7 +21,6 @@ export default grammar({
     [$.generic_tactic_body],
     [$.match_pattern, $.list_literal],
     [$.binder],
-    [$._pattern0, $.pattern_application],
 
     [$.fixannot, $._qualid],
     [$.assert_tactic, $._qualid],
@@ -1040,14 +1039,37 @@ export default grammar({
     )),
 
     // ~~~~~~~~~~~~~~~~ Patterns ~~~~~~~~~~~~~~~~
-    // https://rocq-prover.org/doc/V9.2.0/refman/language/core/variants.html#grammar-token-term_match
 
-    _pattern: $ => choice(
-      $._pattern0,
-      $.pattern_application,
+    _pattern: $ => prec.right(choice(
+      $._pattern10,
+      seq($._pattern10, ":", $._term),
+
+      // Custom
       $.infix_pattern,
-
       $.custom_notation_block,
+    )),
+
+    infix_pattern: $ => prec.right('list_ops', seq(
+      $._pattern,
+      choice("::", "++"),
+      $._pattern,
+    )),
+
+    _pattern10: $ => prec.right(choice(
+      seq($._pattern10, "as", $._name),
+      $.pattern_application,
+      seq("@", $._qualid, repeat($._pattern1)),
+      $._pattern1 // To go down
+    )),
+
+    pattern_application: $ => prec.left('application', seq(
+      $._pattern10,
+      repeat1($._pattern1)
+    )),
+
+    _pattern1: $ => choice(
+      seq($._pattern1, "%", optional("_"), $.ident),
+      $._pattern0
     ),
 
     _pattern0: $ => choice(
@@ -1077,17 +1099,6 @@ export default grammar({
       )),
       "]"
     ),
-
-    pattern_application: $ => prec.left('application', seq(
-      field("constructor", $._qualid),
-      repeat1($._pattern0)
-    )),
-
-    infix_pattern: $ => prec.right('list_ops', seq(
-      $._pattern,
-      choice("::", "++"),
-      $._pattern,
-    )),
 
     destructuring_pattern: $ => prec.right(seq(
       "'", $._pattern
@@ -1306,7 +1317,7 @@ export default grammar({
     ),
 
     match_hyp: $ => seq(
-      $.ident,
+      $._name,
       choice(
         seq(":", $.match_pattern),
         seq(":=", $.match_pattern),
@@ -1450,8 +1461,6 @@ export default grammar({
 
     _qualid_annotated: $ => seq(
       $._qualid,
-      // TODO: implement 
-      // $.univ_annot
     ),
 
     reference: $ => choice(

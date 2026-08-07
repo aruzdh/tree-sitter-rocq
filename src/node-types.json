@@ -2459,7 +2459,35 @@
       "required": false,
       "types": [
         {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
           "named": true
         },
         {
@@ -2467,7 +2495,19 @@
           "named": true
         },
         {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation_operation",
           "named": true
         },
         {
@@ -2475,7 +2515,47 @@
           "named": true
         },
         {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "list_pattern",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
           "named": true
         },
         {
@@ -2487,11 +2567,31 @@
           "named": true
         },
         {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
           "type": "pattern_application",
           "named": true
         },
         {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         },
         {
@@ -4494,7 +4594,35 @@
       "required": false,
       "types": [
         {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
           "named": true
         },
         {
@@ -4502,7 +4630,19 @@
           "named": true
         },
         {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation_operation",
           "named": true
         },
         {
@@ -4510,7 +4650,47 @@
           "named": true
         },
         {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "list_pattern",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
           "named": true
         },
         {
@@ -4522,11 +4702,31 @@
           "named": true
         },
         {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
           "type": "pattern_application",
           "named": true
         },
         {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         },
         {
@@ -5267,7 +5467,35 @@
       "required": false,
       "types": [
         {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
           "named": true
         },
         {
@@ -5275,7 +5503,19 @@
           "named": true
         },
         {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation_operation",
           "named": true
         },
         {
@@ -5283,7 +5523,47 @@
           "named": true
         },
         {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "list_pattern",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
           "named": true
         },
         {
@@ -5295,11 +5575,31 @@
           "named": true
         },
         {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
           "type": "pattern_application",
           "named": true
         },
         {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         },
         {
@@ -5994,11 +6294,19 @@
       "required": true,
       "types": [
         {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
           "type": "ident",
           "named": true
         },
         {
           "type": "match_pattern",
+          "named": true
+        },
+        {
+          "type": "wildcard",
           "named": true
         }
       ]
@@ -6633,7 +6941,35 @@
       "required": false,
       "types": [
         {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
           "named": true
         },
         {
@@ -6641,7 +6977,19 @@
           "named": true
         },
         {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation_operation",
           "named": true
         },
         {
@@ -6649,7 +6997,47 @@
           "named": true
         },
         {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "list_pattern",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
           "named": true
         },
         {
@@ -6661,11 +7049,31 @@
           "named": true
         },
         {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
           "type": "pattern_application",
           "named": true
         },
         {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         },
         {
@@ -6849,28 +7257,41 @@
   {
     "type": "pattern_application",
     "named": true,
-    "fields": {
-      "constructor": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "dotted_qualid",
-            "named": true
-          },
-          {
-            "type": "ident",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
           "type": "custom_notation_block",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
           "named": true
         },
         {
@@ -6878,7 +7299,19 @@
           "named": true
         },
         {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation_operation",
           "named": true
         },
         {
@@ -6886,7 +7319,47 @@
           "named": true
         },
         {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "list_pattern",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
           "named": true
         },
         {
@@ -6898,11 +7371,31 @@
           "named": true
         },
         {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
           "type": "pattern_application",
           "named": true
         },
         {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         },
         {
@@ -6921,11 +7414,63 @@
         "required": true,
         "types": [
           {
+            "type": "%",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
             "type": ":=",
             "named": false
           },
           {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "_",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "as",
+            "named": false
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
             "type": "custom_notation_block",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
             "named": true
           },
           {
@@ -6933,7 +7478,19 @@
             "named": true
           },
           {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
             "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation_operation",
             "named": true
           },
           {
@@ -6941,7 +7498,47 @@
             "named": true
           },
           {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
             "type": "list_pattern",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
             "named": true
           },
           {
@@ -6953,11 +7550,31 @@
             "named": true
           },
           {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
             "type": "pattern_application",
             "named": true
           },
           {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
             "named": true
           },
           {
@@ -8131,11 +8748,63 @@
         "required": true,
         "types": [
           {
+            "type": "%",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": ":",
+            "named": false
+          },
+          {
             "type": ":=",
             "named": false
           },
           {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "_",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "as",
+            "named": false
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
             "type": "custom_notation_block",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
             "named": true
           },
           {
@@ -8143,7 +8812,19 @@
             "named": true
           },
           {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
             "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation_operation",
             "named": true
           },
           {
@@ -8151,7 +8832,47 @@
             "named": true
           },
           {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
             "type": "list_pattern",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
             "named": true
           },
           {
@@ -8163,11 +8884,31 @@
             "named": true
           },
           {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
             "type": "pattern_application",
             "named": true
           },
           {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
             "named": true
           },
           {
