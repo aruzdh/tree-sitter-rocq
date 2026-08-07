@@ -178,7 +178,7 @@
 
 (fix_decl name: (_) @function)
 (term_as_clause as_name: (_) @variable.parameter)
-(pattern_application constructor: (_) @constructor)
+(pattern_application . (_) @constructor)
 
 (generic_tactic name: (_) @keyword.tactic)
 (ltac_definition name: (_) @function.macro)
