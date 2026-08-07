@@ -4213,30 +4213,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "application"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "lambda_function"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "quantifier_term"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "let_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "fix_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "if_expression"
-        },
-        {
-          "type": "SYMBOL",
           "name": "arrow_term"
         },
         {
@@ -4246,6 +4222,14 @@
         {
           "type": "SYMBOL",
           "name": "imp_evaluation_operation"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_term10"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_one_term"
         }
       ]
     },
@@ -4269,64 +4253,188 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "ident"
+              "name": "_term1"
             },
             {
               "type": "SYMBOL",
-              "name": "dotted_qualid"
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "@"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_qualid"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "scoped_term"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "number"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "string"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "metavariable"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "parenthesized_term"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "list_literal"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "match_expression"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "recursive_notation_term"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "custom_notation_block"
+              "name": "_term0"
             }
           ]
         }
       ]
+    },
+    "_term100": {
+      "type": "PREC",
+      "value": "term100",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "term_cast"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_term99"
+          }
+        ]
+      }
+    },
+    "term_cast": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_term"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "STRING",
+              "value": "<:"
+            },
+            {
+              "type": "STRING",
+              "value": "<<:"
+            },
+            {
+              "type": "STRING",
+              "value": ":>"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        }
+      ]
+    },
+    "_term99": {
+      "type": "PREC",
+      "value": "term99",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_term10"
+          }
+        ]
+      }
+    },
+    "_term10": {
+      "type": "PREC",
+      "value": "term10",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "application"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "lambda_function"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "quantifier_term"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "let_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "fix_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "if_expression"
+          }
+        ]
+      }
+    },
+    "_one_term": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "@"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_qualid"
+            }
+          ]
+        }
+      ]
+    },
+    "_term1": {
+      "type": "PREC",
+      "value": "term1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "scoped_term"
+          }
+        ]
+      }
+    },
+    "_term0": {
+      "type": "PREC",
+      "value": "term0",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_qualid_annotated"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "match_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "parenthesized_term"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "metavariable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "list_literal"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "recursive_notation_term"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "custom_notation_block"
+          }
+        ]
+      }
     },
     "double_dot": {
       "type": "STRING",
@@ -7906,6 +8014,15 @@
         ]
       }
     },
+    "_qualid_annotated": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_qualid"
+        }
+      ]
+    },
     "reference": {
       "type": "CHOICE",
       "members": [
@@ -8285,6 +8402,14 @@
     ],
     [
       "_atomic_term"
+    ],
+    [
+      "fixannot",
+      "_qualid"
+    ],
+    [
+      "plural_variable_modifier",
+      "_qualid"
     ]
   ],
   "precedences": [
@@ -8362,6 +8487,28 @@
       {
         "type": "STRING",
         "value": "tactic_sequence"
+      }
+    ],
+    [
+      {
+        "type": "STRING",
+        "value": "term100"
+      },
+      {
+        "type": "STRING",
+        "value": "term99"
+      },
+      {
+        "type": "STRING",
+        "value": "term10"
+      },
+      {
+        "type": "STRING",
+        "value": "term1"
+      },
+      {
+        "type": "STRING",
+        "value": "term0"
       }
     ]
   ],

@@ -25,6 +25,10 @@ export default grammar({
     [$.binder],
     [$._pattern_atomic, $.pattern_application],
     [$._atomic_term], // For ImpParser Chapter (the -'- in the rule)
+
+
+    [$.fixannot, $._qualid],
+    [$.plural_variable_modifier, $._qualid],
   ],
 
   precedences: $ => [
@@ -51,6 +55,13 @@ export default grammar({
       'tactic_application',
       'tactic_or',
       'tactic_sequence'
+    ],
+    [
+      'term100',
+      'term99',
+      'term10',
+      'term1',
+      'term0',
     ]
   ],
 
@@ -702,35 +713,89 @@ export default grammar({
 
     _term: $ => choice(
       $._atomic_term,
+      // $.application,
+      // $.lambda_function,
+      // $.quantifier_term,
+      // $.let_expression,
+      // $.fix_expression,
+      // $.if_expression,
+      $.arrow_term,
+      $._infix_operation,
+      $.imp_evaluation_operation,
+
+      $._term10,
+      $._one_term,
+    ),
+
+    _atomic_term: $ => seq(
+      optional("'"),
+      choice(
+        // $._qualid,
+        // $.ident,
+        // $.dotted_qualid,
+        // seq("@", $._qualid),
+        // $.scoped_term,
+        // $.number,
+        // $.string,
+        // $.metavariable,
+        // $.parenthesized_term,
+        // $.match_expression,
+        // $.list_literal,
+        // $.recursive_notation_term,
+        //
+        // $.custom_notation_block,
+
+        $._term1,
+        $._term0
+      ),
+    ),
+
+    _term100: $ => prec('term100', choice(
+      $.term_cast,
+      $._term99,
+    )),
+
+    term_cast: $ => seq(
+      $._term,
+      choice(":", "<:", "<<:", ":>"),
+      $.type
+    ),
+
+    _term99: $ => prec('term99', choice(
+      $._term10,
+    )),
+
+    _term10: $ => prec('term10', choice(
       $.application,
       $.lambda_function,
       $.quantifier_term,
       $.let_expression,
       $.fix_expression,
       $.if_expression,
-      $.arrow_term,
-      $._infix_operation,
-      $.imp_evaluation_operation,
+    )),
+
+    _one_term: $ => choice(
+      seq("@", $._qualid),
+      // $._term1 TODO: uncommment
     ),
 
-    _atomic_term: $ => seq(
-      optional("'"),
-      choice(
-        $.ident,
-        $.dotted_qualid,
-        seq("@", $._qualid),
-        $.scoped_term,
-        $.number,
-        $.string,
-        $.metavariable,
-        $.parenthesized_term,
-        $.list_literal,
-        $.match_expression,
-        $.recursive_notation_term,
+    _term1: $ => prec('term1', choice(
+      $.scoped_term,
+    )),
 
-        $.custom_notation_block,
-      ),
-    ),
+    _term0: $ => prec('term0', choice(
+      $._qualid_annotated,
+      $.number,
+      $.string,
+      $.match_expression,
+      $.parenthesized_term,
+      $.metavariable,
+
+      // Custom
+      $.list_literal,
+      $.recursive_notation_term,
+      $.custom_notation_block,
+    )),
 
     double_dot: $ => "..",
 
@@ -1409,6 +1474,12 @@ export default grammar({
       /[\p{L}_][\p{L}_\p{N}']*/u,
       repeat(seq('.', /[\p{L}_][\p{L}_\p{N}']*/u))
     )),
+
+    _qualid_annotated: $ => seq(
+      $._qualid,
+      // TODO: implement 
+      // $.univ_annot
+    ),
 
     reference: $ => choice(
       $._qualid,
