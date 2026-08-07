@@ -1,5 +1,5 @@
 (ident (#set! "priority" 50)) @variable
-(qualid (#set! "priority" 50) ) @variable.qualid
+(dotted_qualid (#set! "priority" 50) ) @variable.qualid
 (metavariable) @variable.metavariable
 (number) @number
 (string) @string
@@ -137,7 +137,7 @@
 (neg_selection) @operator
 (import_categories category: (_) @variable)
 (filtered_import module: (ident) @module.name)
-(filtered_import module: (qualid) @module.name)
+(filtered_import module: (dotted_qualid) @module.name)
 (filtered_import_item name: (_) @variable)
 (import_wildcard) @punctuation.special
 
@@ -167,7 +167,7 @@
 (defined_command (ident) @function)
 
 (binder (ident) @variable.parameter)
-(binder (qualid) @variable.parameter)
+(binder (dotted_qualid) @variable.parameter)
 
 (let_expression name: (_) @variable.definition)
 (let_expression pattern: (let_expression_name_list (ident) @variable.definition))
@@ -192,15 +192,15 @@
 (range_selector (ident) @variable.builtin)
 
 (application . (ident) @function.call)
-(application . (qualid) @function.call)
+(application . (dotted_qualid) @function.call)
 
 ((ident) @type.builtin
  (#match? @type.builtin "^(Prop|Set|Type)$"))
 
 (type (ident) @type)
-(type (qualid) @type)
+(type (dotted_qualid) @type)
 (type (application . (ident) @type))
-(type (application . (qualid) @type))
+(type (application . (dotted_qualid) @type))
 (type (arrow_term . (ident) @type))
 (application (_) . (ident) @type)
 (arrow_term (ident) @type)
