@@ -191,7 +191,7 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..) (x, y at level 9).
                   (decnat))))))))))
 
 ==================
-Notations with recursive patterns involving binders (1)
+Notations with Recursive Patterns Involving Binders (1)
 ==================
 Notation "'exists' x .. y , p" :=
   (ex (fun x => .. (ex (fun y => p)) ..))
@@ -240,7 +240,7 @@ Notation "'exists' x .. y , p" :=
             (associativity_modifier)))))))
 
 ==================
-Notations with recursive patterns involving binders (2)
+Notations with Recursive Patterns Involving Binders (2)
 ==================
 Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
   ((fun b A a => a <= b /\ A b) y .. ((fun b A a => a <= b /\ A b) z (fun b => b <= t)) .. x)
@@ -324,7 +324,7 @@ Notation "x  ⪯ y  ⪯ ..  ⪯ z  ⪯ t" :=
               (level))))))))
 
 ==================
-Notations with recursive patterns involving binders in Let Expression
+Notations with Recursive Patterns Involving Binders in Let Expression
 ==================
 Notation "'mylet' f x .. y :=  t 'in' u":=
   (let f := fun x => .. (fun y => t) .. in u)
@@ -368,3 +368,288 @@ Notation "'mylet' f x .. y :=  t 'in' u":=
               (explicit_subentry)))
           (syntax_modifier
             (associativity_modifier)))))))
+
+==================
+Notations with Recursive Patterns and Term Casting
+==================
+Notation "# f x .. y" := (fun st => (.. (f ((x:Aexp) st)) .. ((y:Aexp) st))).
+Notation "P -> Q" := (fun st => (P:Assertion) st -> (Q:Assertion) st) (in custom assn at level 99, right associativity) : assertion_scope.
+Notation "P <-> Q" := (fun st => (P:Assertion) st <-> (Q:Assertion) st) (in custom assn at level 95) : assertion_scope.
+Notation "P \/ Q" := (fun st => (P:Assertion) st \/ (Q:Assertion) st) (in custom assn at level 85, right associativity) : assertion_scope.
+Notation "~ P" := (fun st => ~ ((P:Assertion) st)) (in custom assn at level 75, right associativity) : assertion_scope.
+Notation "a <> b" := (fun st => (a:Aexp) st <> (b:Aexp) st) (in custom assn at level 70) : assertion_scope.
+Notation "'True'" := (fun st => True) (in custom assn at level 0) : assertion_scope.
+Notation "'False'" := False.
+Notation "a + b" := (fun st => (a:Aexp) st + (b:Aexp) st) (in custom assn at level 50, left associativity) : assertion_scope.
+Notation "( x )" := x (in custom assn at level 0, x at level 99) : assertion_scope.
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (parenthesized_term
+              (application
+                (recursive_notation_term
+                  (double_dot)
+                  (parenthesized_term
+                    (application
+                      (ident)
+                      (parenthesized_term
+                        (application
+                          (parenthesized_term
+                            (term_cast
+                              (ident)
+                              (type
+                                (ident))))
+                          (ident)))))
+                  (double_dot))
+                (parenthesized_term
+                  (application
+                    (parenthesized_term
+                      (term_cast
+                        (ident)
+                        (type
+                          (ident))))
+                    (ident))))))))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (arrow_term
+              antecedent: (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident))
+              consequent: (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident)))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (associativity_modifier)))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (logical_equivalence
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident))
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident)))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (logical_disjunction
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident))
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident)))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (associativity_modifier)))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (negation_operation
+              (parenthesized_term
+                (application
+                  (parenthesized_term
+                    (term_cast
+                      (ident)
+                      (type
+                        (ident))))
+                  (ident))))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (associativity_modifier)))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (comparison_operation
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident))
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident)))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (ident))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (lambda_function
+            (open_binders
+              (binder
+                (ident)))
+            (additive_operation
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident))
+              (application
+                (parenthesized_term
+                  (term_cast
+                    (ident)
+                    (type
+                      (ident))))
+                (ident)))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (associativity_modifier)))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (ident)
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+              (level
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident))))))
