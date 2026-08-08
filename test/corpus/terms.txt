@@ -152,5 +152,25 @@ Notation "[ x ; .. ; y ]" := (cons x .. (cons y nil) ..).
                   (application
                     (ident)
                     (ident))
-                    (ident)))
+                  (ident)))
               (double_dot))))))))
+
+==================
+Logical Conjunction with Arrow Term
+==================
+Definition conj_impl: P -> Q /\ Q -> P.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (arrow_term
+          antecedent: (ident)
+          consequent: (arrow_term
+            antecedent: (logical_conjunction
+              (ident)
+              (ident))
+            consequent: (ident)))))))
