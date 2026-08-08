@@ -113,6 +113,7 @@
 
 [
   ":=" "=>" "->" "<-" "<->" ">->"
+  "->>" "<<->>"
   "=" "<>" "<" "<=" ">" ">="
   "=?" "<>?" "<?" "<=?" ">?" ">=?"
   "+" "-" "*" "/" "%"
@@ -135,6 +136,7 @@
 
 [ "{" "}" ] @punctuation.bracket.braces
 
+[ "{{" "}}" ] @punctuation.bracket.braces.assertion
 
 (require_command dirpath: (_) @module.path)
 (neg_selection) @operator
