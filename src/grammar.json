@@ -4355,6 +4355,30 @@
           "type": "CHOICE",
           "members": [
             {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
               "type": "SYMBOL",
               "name": "_qualid_annotated"
             },
@@ -4389,6 +4413,14 @@
             {
               "type": "SYMBOL",
               "name": "custom_notation_block"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "hoare_assertion"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "hoare_triple"
             }
           ]
         }
@@ -5492,6 +5524,14 @@
         {
           "type": "SYMBOL",
           "name": "logical_equivalence"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hoare_arrow"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hoare_logical_equivalence"
         },
         {
           "type": "SYMBOL",
@@ -8426,6 +8466,98 @@
           ]
         }
       ]
+    },
+    "hoare_assertion": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_term"
+        },
+        {
+          "type": "STRING",
+          "value": "}}"
+        }
+      ]
+    },
+    "hoare_triple": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "hoare_assertion"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "imp_program"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hoare_assertion"
+        }
+      ]
+    },
+    "hoare_arrow": {
+      "type": "PREC_RIGHT",
+      "value": "hoare_arrow",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "antecedent",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "->>"
+          },
+          {
+            "type": "FIELD",
+            "name": "consequent",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
+            }
+          }
+        ]
+      }
+    },
+    "hoare_logical_equivalence": {
+      "type": "PREC_RIGHT",
+      "value": "hoare_arrow",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "antecedent",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "<<->>"
+          },
+          {
+            "type": "FIELD",
+            "name": "consequent",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
+            }
+          }
+        ]
+      }
     }
   },
   "extras": [
@@ -8460,6 +8592,10 @@
     [
       "_term100",
       "term_cast"
+    ],
+    [
+      "hoare_triple",
+      "_term0"
     ]
   ],
   "precedences": [
@@ -8491,6 +8627,10 @@
       {
         "type": "STRING",
         "value": "comparison"
+      },
+      {
+        "type": "STRING",
+        "value": "hoare_arrow"
       },
       {
         "type": "STRING",

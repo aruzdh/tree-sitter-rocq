@@ -26,6 +26,8 @@ export default grammar({
     [$.assert_tactic, $._qualid],
 
     [$._term100, $.term_cast],
+
+    [$.hoare_triple, $._term0] // TODO: Check
   ],
 
   precedences: $ => [
@@ -38,6 +40,7 @@ export default grammar({
       'additive',
       'comparison',
 
+      'hoare_arrow',
       'conjunction',
       'disjunction',
       'equivalence',
@@ -748,6 +751,8 @@ export default grammar({
 
     _term0: $ => seq(
       optional("'"), // For ImpParser Chapter
+      optional("#"), // For Hoare Chapters
+      optional("$"), // For Hoare Chapters
       choice(
         $._qualid_annotated,
         $.number,
@@ -760,6 +765,8 @@ export default grammar({
         $.list_literal,
         $.recursive_notation_term,
         $.custom_notation_block,
+        $.hoare_assertion,
+        $.hoare_triple,
       ),
     ),
 
@@ -961,6 +968,8 @@ export default grammar({
       $.logical_conjunction,
       $.logical_disjunction,
       $.logical_equivalence,
+      $.hoare_arrow,
+      $.hoare_logical_equivalence,
       $.custom_operation
     ),
 
@@ -1516,6 +1525,29 @@ export default grammar({
       seq("[", repeat($._imp_token), "]"),
       seq("{", repeat($._imp_token), "}")
     ),
+
+    // Rules for Software Foundations Hoare Logic Chapters
+    hoare_assertion: $ => seq(
+      "{{", $._term, "}}",
+    ),
+
+    hoare_triple: $ => seq(
+      $.hoare_assertion,
+      $.imp_program,
+      $.hoare_assertion,
+    ),
+
+    hoare_arrow: $ => prec.right('hoare_arrow', seq(
+      field("antecedent", $._term),
+      "->>",
+      field("consequent", $._term)
+    )),
+
+    hoare_logical_equivalence: $ => prec.right('hoare_arrow', seq(
+      field("antecedent", $._term),
+      "<<->>",
+      field("consequent", $._term)
+    ))
   }
 });
 
