@@ -1,0 +1,215 @@
+==================
+Standard Hoare Logic Assertions
+==================
+Definition assertion1 : Assertion := {{ X = 3 }}.
+Definition assertion2 : Assertion := {{ True }}.
+Definition assertion3 : Assertion := {{ False }}.
+Definition assertion4 : Assertion := {{ True \/ False }}.
+Definition assertion5 : Assertion := {{ X <= Y }}.
+Definition assertion6 : Assertion := {{ X = 3 \/ X <= Y }}.
+Definition assertion7 : Assertion := {{ Z = (#max X Y) }}.
+Definition assertion8 : Assertion := {{ Z * Z <= X
+                                        /\  ~ (((#S Z) * (#S Z)) <= X) }}.
+Definition assertion9 : Assertion := {{ #add X Y > #max Y X }}.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (comparison_operation
+          (ident)
+          (number)))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (ident))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (ident))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (logical_disjunction
+          (ident)
+          (ident)))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (comparison_operation
+          (ident)
+          (ident)))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (logical_disjunction
+          (comparison_operation
+            (ident)
+            (number))
+          (comparison_operation
+            (ident)
+            (ident))))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (comparison_operation
+          (ident)
+          (parenthesized_term
+            (application
+              (application
+                (ident)
+                (ident))
+              (ident)))))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (logical_conjunction
+          (comparison_operation
+            (multiplicative_operation
+              (ident)
+              (ident))
+            (ident))
+          (negation_operation
+            (parenthesized_term
+              (comparison_operation
+                (parenthesized_term
+                  (multiplicative_operation
+                    (parenthesized_term
+                      (application
+                        (ident)
+                        (ident)))
+                    (parenthesized_term
+                      (application
+                        (ident)
+                        (ident)))))
+                (ident))))))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (ident))
+      body: (hoare_assertion
+        (comparison_operation
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident))
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))))))
+
+==================
+Notations for Hoare Assertion Implication
+==================
+Notation "P ->> Q" := (assert_implies P Q)
+                        (at level 80) : hoare_spec_scope.
+Notation "P <<->> Q" := (P ->> Q /\ Q ->> P)
+                          (at level 80) : hoare_spec_scope.
+---
+
+(source_file
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (application
+            (application
+              (ident)
+              (ident))
+            (ident)))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (logical_conjunction
+            (hoare_arrow
+              antecedent: (ident)
+              consequent: (ident))
+            (hoare_arrow
+              antecedent: (ident)
+              consequent: (ident))))
+        (syntax_modifier_list
+          (syntax_modifier
+            (level_modifier
+              (at_level_num
+                (decnat)))))
+        (notation_scope
+          scope_name: (ident))))))
+
+==================
+Basic Hoare Triples
+==================
+Definition hoare_post_true := {{Q}} X := a {{Q}}.
+Definition hoare_pre_false := {{P}} c {{Q}}.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (hoare_triple
+        (hoare_assertion
+          (ident))
+        (imp_program
+          (ident)
+          (ident))
+        (hoare_assertion
+          (ident)))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (hoare_triple
+        (hoare_assertion
+          (ident))
+        (imp_program
+          (ident))
+        (hoare_assertion
+          (ident))))))
