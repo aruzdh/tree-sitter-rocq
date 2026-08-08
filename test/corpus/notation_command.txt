@@ -382,6 +382,7 @@ Notation "'True'" := (fun st => True) (in custom assn at level 0) : assertion_sc
 Notation "'False'" := False.
 Notation "a + b" := (fun st => (a:Aexp) st + (b:Aexp) st) (in custom assn at level 50, left associativity) : assertion_scope.
 Notation "( x )" := x (in custom assn at level 0, x at level 99) : assertion_scope.
+Notation "x" := (x%assertion) (in custom assn at level 0, x constr at level 0) : assertion_scope.
 ---
 
 (source_file
@@ -651,5 +652,28 @@ Notation "( x )" := x (in custom assn at level 0, x at level 99) : assertion_sco
               (ident)
               (level
                 (decnat)))))
+        (notation_scope
+          scope_name: (ident)))))
+  (sentence
+    (notation_command
+      (notation_declaration
+        notation: (string)
+        definition: (parenthesized_term
+          (scoped_term
+            (ident)
+            (ident))) 
+        (syntax_modifier_list
+          (syntax_modifier
+            (custom_entry_modifier
+              (ident)
+              (at_level_num
+                (decnat))))
+          (syntax_modifier
+            (singular_variable_modifier
+              (ident)
+                (explicit_subentry
+                  (at_level
+                    (level
+                      (decnat)))))))
         (notation_scope
           scope_name: (ident))))))
