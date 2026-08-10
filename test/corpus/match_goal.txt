@@ -58,11 +58,11 @@ Ltac find_seq :=
             (match_hyp
               (ident)
               (match_pattern
-                (imp_evaluation_operation
+                (imp_evaluation
                   initial_state: (ident)
-                  (imp_program
-                    (ident)
-                    (ident))
+                  (cseq
+                    (abstract_command)
+                    (abstract_command))
                   final_state: (ident))))
             goal: (match_pattern
               (ident)))
@@ -79,6 +79,7 @@ Ltac find_seq :=
                 (generic_tactic_body
                   (atomic_term_with_bindings
                     (ident)))))))))))
+
 ==================
 Ltac Definition with Match Goal, where H contains any Imp com
 ==================
@@ -100,10 +101,9 @@ Ltac invert_eval :=
                 (match_hyp
                   (ident)
                   (match_pattern
-                    (imp_evaluation_operation
+                    (imp_evaluation
                       initial_state: (ident)
-                      (imp_program
-                        (ident))
+                      (abstract_command)
                       final_state: (ident))))
                 goal: (match_pattern
                   (ident)))

@@ -197,7 +197,7 @@ Definition hoare_pre_false := {{P}} c {{Q}}.
       body: (hoare_triple
         (hoare_assertion
           (ident))
-        (imp_program
+        (casign
           (ident)
           (ident))
         (hoare_assertion
@@ -209,7 +209,6 @@ Definition hoare_pre_false := {{P}} c {{Q}}.
       body: (hoare_triple
         (hoare_assertion
           (ident))
-        (imp_program
-          (ident))
+        (abstract_command)
         (hoare_assertion
           (ident))))))

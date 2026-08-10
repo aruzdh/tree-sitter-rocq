@@ -1691,7 +1691,7 @@ Proof.
             name: (ident)
             (generic_tactic_body
               (atomic_term_with_bindings
-                (parenthesized_term
+                (semicolon_separated_parenthesized_terms
                   (custom_operation
                     (ident)
                     (custom_operator)
@@ -1703,7 +1703,7 @@ Proof.
             name: (ident)
             (generic_tactic_body
               (atomic_term_with_bindings
-                (parenthesized_term
+                (semicolon_separated_parenthesized_terms
                   (custom_operation
                     (ident)
                     (custom_operator)

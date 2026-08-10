@@ -32,6 +32,7 @@ Check (a, b, c,).
 
 ==================
 Semicolon Sequences inside Parentheses (No Rocq valid code)
+:error
 ==================
 Check (simpl; reflexivity).
 Check (unfold id; simpl; trivial).
