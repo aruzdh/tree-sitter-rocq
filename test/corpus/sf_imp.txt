@@ -502,15 +502,15 @@ Definition havoc_example1 := empty_st =[ havoc X ]=> (X !-> 0).
     (definition_command
       (ident_decl
         (ident))
-        body: (imp_evaluation
-          initial_state: (ident)
-          (chavoc
-            (ident))
-          final_state: (parenthesized_term
-            (custom_operation
-              (ident)
-              (custom_operator)
-              (number)))))))
+      body: (imp_evaluation
+        initial_state: (ident)
+        (chavoc
+          (ident))
+        final_state: (parenthesized_term
+          (custom_operation
+            (ident)
+            (custom_operator)
+            (number)))))))
 
 ==================
 Imp seq_assoc Theorem with cequiv
@@ -1190,3 +1190,156 @@ Fixpoint ceval_step (st : state) (c : com) (i : nat)
                 else: (application
                   (ident)
                   (ident))))))))))
+
+==================
+fold_constants_com Fixpoint
+==================
+Fixpoint fold_constants_com (c : com) : com :=
+  match c with
+  | <{ skip }> =>
+      <{ skip }>
+  | <{ x := a }> =>
+      <{ x := (fold_constants_aexp a) }>
+  | <{ c1 ; c2 }>  =>
+      <{ fold_constants_com c1 ; fold_constants_com c2 }>
+  | <{ if b then c1 else c2 end }> =>
+      match fold_constants_bexp b with
+      | <{true}>  => fold_constants_com c1
+      | <{false}> => fold_constants_com c2
+      | b' => <{ if b' then fold_constants_com c1
+                       else fold_constants_com c2 end}>
+      end
+  | <{ while b do c1 end }> =>
+      match fold_constants_bexp b with
+      | <{true}> => <{ while true do skip end }>
+      | <{false}> => <{ skip }>
+      | b' => <{ while b' do (fold_constants_com c1) end }>
+      end
+  end.
+---
+
+(source_file
+  (sentence
+    (fixpoint_command
+      (ident_decl
+        (ident))
+      (binder
+        (ident)
+        (type
+          (ident)))
+      (type
+        (ident))
+      body: (match_expression
+        (case_item
+          (ident))
+        (match_case
+          (pattern_option
+            pattern: (bounded_imp_program
+              (cskip)))
+          body: (bounded_imp_program
+            (cskip)))
+        (match_case
+          (pattern_option
+            pattern: (bounded_imp_program
+              (casign
+                (ident)
+                (ident))))
+          body: (bounded_imp_program
+            (casign
+              (ident)
+              (parenthesized_term
+                (application
+                  (ident)
+                  (ident))))))
+        (match_case
+          (pattern_option
+            pattern: (bounded_imp_program
+              (cseq
+                (abstract_command)
+                (abstract_command))))
+          body: (bounded_imp_program
+            (cseq
+              (imp_exp
+                (application
+                  (ident)
+                  (ident)))
+              (imp_exp
+                (application
+                  (ident)
+                  (ident))))))
+        (match_case
+          (pattern_option
+            pattern: (bounded_imp_program
+              (cif
+                condition: (ident)
+                then: (abstract_command)
+                else: (abstract_command))))
+          body: (match_expression
+            (case_item
+              (application
+                (ident)
+                (ident)))
+            (match_case
+              (pattern_option
+                pattern: (bounded_imp_program
+                  (abstract_command)))
+              body: (application
+                (ident)
+                (ident)))
+            (match_case
+              (pattern_option
+                pattern: (bounded_imp_program
+                  (abstract_command)))
+              body: (application
+                (ident)
+                (ident)))
+            (match_case
+              (pattern_option
+                pattern: (ident))
+              body: (bounded_imp_program
+                (cif
+                  condition: (ident)
+                  then: (imp_exp
+                    (application
+                      (ident)
+                      (ident)))
+                  else: (imp_exp
+                    (application
+                      (ident)
+                      (ident))))))))
+        (match_case
+          (pattern_option
+            pattern: (bounded_imp_program
+              (cwhile
+                condition: (ident)
+                body: (abstract_command))))
+          body: (match_expression
+            (case_item
+              (application
+                (ident)
+                (ident)))
+            (match_case
+              (pattern_option
+                pattern: (bounded_imp_program
+                  (abstract_command)))
+              body: (bounded_imp_program
+                (cwhile
+                  condition: (ident)
+                  body: (cskip))))
+            (match_case
+              (pattern_option
+                pattern: (bounded_imp_program
+                  (abstract_command)))
+              body: (bounded_imp_program
+                (cskip)))
+            (match_case
+              (pattern_option
+                pattern: (ident))
+              body: (bounded_imp_program
+                (cwhile
+                  condition: (ident)
+                  body: (imp_exp
+                    (parenthesized_term
+                      (application
+                        (ident)
+                        (ident)))))))))))))
