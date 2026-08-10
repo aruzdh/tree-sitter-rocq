@@ -94,6 +94,28 @@
  "lazymatch" "multimatch" "reverse" "goal"
 ] @keyword.control
 
+(cif "if" @keyword.control.imp)
+(cif "then" @keyword.control.imp)
+(cif "else" @keyword.control.imp)
+(cif "end" @keyword.control.imp)
+
+(cwhile "while" @keyword.control.imp)
+(cwhile "do" @keyword.control.imp)
+(cwhile "end" @keyword.control.imp)
+
+(crepeat "repeat" @keyword.control.imp)
+(crepeat "until" @keyword.control.imp)
+
+(chavoc "havoc" @keyword.control.imp)
+(chavoc (ident) @variable.imp)
+
+(cskip) @keyword.control.imp
+
+(casign . (ident) @variable.imp)
+(casign . (string) @variable.imp)
+
+(abstract_command) @variable
+
 (qed_command) @keyword.control
 (admitted_command) @keyword.control
 (abort_command) @keyword.control.abort
@@ -131,7 +153,7 @@
 
 [
   "(" ")" "[" "]" "#"
-  "<{" "}>" "[|" "|]" "{|" "|}"
+  "<{" "}>"
 ] @punctuation.bracket
 
 [ "{" "}" ] @punctuation.bracket.braces
