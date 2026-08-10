@@ -212,3 +212,221 @@ Definition hoare_pre_false := {{P}} c {{Q}}.
         (abstract_command)
         (hoare_assertion
           (ident))))))
+
+==================
+hoare_seq Theorem
+==================
+Theorem hoare_seq : forall P Q R c1 c2,
+     {{Q}} c2 {{R}} ->
+     {{P}} c1 {{Q}} ->
+     {{P}} c1; c2 {{R}}.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident))
+            (binder
+              (ident))
+            (binder
+              (ident))
+            (binder
+              (ident))
+            (binder
+              (ident)))
+          (type
+            (arrow_term
+              antecedent: (hoare_triple
+                (hoare_assertion
+                  (ident))
+                (abstract_command)
+                (hoare_assertion
+                  (ident)))
+              consequent: (arrow_term
+                antecedent: (hoare_triple
+                  (hoare_assertion
+                    (ident))
+                  (abstract_command)
+                  (hoare_assertion
+                    (ident)))
+                consequent: (hoare_triple
+                  (hoare_assertion
+                    (ident))
+                  (cseq
+                    (abstract_command)
+                    (abstract_command))
+                  (hoare_assertion
+                    (ident)))))))))))
+
+==================
+hoare_asgn_fwd Theorem
+==================
+Theorem hoare_asgn_fwd :
+  forall (m:nat) (a:aexp) (P : Assertion),
+  {{P /\ X = m}}
+    X := a
+  {{ $(fun st => (P (X !-> m ; st)
+             /\ st X = aeval (X !-> m ; st) a)) }}.
+---
+
+(source_file
+  (sentence
+    (theorem_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)
+              (type
+                (ident)))
+            (binder
+              (ident)
+              (type
+                (ident)))
+            (binder
+              (ident)
+              (type
+                (ident))))
+          (type
+            (hoare_triple
+              (hoare_assertion
+                (logical_conjunction
+                  (ident)
+                  (comparison_operation
+                    (ident)
+                    (ident))))
+              (casign
+                (ident)
+                (ident))
+              (hoare_assertion
+                (parenthesized_term
+                  (lambda_function
+                    (open_binders
+                      (binder
+                        (ident)))
+                    (parenthesized_term
+                      (logical_conjunction
+                        (application
+                          (ident)
+                          (semicolon_separated_parenthesized_terms
+                            (custom_operation
+                              (ident)
+                              (custom_operator)
+                              (ident))
+                            (ident)))
+                        (comparison_operation
+                          (application
+                            (ident)
+                            (ident))
+                          (application
+                            (application
+                              (ident)
+                              (semicolon_separated_parenthesized_terms
+                                (custom_operation
+                                  (ident)
+                                  (custom_operator)
+                                  (ident))
+                                (ident)))
+                            (ident)))))))))))))))
+
+==================
+hoare_asgn_examples2 Example
+==================
+Example hoare_asgn_examples2 :
+  exists P,
+    {{ P }}
+      X := 3
+    {{ 0 <=  X /\ X <= 5 }}.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (quantifier_term
+          (open_binders
+            (binder
+              (ident)))
+          (type
+            (hoare_triple
+              (hoare_assertion
+                (ident))
+              (casign
+                (ident)
+                (number))
+              (hoare_assertion
+                (logical_conjunction
+                  (comparison_operation
+                    (number)
+                    (ident))
+                  (comparison_operation
+                    (ident)
+                    (number)))))))))))
+
+==================
+Equivalent Assertion Example
+==================
+Example equivalent_assertion1 :
+  {{ (X <= 5) [X |-> 3] }} <<->> {{ 3 <= 5 }}.
+Example equivalent_assertion2 :
+  {{ (X <= 5) [X |-> X + 1] }} <<->> {{ (X + 1) <= 5 }}.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (hoare_logical_equivalence
+          antecedent: (hoare_assertion
+            (application
+              (parenthesized_term
+                (comparison_operation
+                  (ident)
+                  (number)))
+              (list_literal
+                (custom_operation
+                  (ident)
+                  (custom_operator)
+                  (number)))))
+          consequent: (hoare_assertion
+            (comparison_operation
+              (number)
+              (number)))))))
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      (type
+        (hoare_logical_equivalence
+          antecedent: (hoare_assertion
+            (application
+              (parenthesized_term
+                (comparison_operation
+                  (ident)
+                  (number)))
+              (list_literal
+                (custom_operation
+                  (ident)
+                  (custom_operator)
+                  (additive_operation
+                    (ident)
+                    (number))))))
+          consequent: (hoare_assertion
+            (comparison_operation
+              (parenthesized_term
+                (additive_operation
+                  (ident)
+                  (number)))
+              (number))))))))
