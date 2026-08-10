@@ -27,7 +27,13 @@ export default grammar({
 
     [$._term100, $.term_cast],
 
-    [$.hoare_triple, $._term0] // TODO: Check
+    // Imp
+    [$._qualid, $._imp_command],
+    [$.application, $.casign],
+    [$.application, $._imp_program],
+
+    // Hoare Logic
+    [$.hoare_triple, $._term0],
   ],
 
   precedences: $ => [
@@ -736,7 +742,7 @@ export default grammar({
 
       $.arrow_term,
       $._infix_operation,
-      $.imp_evaluation_operation,
+      $.imp_evaluation,
     ),
 
     _one_term: $ => choice(
@@ -759,17 +765,19 @@ export default grammar({
         $.string,
         $.match_expression,
         $.parenthesized_term,
-        $.metavariable,
-
-        // Custom
+        $.semicolon_separated_parenthesized_terms,
         $.list_literal,
+        $.metavariable,
         $.recursive_notation_term,
-        $.custom_notation_block,
+
+        // Imp
+        $.bounded_imp_program,
+
+        // Hoare Logic
         $.hoare_assertion,
         $.hoare_triple,
       ),
     ),
-
 
     double_dot: $ => "..",
 
@@ -782,14 +790,17 @@ export default grammar({
     parenthesized_term: $ => seq(
       "(",
       $._term,
-
-      optional(choice(
-        repeat1(seq(",", $._term)),
-        repeat1(seq(";", $._term))
-      )),
-
-      optional(choice(",", ";")),
+      repeat(seq(",", $._term)),
+      optional(","),
       ")"
+    ),
+
+    semicolon_separated_parenthesized_terms: $ => seq(
+      "(",
+      $._term,
+      repeat1(seq(";", $._term)),
+      optional(";"),
+      ")",
     ),
 
     list_literal: $ => seq(
@@ -914,7 +925,7 @@ export default grammar({
       repeat(seq(",", field("pattern", $._pattern))),
     ),
 
-    if_expression: $ => prec.right('binder', seq(
+    if_expression: $ => prec.right(seq(
       "if",
       field("condition", $._term),
       optional($.term_as_clause),
@@ -1055,7 +1066,7 @@ export default grammar({
 
       // Custom
       $.infix_pattern,
-      $.custom_notation_block,
+      $.bounded_imp_program,
     )),
 
     infix_pattern: $ => prec.right('list_ops', seq(
@@ -1489,41 +1500,77 @@ export default grammar({
     wildcard: $ => "_",
 
     // Rules for Software Foundations Imp Chapters
-    custom_notation_block: $ => choice(
-      seq('<{', repeat($._dsl_token), '}>'),
-      seq('[|', repeat($._dsl_token), '|]'),
-      seq('{|', repeat($._dsl_token), '|}')
+    _imp_program: $ => choice( // TODO: precedences
+      prec(1, $._imp_command),
+      prec(-1, alias($._term, $.imp_exp))
     ),
 
-    _dsl_token: $ => choice(
-      $.ident,
-      $.number,
-      $.string,
-      /[+\-*/&=<>!~|%^:;]+/,
-      seq('(', repeat($._dsl_token), ')'),
-      seq('[', repeat($._dsl_token), ']'),
-      seq('{', repeat($._dsl_token), '}')
-    ),
+    bounded_imp_program: $ => seq("<{", $._imp_program, "}>"),
 
-
-    imp_evaluation_operation: $ => prec.left('custom', seq(
+    imp_evaluation: $ => prec.left('custom', seq(
       field("initial_state", $._term),
       '=[',
-      $.imp_program,
+      $._imp_program,
       ']=>',
       field("final_state", $._term),
     )),
 
-    imp_program: $ => repeat1($._imp_token),
+    _imp_command: $ => choice(
+      $.parenthesized_imp_command,
+      $.cskip,
+      $.casign,
+      $.cseq,
+      $.cif,
+      $.cwhile,
+      $.crepeat,
+      $.chavoc,
+      alias($.ident, $.abstract_command)
+    ),
 
-    _imp_token: $ => choice(
-      $.ident,
-      $.number,
-      ":=",
-      /[+\-*/&=<>!~|%;]+/,
-      seq("(", repeat($._imp_token), ")"),
-      seq("[", repeat($._imp_token), "]"),
-      seq("{", repeat($._imp_token), "}")
+    parenthesized_imp_command: $ => seq(
+      "(", $._imp_command, ")"
+    ),
+
+    cskip: $ => "skip",
+
+    casign: $ => seq(choice($.ident, $.string), ":=", $._term),
+
+    cseq: $ => prec.right(seq(
+      $._imp_program,
+      ";",
+      $._imp_program,
+    )),
+
+    // FIX: conflict between cif and if_expression (skipped test)
+    cif: $ => seq(
+      "if",
+      field("condition", $._term),
+      "then",
+      field("then", $._imp_program),
+      "else",
+      field("else", $._imp_program),
+      "end"
+    ),
+
+    cwhile: $ => seq(
+      "while",
+      field("condition", $._term),
+      "do",
+      field("body", $._imp_program),
+      "end"
+    ),
+
+    crepeat: $ => seq(
+      "repeat",
+      field("body", $._imp_program),
+      "until",
+      field("condition", $._term),
+      "end"
+    ),
+
+    chavoc: $ => seq(
+      "havoc",
+      choice($.ident, $.string),
     ),
 
     // Rules for Software Foundations Hoare Logic Chapters
@@ -1533,7 +1580,7 @@ export default grammar({
 
     hoare_triple: $ => seq(
       $.hoare_assertion,
-      $.imp_program,
+      $._imp_program,
       $.hoare_assertion,
     ),
 

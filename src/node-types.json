@@ -56,15 +56,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -104,7 +104,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -165,6 +165,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -203,15 +207,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -251,7 +255,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -315,6 +319,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -350,15 +358,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -406,7 +414,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -467,6 +475,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -544,15 +556,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -592,7 +604,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -653,6 +665,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -702,15 +718,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -750,7 +766,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -811,6 +827,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -869,6 +889,10 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "by_clause",
           "named": true
         },
@@ -878,10 +902,6 @@
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -921,7 +941,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -982,6 +1002,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -1093,7 +1117,7 @@
           "named": true
         },
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -1138,6 +1162,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -1237,15 +1265,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -1289,7 +1317,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -1354,6 +1382,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -1439,15 +1471,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -1487,7 +1519,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -1551,6 +1583,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -1566,7 +1602,7 @@
       "required": false,
       "types": [
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -1614,7 +1650,62 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "bounded_imp_program",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "abstract_command",
+          "named": true
+        },
+        {
+          "type": "casign",
+          "named": true
+        },
+        {
+          "type": "chavoc",
+          "named": true
+        },
+        {
+          "type": "cif",
+          "named": true
+        },
+        {
+          "type": "crepeat",
+          "named": true
+        },
+        {
+          "type": "cseq",
+          "named": true
+        },
+        {
+          "type": "cskip",
+          "named": true
+        },
+        {
+          "type": "cwhile",
+          "named": true
+        },
+        {
+          "type": "imp_exp",
+          "named": true
+        },
+        {
+          "type": "parenthesized_imp_command",
           "named": true
         }
       ]
@@ -1703,15 +1794,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -1751,7 +1842,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -1815,6 +1906,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -1831,6 +1926,436 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "casign",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
+          "type": "hoare_arrow",
+          "named": true
+        },
+        {
+          "type": "hoare_assertion",
+          "named": true
+        },
+        {
+          "type": "hoare_logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "hoare_triple",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation",
+          "named": true
+        },
+        {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chavoc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cif",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "$",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
+            "named": true
+          },
+          {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
+            "type": "hoare_arrow",
+            "named": true
+          },
+          {
+            "type": "hoare_assertion",
+            "named": true
+          },
+          {
+            "type": "hoare_logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "hoare_triple",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
+            "named": true
+          }
+        ]
+      },
+      "else": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "abstract_command",
+            "named": true
+          },
+          {
+            "type": "casign",
+            "named": true
+          },
+          {
+            "type": "chavoc",
+            "named": true
+          },
+          {
+            "type": "cif",
+            "named": true
+          },
+          {
+            "type": "crepeat",
+            "named": true
+          },
+          {
+            "type": "cseq",
+            "named": true
+          },
+          {
+            "type": "cskip",
+            "named": true
+          },
+          {
+            "type": "cwhile",
+            "named": true
+          },
+          {
+            "type": "imp_exp",
+            "named": true
+          },
+          {
+            "type": "parenthesized_imp_command",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "abstract_command",
+            "named": true
+          },
+          {
+            "type": "casign",
+            "named": true
+          },
+          {
+            "type": "chavoc",
+            "named": true
+          },
+          {
+            "type": "cif",
+            "named": true
+          },
+          {
+            "type": "crepeat",
+            "named": true
+          },
+          {
+            "type": "cseq",
+            "named": true
+          },
+          {
+            "type": "cskip",
+            "named": true
+          },
+          {
+            "type": "cwhile",
+            "named": true
+          },
+          {
+            "type": "imp_exp",
+            "named": true
+          },
+          {
+            "type": "parenthesized_imp_command",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1921,15 +2446,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -1969,7 +2494,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -2030,6 +2555,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -2068,15 +2597,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -2116,7 +2645,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -2177,6 +2706,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -2282,6 +2815,271 @@
     }
   },
   {
+    "type": "crepeat",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "abstract_command",
+            "named": true
+          },
+          {
+            "type": "casign",
+            "named": true
+          },
+          {
+            "type": "chavoc",
+            "named": true
+          },
+          {
+            "type": "cif",
+            "named": true
+          },
+          {
+            "type": "crepeat",
+            "named": true
+          },
+          {
+            "type": "cseq",
+            "named": true
+          },
+          {
+            "type": "cskip",
+            "named": true
+          },
+          {
+            "type": "cwhile",
+            "named": true
+          },
+          {
+            "type": "imp_exp",
+            "named": true
+          },
+          {
+            "type": "parenthesized_imp_command",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "$",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
+            "named": true
+          },
+          {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
+            "type": "hoare_arrow",
+            "named": true
+          },
+          {
+            "type": "hoare_assertion",
+            "named": true
+          },
+          {
+            "type": "hoare_logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "hoare_triple",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cseq",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "abstract_command",
+          "named": true
+        },
+        {
+          "type": "casign",
+          "named": true
+        },
+        {
+          "type": "chavoc",
+          "named": true
+        },
+        {
+          "type": "cif",
+          "named": true
+        },
+        {
+          "type": "crepeat",
+          "named": true
+        },
+        {
+          "type": "cseq",
+          "named": true
+        },
+        {
+          "type": "cskip",
+          "named": true
+        },
+        {
+          "type": "cwhile",
+          "named": true
+        },
+        {
+          "type": "imp_exp",
+          "named": true
+        },
+        {
+          "type": "parenthesized_imp_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "custom_entry_modifier",
     "named": true,
     "fields": {},
@@ -2299,29 +3097,6 @@
         },
         {
           "type": "ident",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "custom_notation_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
           "named": true
         }
       ]
@@ -2352,15 +3127,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -2404,7 +3179,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -2468,6 +3243,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -2476,6 +3255,220 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "cwhile",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "abstract_command",
+            "named": true
+          },
+          {
+            "type": "casign",
+            "named": true
+          },
+          {
+            "type": "chavoc",
+            "named": true
+          },
+          {
+            "type": "cif",
+            "named": true
+          },
+          {
+            "type": "crepeat",
+            "named": true
+          },
+          {
+            "type": "cseq",
+            "named": true
+          },
+          {
+            "type": "cskip",
+            "named": true
+          },
+          {
+            "type": "cwhile",
+            "named": true
+          },
+          {
+            "type": "imp_exp",
+            "named": true
+          },
+          {
+            "type": "parenthesized_imp_command",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "$",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
+            "named": true
+          },
+          {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
+            "type": "hoare_arrow",
+            "named": true
+          },
+          {
+            "type": "hoare_assertion",
+            "named": true
+          },
+          {
+            "type": "hoare_logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "hoare_triple",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2565,15 +3558,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -2613,7 +3606,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -2677,6 +3670,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -2731,15 +3728,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -2779,7 +3776,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -2859,6 +3856,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -2928,15 +3929,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -2976,7 +3977,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -3037,6 +4038,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -3308,15 +4313,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -3356,7 +4361,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -3417,6 +4422,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -3487,7 +4496,7 @@
       "required": false,
       "types": [
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -3532,6 +4541,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -3582,15 +4595,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -3630,7 +4643,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -3691,6 +4704,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -3976,7 +4993,7 @@
             "named": false
           },
           {
-            "type": "custom_notation_block",
+            "type": "bounded_imp_program",
             "named": true
           },
           {
@@ -4021,6 +5038,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -4102,15 +5123,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -4150,7 +5171,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -4211,6 +5232,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -4260,15 +5285,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -4308,7 +5333,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -4372,6 +5397,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -4408,15 +5437,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -4456,7 +5485,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -4520,6 +5549,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -4571,15 +5604,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -4619,7 +5652,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -4680,6 +5713,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -4729,15 +5766,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -4777,7 +5814,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -4841,6 +5878,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -4861,11 +5902,47 @@
       "required": true,
       "types": [
         {
+          "type": "abstract_command",
+          "named": true
+        },
+        {
+          "type": "casign",
+          "named": true
+        },
+        {
+          "type": "chavoc",
+          "named": true
+        },
+        {
+          "type": "cif",
+          "named": true
+        },
+        {
+          "type": "crepeat",
+          "named": true
+        },
+        {
+          "type": "cseq",
+          "named": true
+        },
+        {
+          "type": "cskip",
+          "named": true
+        },
+        {
+          "type": "cwhile",
+          "named": true
+        },
+        {
           "type": "hoare_assertion",
           "named": true
         },
         {
-          "type": "imp_program",
+          "type": "imp_exp",
+          "named": true
+        },
+        {
+          "type": "parenthesized_imp_command",
           "named": true
         }
       ]
@@ -4927,15 +6004,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -4975,7 +6052,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -5036,6 +6113,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -5085,15 +6166,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -5133,7 +6214,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -5194,6 +6275,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -5243,15 +6328,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -5291,7 +6376,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -5355,6 +6440,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -5381,7 +6470,7 @@
     }
   },
   {
-    "type": "imp_evaluation_operation",
+    "type": "imp_evaluation",
     "named": true,
     "fields": {
       "final_state": {
@@ -5421,15 +6510,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -5469,7 +6558,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -5530,6 +6619,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -5579,15 +6672,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -5627,7 +6720,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -5691,6 +6784,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -5706,26 +6803,194 @@
       "required": true,
       "types": [
         {
-          "type": "imp_program",
+          "type": "abstract_command",
+          "named": true
+        },
+        {
+          "type": "casign",
+          "named": true
+        },
+        {
+          "type": "chavoc",
+          "named": true
+        },
+        {
+          "type": "cif",
+          "named": true
+        },
+        {
+          "type": "crepeat",
+          "named": true
+        },
+        {
+          "type": "cseq",
+          "named": true
+        },
+        {
+          "type": "cskip",
+          "named": true
+        },
+        {
+          "type": "cwhile",
+          "named": true
+        },
+        {
+          "type": "imp_exp",
+          "named": true
+        },
+        {
+          "type": "parenthesized_imp_command",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "imp_program",
+    "type": "imp_exp",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
+          "type": "hoare_arrow",
+          "named": true
+        },
+        {
+          "type": "hoare_assertion",
+          "named": true
+        },
+        {
+          "type": "hoare_logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "hoare_triple",
+          "named": true
+        },
         {
           "type": "ident",
           "named": true
         },
         {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation",
+          "named": true
+        },
+        {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
+          "named": true
+        },
+        {
           "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         }
       ]
@@ -5900,15 +7165,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -5948,7 +7213,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -6025,6 +7290,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -6124,15 +7393,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -6172,7 +7441,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -6240,6 +7509,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -6301,15 +7574,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -6349,7 +7622,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -6410,6 +7683,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -6491,15 +7768,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -6539,7 +7816,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -6600,6 +7877,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -6722,15 +8003,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -6770,7 +8051,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -6834,6 +8115,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -6869,15 +8154,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -6917,7 +8202,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -6997,6 +8282,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -7036,15 +8325,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -7084,7 +8373,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -7145,6 +8434,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -7183,15 +8476,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -7231,7 +8524,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -7292,6 +8585,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -7330,15 +8627,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -7378,7 +8675,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -7439,6 +8736,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -7549,15 +8850,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -7597,7 +8898,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -7658,6 +8959,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -7811,15 +9116,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -7859,7 +9164,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -7920,6 +9225,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -7973,15 +9282,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -8021,7 +9330,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -8082,6 +9391,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -8125,15 +9438,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -8173,7 +9486,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -8234,6 +9547,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -8287,7 +9604,7 @@
             "named": false
           },
           {
-            "type": "custom_notation_block",
+            "type": "bounded_imp_program",
             "named": true
           },
           {
@@ -8332,6 +9649,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -8471,6 +9792,53 @@
     }
   },
   {
+    "type": "parenthesized_imp_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "abstract_command",
+          "named": true
+        },
+        {
+          "type": "casign",
+          "named": true
+        },
+        {
+          "type": "chavoc",
+          "named": true
+        },
+        {
+          "type": "cif",
+          "named": true
+        },
+        {
+          "type": "crepeat",
+          "named": true
+        },
+        {
+          "type": "cseq",
+          "named": true
+        },
+        {
+          "type": "cskip",
+          "named": true
+        },
+        {
+          "type": "cwhile",
+          "named": true
+        },
+        {
+          "type": "parenthesized_imp_command",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parenthesized_pattern",
     "named": true,
     "fields": {},
@@ -8495,15 +9863,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -8543,7 +9911,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -8620,6 +9988,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -8697,15 +10069,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -8745,7 +10117,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -8809,6 +10181,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -8849,15 +10225,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -8897,7 +10273,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -8974,6 +10350,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -9052,15 +10432,15 @@
             "named": false
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -9100,7 +10480,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -9177,6 +10557,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -9369,7 +10753,7 @@
       "required": true,
       "types": [
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -9414,6 +10798,10 @@
         },
         {
           "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -9580,7 +10968,7 @@
       "required": true,
       "types": [
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -9625,6 +11013,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -9678,6 +11070,157 @@
       "types": [
         {
           "type": "goal_selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "semicolon_separated_parenthesized_terms",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "additive_operation",
+          "named": true
+        },
+        {
+          "type": "app_operation",
+          "named": true
+        },
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arrow_term",
+          "named": true
+        },
+        {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
+          "type": "comparison_operation",
+          "named": true
+        },
+        {
+          "type": "cons_operation",
+          "named": true
+        },
+        {
+          "type": "custom_operation",
+          "named": true
+        },
+        {
+          "type": "dotted_qualid",
+          "named": true
+        },
+        {
+          "type": "fix_expression",
+          "named": true
+        },
+        {
+          "type": "hoare_arrow",
+          "named": true
+        },
+        {
+          "type": "hoare_assertion",
+          "named": true
+        },
+        {
+          "type": "hoare_logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "hoare_triple",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "if_expression",
+          "named": true
+        },
+        {
+          "type": "imp_evaluation",
+          "named": true
+        },
+        {
+          "type": "lambda_function",
+          "named": true
+        },
+        {
+          "type": "let_expression",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "logical_conjunction",
+          "named": true
+        },
+        {
+          "type": "logical_disjunction",
+          "named": true
+        },
+        {
+          "type": "logical_equivalence",
+          "named": true
+        },
+        {
+          "type": "match_expression",
+          "named": true
+        },
+        {
+          "type": "metavariable",
+          "named": true
+        },
+        {
+          "type": "multiplicative_operation",
+          "named": true
+        },
+        {
+          "type": "negation_operation",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_term",
+          "named": true
+        },
+        {
+          "type": "quantifier_term",
+          "named": true
+        },
+        {
+          "type": "recursive_notation_term",
+          "named": true
+        },
+        {
+          "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "term_cast",
           "named": true
         }
       ]
@@ -10259,15 +11802,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -10307,7 +11850,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -10368,6 +11911,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -10442,15 +11989,15 @@
             "named": false
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -10490,7 +12037,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -10570,6 +12117,10 @@
             "named": true
           },
           {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           },
@@ -10638,15 +12189,15 @@
             "named": true
           },
           {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
             "type": "comparison_operation",
             "named": true
           },
           {
             "type": "cons_operation",
-            "named": true
-          },
-          {
-            "type": "custom_notation_block",
             "named": true
           },
           {
@@ -10686,7 +12237,7 @@
             "named": true
           },
           {
-            "type": "imp_evaluation_operation",
+            "type": "imp_evaluation",
             "named": true
           },
           {
@@ -10747,6 +12298,10 @@
           },
           {
             "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
             "named": true
           },
           {
@@ -10836,15 +12391,15 @@
           "named": true
         },
         {
+          "type": "bounded_imp_program",
+          "named": true
+        },
+        {
           "type": "comparison_operation",
           "named": true
         },
         {
           "type": "cons_operation",
-          "named": true
-        },
-        {
-          "type": "custom_notation_block",
           "named": true
         },
         {
@@ -10884,7 +12439,7 @@
           "named": true
         },
         {
-          "type": "imp_evaluation_operation",
+          "type": "imp_evaluation",
           "named": true
         },
         {
@@ -10948,6 +12503,10 @@
           "named": true
         },
         {
+          "type": "semicolon_separated_parenthesized_terms",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         },
@@ -10982,7 +12541,7 @@
       "required": false,
       "types": [
         {
-          "type": "custom_notation_block",
+          "type": "bounded_imp_program",
           "named": true
         },
         {
@@ -11027,6 +12586,10 @@
         },
         {
           "type": "scoped_term",
+          "named": true
+        },
+        {
+          "type": "semicolon_separated_parenthesized_terms",
           "named": true
         },
         {
@@ -11694,10 +13257,6 @@
     "named": false
   },
   {
-    "type": "[|",
-    "named": false
-  },
-  {
     "type": "\\/",
     "named": false
   },
@@ -11712,6 +13271,10 @@
   {
     "type": "_",
     "named": false
+  },
+  {
+    "type": "abstract_command",
+    "named": true
   },
   {
     "type": "admitted_command",
@@ -11770,6 +13333,10 @@
     "named": false
   },
   {
+    "type": "cskip",
+    "named": true
+  },
+  {
     "type": "custom",
     "named": false
   },
@@ -11784,6 +13351,10 @@
   {
     "type": "discriminated_db",
     "named": true
+  },
+  {
+    "type": "do",
+    "named": false
   },
   {
     "type": "dotted_qualid",
@@ -11839,6 +13410,10 @@
   },
   {
     "type": "goal",
+    "named": false
+  },
+  {
+    "type": "havoc",
     "named": false
   },
   {
@@ -11990,6 +13565,10 @@
     "named": false
   },
   {
+    "type": "until",
+    "named": false
+  },
+  {
     "type": "using",
     "named": false
   },
@@ -11999,6 +13578,10 @@
   },
   {
     "type": "where",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   },
   {
@@ -12014,10 +13597,6 @@
     "named": false
   },
   {
-    "type": "{|",
-    "named": false
-  },
-  {
     "type": "|",
     "named": false
   },
@@ -12026,15 +13605,7 @@
     "named": false
   },
   {
-    "type": "|]",
-    "named": false
-  },
-  {
     "type": "||",
-    "named": false
-  },
-  {
-    "type": "|}",
     "named": false
   },
   {

@@ -4297,7 +4297,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "imp_evaluation_operation"
+          "name": "imp_evaluation"
         }
       ]
     },
@@ -4400,7 +4400,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "metavariable"
+              "name": "semicolon_separated_parenthesized_terms"
             },
             {
               "type": "SYMBOL",
@@ -4408,11 +4408,15 @@
             },
             {
               "type": "SYMBOL",
+              "name": "metavariable"
+            },
+            {
+              "type": "SYMBOL",
               "name": "recursive_notation_term"
             },
             {
               "type": "SYMBOL",
-              "name": "custom_notation_block"
+              "name": "bounded_imp_program"
             },
             {
               "type": "SYMBOL",
@@ -4459,44 +4463,27 @@
           "name": "_term"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_term"
+              }
+            ]
+          }
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "REPEAT1",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_term"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "type": "REPEAT1",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ";"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_term"
-                      }
-                    ]
-                  }
-                }
-              ]
+              "type": "STRING",
+              "value": ","
             },
             {
               "type": "BLANK"
@@ -4504,20 +4491,44 @@
           ]
         },
         {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "semicolon_separated_parenthesized_terms": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_term"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_term"
+              }
+            ]
+          }
+        },
+        {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "STRING",
-                  "value": ";"
-                }
-              ]
+              "type": "STRING",
+              "value": ";"
             },
             {
               "type": "BLANK"
@@ -5241,7 +5252,7 @@
     },
     "if_expression": {
       "type": "PREC_RIGHT",
-      "value": "binder",
+      "value": 0,
       "content": {
         "type": "SEQ",
         "members": [
@@ -5896,7 +5907,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "custom_notation_block"
+            "name": "bounded_imp_program"
           }
         ]
       }
@@ -8196,153 +8207,50 @@
       "type": "STRING",
       "value": "_"
     },
-    "custom_notation_block": {
+    "_imp_program": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "<{"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "}>"
-            }
-          ]
+          "type": "PREC",
+          "value": 1,
+          "content": {
+            "type": "SYMBOL",
+            "name": "_imp_command"
+          }
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "[|"
+          "type": "PREC",
+          "value": -1,
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
             },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "|]"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{|"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "|}"
-            }
-          ]
+            "named": true,
+            "value": "imp_exp"
+          }
         }
       ]
     },
-    "_dsl_token": {
-      "type": "CHOICE",
+    "bounded_imp_program": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "ident"
+          "type": "STRING",
+          "value": "<{"
         },
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "_imp_program"
         },
         {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[+\\-*/&=<>!~|%^:;]+"
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "("
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": ")"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "["
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "]"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_dsl_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "}"
-            }
-          ]
+          "type": "STRING",
+          "value": "}>"
         }
       ]
     },
-    "imp_evaluation_operation": {
+    "imp_evaluation": {
       "type": "PREC_LEFT",
       "value": "custom",
       "content": {
@@ -8362,7 +8270,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "imp_program"
+            "name": "_imp_program"
           },
           {
             "type": "STRING",
@@ -8379,89 +8287,248 @@
         ]
       }
     },
-    "imp_program": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_imp_token"
-      }
-    },
-    "_imp_token": {
+    "_imp_command": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "ident"
+          "name": "parenthesized_imp_command"
         },
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "cskip"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "casign"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cseq"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cif"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cwhile"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "crepeat"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chavoc"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "ident"
+          },
+          "named": true,
+          "value": "abstract_command"
+        }
+      ]
+    },
+    "parenthesized_imp_command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_imp_command"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "cskip": {
+      "type": "STRING",
+      "value": "skip"
+    },
+    "casign": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ident"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": ":="
         },
         {
-          "type": "PATTERN",
-          "value": "[+\\-*/&=<>!~|%;]+"
+          "type": "SYMBOL",
+          "name": "_term"
+        }
+      ]
+    },
+    "cseq": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          },
+          {
+            "type": "STRING",
+            "value": ";"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          }
+        ]
+      }
+    },
+    "cif": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "if"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "("
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_imp_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": ")"
-            }
-          ]
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_term"
+          }
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "["
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_imp_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "]"
-            }
-          ]
+          "type": "STRING",
+          "value": "then"
         },
         {
-          "type": "SEQ",
+          "type": "FIELD",
+          "name": "then",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "else"
+        },
+        {
+          "type": "FIELD",
+          "name": "else",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        }
+      ]
+    },
+    "cwhile": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "while"
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_term"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "do"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        }
+      ]
+    },
+    "crepeat": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "repeat"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_imp_program"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "until"
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_term"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "end"
+        }
+      ]
+    },
+    "chavoc": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "havoc"
+        },
+        {
+          "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "{"
+              "type": "SYMBOL",
+              "name": "ident"
             },
             {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_imp_token"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "}"
+              "type": "SYMBOL",
+              "name": "string"
             }
           ]
         }
@@ -8493,7 +8560,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "imp_program"
+          "name": "_imp_program"
         },
         {
           "type": "SYMBOL",
@@ -8594,6 +8661,18 @@
       "term_cast"
     ],
     [
+      "_qualid",
+      "_imp_command"
+    ],
+    [
+      "application",
+      "casign"
+    ],
+    [
+      "application",
+      "_imp_program"
+    ],
+    [
       "hoare_triple",
       "_term0"
     ]
@@ -8681,6 +8760,16 @@
       {
         "type": "STRING",
         "value": "tactic_sequence"
+      }
+    ],
+    [
+      {
+        "type": "STRING",
+        "value": "cif"
+      },
+      {
+        "type": "STRING",
+        "value": "if_exp"
       }
     ]
   ],
