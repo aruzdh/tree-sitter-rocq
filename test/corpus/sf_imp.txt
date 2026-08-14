@@ -288,6 +288,28 @@ Definition p := <{ if X < Y then X := Y else X := Y end  }>.
             (ident)))))))
 
 ==================
+If1 Imp Command
+==================
+Definition if1false_test := <{ if1 X = 0 then X := 1 + 2 end }>.
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (bounded_imp_program
+        (cif1
+          condition: (comparison_operation
+            (ident)
+            (number))
+          then: (casign
+            (ident)
+            (additive_operation
+              (number)
+              (number))))))))
+
+==================
 While Imp Command
 ==================
 Definition p := <{ while X < Y do X := Y end  }>.
@@ -442,6 +464,38 @@ Definition p := st =[ X := 1 ; if X <= 1 then Y := 3 else Z := 4 end ]=> st'.
               (ident)
               (number))))
         final_state: (ident)))))
+
+==================
+If1 Imp Evaluation
+==================
+Definition if1false_test := (X !-> 2) =[ if1 X = 0 then X := 1 + 1 end ]=> (X !-> 2).
+---
+
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (imp_evaluation
+        initial_state: (parenthesized_term
+          (custom_operation
+            (ident)
+            (custom_operator)
+            (number)))
+        (cif1
+          condition: (comparison_operation
+            (ident)
+            (number))
+          then: (casign
+            (ident)
+            (additive_operation
+              (number)
+              (number))))
+        final_state: (parenthesized_term
+          (custom_operation
+            (ident)
+            (custom_operator)
+            (number)))))))
 
 ==================
 While Imp Evaluation
