@@ -8461,6 +8461,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "cif1"
+        },
+        {
+          "type": "SYMBOL",
           "name": "cwhile"
         },
         {
@@ -8599,6 +8603,43 @@
           {
             "type": "FIELD",
             "name": "else",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_imp_program"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "end"
+          }
+        ]
+      }
+    },
+    "cif1": {
+      "type": "PREC",
+      "value": "imp_command",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "if1"
+          },
+          {
+            "type": "FIELD",
+            "name": "condition",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_term"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "then"
+          },
+          {
+            "type": "FIELD",
+            "name": "then",
             "content": {
               "type": "SYMBOL",
               "name": "_imp_program"

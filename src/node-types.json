@@ -1685,6 +1685,10 @@
           "named": true
         },
         {
+          "type": "cif1",
+          "named": true
+        },
+        {
           "type": "crepeat",
           "named": true
         },
@@ -2285,6 +2289,10 @@
             "named": true
           },
           {
+            "type": "cif1",
+            "named": true
+          },
+          {
             "type": "crepeat",
             "named": true
           },
@@ -2328,6 +2336,228 @@
           },
           {
             "type": "cif",
+            "named": true
+          },
+          {
+            "type": "cif1",
+            "named": true
+          },
+          {
+            "type": "crepeat",
+            "named": true
+          },
+          {
+            "type": "cseq",
+            "named": true
+          },
+          {
+            "type": "cskip",
+            "named": true
+          },
+          {
+            "type": "cwhile",
+            "named": true
+          },
+          {
+            "type": "imp_exp",
+            "named": true
+          },
+          {
+            "type": "parenthesized_imp_command",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "cif1",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "#",
+            "named": false
+          },
+          {
+            "type": "$",
+            "named": false
+          },
+          {
+            "type": "'",
+            "named": false
+          },
+          {
+            "type": "@",
+            "named": false
+          },
+          {
+            "type": "additive_operation",
+            "named": true
+          },
+          {
+            "type": "app_operation",
+            "named": true
+          },
+          {
+            "type": "application",
+            "named": true
+          },
+          {
+            "type": "arrow_term",
+            "named": true
+          },
+          {
+            "type": "bounded_imp_program",
+            "named": true
+          },
+          {
+            "type": "comparison_operation",
+            "named": true
+          },
+          {
+            "type": "cons_operation",
+            "named": true
+          },
+          {
+            "type": "custom_operation",
+            "named": true
+          },
+          {
+            "type": "dotted_qualid",
+            "named": true
+          },
+          {
+            "type": "fix_expression",
+            "named": true
+          },
+          {
+            "type": "hoare_arrow",
+            "named": true
+          },
+          {
+            "type": "hoare_assertion",
+            "named": true
+          },
+          {
+            "type": "hoare_logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "hoare_triple",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expression",
+            "named": true
+          },
+          {
+            "type": "imp_evaluation",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "let_expression",
+            "named": true
+          },
+          {
+            "type": "list_literal",
+            "named": true
+          },
+          {
+            "type": "logical_conjunction",
+            "named": true
+          },
+          {
+            "type": "logical_disjunction",
+            "named": true
+          },
+          {
+            "type": "logical_equivalence",
+            "named": true
+          },
+          {
+            "type": "match_expression",
+            "named": true
+          },
+          {
+            "type": "metavariable",
+            "named": true
+          },
+          {
+            "type": "multiplicative_operation",
+            "named": true
+          },
+          {
+            "type": "negation_operation",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
+            "type": "quantifier_term",
+            "named": true
+          },
+          {
+            "type": "recursive_notation_term",
+            "named": true
+          },
+          {
+            "type": "scoped_term",
+            "named": true
+          },
+          {
+            "type": "semicolon_separated_parenthesized_terms",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "term_cast",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "abstract_command",
+            "named": true
+          },
+          {
+            "type": "casign",
+            "named": true
+          },
+          {
+            "type": "chavoc",
+            "named": true
+          },
+          {
+            "type": "cif",
+            "named": true
+          },
+          {
+            "type": "cif1",
             "named": true
           },
           {
@@ -2839,6 +3069,10 @@
             "named": true
           },
           {
+            "type": "cif1",
+            "named": true
+          },
+          {
             "type": "crepeat",
             "named": true
           },
@@ -3050,6 +3284,10 @@
         },
         {
           "type": "cif",
+          "named": true
+        },
+        {
+          "type": "cif1",
           "named": true
         },
         {
@@ -3279,6 +3517,10 @@
           },
           {
             "type": "cif",
+            "named": true
+          },
+          {
+            "type": "cif1",
             "named": true
           },
           {
@@ -5918,6 +6160,10 @@
           "named": true
         },
         {
+          "type": "cif1",
+          "named": true
+        },
+        {
           "type": "crepeat",
           "named": true
         },
@@ -6816,6 +7062,10 @@
         },
         {
           "type": "cif",
+          "named": true
+        },
+        {
+          "type": "cif1",
           "named": true
         },
         {
@@ -9813,6 +10063,10 @@
         },
         {
           "type": "cif",
+          "named": true
+        },
+        {
+          "type": "cif1",
           "named": true
         },
         {
@@ -13430,6 +13684,10 @@
   },
   {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "if1",
     "named": false
   },
   {

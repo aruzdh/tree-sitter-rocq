@@ -1557,6 +1557,7 @@ export default grammar({
       $.casign,
       $.cseq,
       $.cif,
+      $.cif1,
       $.cwhile,
       $.crepeat,
       $.chavoc,
@@ -1584,6 +1585,14 @@ export default grammar({
       field("then", $._imp_program),
       "else",
       field("else", $._imp_program),
+      "end"
+    )),
+
+    cif1: $ => prec('imp_command', seq(
+      "if1",
+      field("condition", $._term),
+      "then",
+      field("then", $._imp_program),
       "end"
     )),
 
