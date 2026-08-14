@@ -24,43 +24,56 @@ export default grammar({
 
     [$.fixannot, $._qualid],
     [$.assert_tactic, $._qualid],
-
-    // Imp
-    [$._qualid, $._imp_command],
   ],
 
   precedences: $ => [
-    [
-      'parenthesized',
+    [ // 0 - bind more
 
-      'hoare_assertion',
-      'hoare_triple',
-      'scope',
+      // ~~~~~~ Custom ~~~~~~~
       'imp_command',
       'imp_program',
 
-      'term0',
+      'parenthesized',
 
-      'application',
-      'negation',
-      'list_ops',
-      'multiplicative',
-      'additive',
-      'comparison',
+      'hoare_triple',
+      'hoare_assertion',
+      // ~~~~~~~~~~~~~~~~~~~~
+      'qualid', // 0
 
-      'hoare_arrow',
-      'conjunction',
-      'disjunction',
-      'equivalence',
+      'term0', // 0
+      'scope', // 1
+
+      'term1', // 1
+
+      'application', // 10
+      'quantifier_term', // 10 
+
+      'term10',
+
+      'multiplicative', // 40
+      'additive', // 50
+      'list_ops', // 60
+      'comparison', // 70
 
       'custom',
-      'arrow_term',
-      'quantifier_term',
+
+      'negation', // 75
+
+      'hoare_arrow', // 80
+
+      'conjunction', // 80
+      'disjunction', // 85
+      'equivalence', // 95
+
+      'arrow_term', // 99
       'binder',
       'type',
+
       'term_cast',
-      'term100',
-    ],
+
+      'term99',
+      'term100', // 100
+    ], // 200 - bind less
     [
       'tactic_match',
       'tactic_application',
@@ -731,11 +744,11 @@ export default grammar({
       $.type
     )),
 
-    _term99: $ => choice(
+    _term99: $ => prec('term99', choice(
       $._term10,
-    ),
+    )),
 
-    _term10: $ => choice(
+    _term10: $ => prec('term10', choice(
       $.application,
       $.lambda_function,
       $.quantifier_term,
@@ -747,41 +760,45 @@ export default grammar({
       $.arrow_term,
       $._infix_operation,
       $.imp_evaluation,
-    ),
+    )),
 
     _one_term: $ => choice(
       seq("@", $._qualid),
       $._term1
     ),
 
-    _term1: $ => choice(
+    _term1: $ => prec('term1', choice(
       $.scoped_term,
       $._term0,
-    ),
+    )),
 
     _term0: $ => prec('term0', seq(
       optional("'"), // For ImpParser Chapter
       optional("#"), // For Hoare Chapters
       optional("$"), // For Hoare Chapters
       choice(
-        $._qualid_annotated,
-        $.number,
-        $.string,
-        $.match_expression,
-        $.parenthesized_term,
-        $.semicolon_separated_parenthesized_terms,
-        $.list_literal,
-        $.metavariable,
-        $.recursive_notation_term,
-
-        // Imp
-        $.bounded_imp_program,
+        $._term0_base,
 
         // Hoare Logic
         $.hoare_assertion,
         $.hoare_triple,
       ),
     )),
+
+    _term0_base: $ => choice(
+      $._qualid_annotated,
+      $.number,
+      $.string,
+      $.match_expression,
+      $.parenthesized_term,
+      $.semicolon_separated_parenthesized_terms,
+      $.list_literal,
+      $.metavariable,
+      $.recursive_notation_term,
+
+      // Imp
+      $.bounded_imp_program,
+    ),
 
     double_dot: $ => "..",
 
@@ -831,8 +848,24 @@ export default grammar({
     _arg: $ => choice(
       seq("(", $.ident, ":=", $._term, ")"),
       seq("(", $._natural, ":=", $._term, ")"),
-      $._term1,
+      $._arg_term1,
     ),
+
+    _arg_term1: $ => prec('term1', choice(
+      alias($.arg_term_scope, $.scoped_term),
+      $._arg_term0,
+    )),
+
+    arg_term_scope: $ => prec.left('scope',
+      seq($._arg_term1, '%', optional("_"), $.ident),
+    ),
+
+    _arg_term0: $ => prec('term0', seq(
+      optional("'"), // For ImpParser Chapter
+      optional("#"), // For Hoare Chapters
+      optional("$"), // For Hoare Chapters
+      $._term0_base,
+    )),
 
     lambda_function: $ => prec('binder', seq(
       "fun",
@@ -1418,10 +1451,10 @@ export default grammar({
 
     // ~~~~~~~~~~~~~ Lexical tokens ~~~~~~~~~~~~~~~
 
-    _qualid: $ => choice(
+    _qualid: $ => prec('qualid', choice(
       $.ident,
       $.dotted_qualid
-    ),
+    )),
 
     comment: $ => seq(
       "(*",
@@ -1504,7 +1537,7 @@ export default grammar({
 
     // Rules for Software Foundations Imp Chapters
     _imp_program: $ => prec('imp_program', choice(
-      $._imp_command,
+      prec(2, $._imp_command),
       alias($._term, $.imp_exp)
     )),
 
