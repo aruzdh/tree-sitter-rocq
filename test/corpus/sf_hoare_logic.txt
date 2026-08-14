@@ -430,3 +430,24 @@ Example equivalent_assertion2 :
                   (ident)
                   (number)))
               (number))))))))
+
+==================
+Hoare Triple with Assignment
+==================
+Definition assertion_sub_example := {{P}} X := 1 + 1 {{P}}.
+---
+(source_file
+  (sentence
+    (definition_command
+      (ident_decl
+        (ident))
+      body: (hoare_triple
+        (hoare_assertion
+          (ident))
+        (casign
+          (ident)
+          (additive_operation
+            (number)
+            (number)))
+        (hoare_assertion
+          (ident))))))
