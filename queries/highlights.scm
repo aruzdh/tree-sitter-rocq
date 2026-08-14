@@ -99,6 +99,10 @@
 (cif "else" @keyword.control.imp)
 (cif "end" @keyword.control.imp)
 
+(cif1 "if1" @keyword.control.imp)
+(cif1 "then" @keyword.control.imp)
+(cif1 "end" @keyword.control.imp)
+
 (cwhile "while" @keyword.control.imp)
 (cwhile "do" @keyword.control.imp)
 (cwhile "end" @keyword.control.imp)
